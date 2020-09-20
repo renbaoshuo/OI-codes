@@ -1,0 +1,3 @@
+c:=5;a:=b;b:=c;c:=a;a:=a;b:=b;c:=c;a:=c;c:=a;a:=b;b:=c;c:=a;a:=a;b:=b;c:=c;a:=c;b:=a;a:=c;c:=b;a:=2;c:=a;b:=9;
+
+
