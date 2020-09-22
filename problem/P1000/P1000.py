@@ -1,0 +1,3 @@
+# R22290404
+
+import zlib,base64;print(zlib.decompress(base64.b64decode('eJylUkEOwCAIu/sKk95Mxv+fN2AsE0S3xR42sRYqUqtHM5TJfsaBQQyQZ3jTGLp+JcqIjBUMSUMYy1Z6EB1J0hCOrhuywnoeXo4gF5U1I0nxJhc3rKSmH2vDd/Ny+nkMa6I3F7xmallrgvRh0K9L4DzLPLZQ9IY2CdekTKNjwK/qqdwK4J7TeZSa/wxtWKjc3W4VjdKdqt2tsIp2q3Y4AbV3oO4=')).decode());
