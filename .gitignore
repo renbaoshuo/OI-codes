@@ -39,3 +39,8 @@
 
 # tempCodeRunnerFile
 **/tempCodeRunnerFile.cpp
+
+# Compile Temps
+
+*.ii
+*.s
