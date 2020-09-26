@@ -1,0 +1,47 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "type": "shell",
+            // 编译参数 ggc -g ${file} -o ${fileDirname}${fileBasenameNoExtension}.exe
+            "windows": {
+                "command": "g++",
+                "args": [
+                    "-g",
+                    "\"${file}\"",
+                    "-o",
+                    "\"${fileDirname}\\${fileBasenameNoExtension}.exe\"",
+                    "--save-temps"
+                ]
+            },
+            // 控制台输出的错误信息
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "." // ${workspaceFolder}
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            // 终端面板配置
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared" // 控制面板是否在任务中共享面板，shared=共享，new=新面板
+            }
+        }
+    ]
+}
