@@ -1,22 +1,31 @@
+// R39244100
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
+int    x = 0, y = 0, t = 0;
+string s;
+
 int main() {
-    int    x = 0, y = 0, t = 0, i = 0;
-    string s;
     cin >> s >> t;
-    while (t--) {
-        if (i >= s.size()) {
-            i = 0;
-        }
+    for (int i = 0; i < s.size(); i++) {
         switch (s[i]) {
             case 'E': x++; break;
             case 'S': y--; break;
             case 'W': x--; break;
             case 'N': y++; break;
         }
-        i++;
+    }
+    x *= (int)(t / s.size());
+    y *= (int)(t / s.size());
+    for (int i = 0; i < t % s.size(); i++) {
+        switch (s[i]) {
+            case 'E': x++; break;
+            case 'S': y--; break;
+            case 'W': x--; break;
+            case 'N': y++; break;
+        }
     }
     cout << x << ' ' << y << endl;
     return 0;
