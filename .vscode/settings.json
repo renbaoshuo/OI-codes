@@ -70,6 +70,9 @@
         "streambuf": "cpp",
         "thread": "cpp",
         "typeindex": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "any": "cpp",
+        "bit": "cpp",
+        "variant": "cpp"
     }
 }
