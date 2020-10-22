@@ -73,6 +73,7 @@
         "typeinfo": "cpp",
         "any": "cpp",
         "bit": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "rope": "cpp"
     }
 }
