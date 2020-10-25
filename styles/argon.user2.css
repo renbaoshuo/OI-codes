@@ -11,7 +11,8 @@
 /*--------------------背景图片，默认是颜色编码*/
 html > body {
     /*background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+PHN2ZyB0PSIxNTUwOTcwNDY1MzQ4IiBjbGFzcz0iaWNvbiIgc3R5bGU9IiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHAtaWQ9IjExMzUiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIj48ZGVmcz48c3R5bGUgdHlwZT0idGV4dC9jc3MiPjwvc3R5bGU+PC9kZWZzPjxwYXRoIGQ9IiIgcC1pZD0iMTEzNiIgZmlsbD0iI2ZmZmZmZiI+PC9wYXRoPjwvc3ZnPg==);*/
-    background-image: url(https://i.pximg.net/img-original/img/2015/11/22/00/37/48/53671536_p0.png);
+    /*background-image: url(https://i.pximg.net/img-original/img/2015/11/22/00/37/48/53671536_p0.png);*/
+    background-image: url(https://i.loli.net/2020/10/02/U3Nx4fyJ26Ig75r.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 10% 25%;
@@ -20,6 +21,10 @@ html > body {
 /*.wrapper {
     background: rgba(255, 255, 255, 0.7) !important;
 }*/
+
+.bottom .page-bar button{
+    width: 2.1rem !important;
+}
 
 /*-------------------主题*/
 
