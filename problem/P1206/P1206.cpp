@@ -30,18 +30,12 @@ class node {
         return nums[x];
     }
 
-    const char* c_str() {
+    string str() {
         string s;
         for (int i = len - 1; i >= 0; i--) {
             s.push_back(c(nums[i]));
         }
-        return s.c_str();
-    }
-    string print() {
-        for (int i = len - 1; i >= 0; i--) {
-            cout << c(nums[i]);
-        }
-        return "";
+        return s;
     }
     bool check() {
         for (int i = 0; i < len; i++) {
@@ -59,7 +53,7 @@ int main() {
     for (int i = 1; i <= 300; i++) {
         node t = node(i * i, b);
         if (t.check()) {
-            cout << node(i, b).print() << ' ' << t.print() << endl;
+            cout << node(i, b).str() << ' ' << t.str() << endl;
         }
     }
     return 0;
