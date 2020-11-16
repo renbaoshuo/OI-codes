@@ -2,6 +2,9 @@
 
 [Home](https://baoshuo.ren/) | [Blog](https://baoshuo.blog/) | [View on Github](https://github.com/renbaoshuo/Luogu)
 
+## 做题情况
+
+![做题情况](https://luogu.vercel.app/api?id=168214)
 ## 说明
 
 这里存放着我在洛谷上 2020 年 8 月 1 日之后的通过代码。
