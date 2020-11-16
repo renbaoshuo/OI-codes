@@ -1,6 +1,6 @@
 # Luogu
 
-[Home](https://baoshuo.ren/) | [Blog](https://baoshuo.blog/)
+[Home](https://baoshuo.ren/) | [Blog](https://baoshuo.blog/) | [View on Github](https://github.com/renbaoshuo/Luogu)
 
 ## 说明
 
