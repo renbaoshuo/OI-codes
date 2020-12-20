@@ -3,10 +3,7 @@
 
 import json
 import os
-import re
 import time
-from urllib.parse import unquote
-
 import pymongo
 import requests
 
