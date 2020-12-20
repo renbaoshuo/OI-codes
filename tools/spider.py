@@ -17,13 +17,12 @@ dbcol = luogudb["problem"]
 headers = { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4331.0 Safari/537.36", }
 
 def getProblem(pid) -> dict:
-    url = f"https://www.luogu.com.cn/problem/{pid}"
-    redata = re.findall(r'decodeURIComponent\("(.*)"\)',
-                        requests.get(url, headers=headers).text)
+    url = f"https://www.luogu.com.cn/problem/{pid}?_contentOnly=1"
+    redata = requests.get(url, headers=headers).text
     if len(redata) == 0:
         return { "code": 403 }
     else:
-        return json.loads(unquote(redata[0]))
+        return json.loads(redata)
 
 def getProblemID(type, id, last="") -> str:
     return str(type)+str(id)+str(last)
