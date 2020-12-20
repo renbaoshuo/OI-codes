@@ -31,7 +31,7 @@ for i in range(1000, 1001):
         tmpdict["pid"] = pid
         tmpdata = getProblem(pid)
         if tmpdata["code"] == 200:
-            tmpdict["data"] = getProblem(pid)["currentData"]["problem"]
+            tmpdict["data"] = tmpdata["currentData"]["problem"]
             dbcol.insert_one(tmpdict)
             print("Successfully get problem "+pid+".")
             time.sleep(0.8)
