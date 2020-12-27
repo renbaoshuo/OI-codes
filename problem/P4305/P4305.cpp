@@ -2,29 +2,15 @@
 
 using namespace std;
 
-inline void read(int& ret) {
-    ret = 0;
-    int f = 1;
-    char ch = getchar();
-    while (!isdigit(ch)) {
-        if (ch == '-') f = -f;
-        ch = getchar();
-    }
-    while (isdigit(ch)) {
-        ret = ret * 10 + ch - '0', ch = getchar();
-    }
-    ret *= f;
-}
-
 int main() {
     int t;
-    read(t);
+    scanf("%d", &t);
     while (t--) {
         int n, x;
         unordered_map<int, bool> m;
-        read(n);
+        scanf("%d", &n);
         for (int i = 0; i < n; i++) {
-            read(x);
+            scanf("%d", &x);
             if (!m[x]) {
                 m[x] = true;
                 printf("%d ", x);
