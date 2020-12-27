@@ -18,7 +18,7 @@ listContent = f'# 题目列表\n\n'
 
 for problem in passedProblems:
     problemData = getProblem(problem)["currentData"]["problem"]
-    listContent += f'+ [{problemData["pid"]} {problemData["title"]}](https://www.luogu.com.cn/problem/{problemData["pid"]})\n'
+    listContent += f'+ [{problemData["pid"]} {problemData["title"]}]({problem}/problem.html)\n'
     problemContent = f'# [{problemData["pid"]}](https://www.luogu.com.cn/problem/{problemData["pid"]}) {problemData["title"]}\n\n'
     if problemData["background"]:
         problemContent += f'## 题目背景\n\n{problemData["background"]}\n\n'
@@ -33,7 +33,7 @@ for problem in passedProblems:
         problemContent += f'## 输入输出样例\n\n'
         for sample in problemData["samples"]:
             i += 1
-            problemContent += f'### 样例 #{i}\n\n**输入**\n```\n{sample[0]}```\n\n**输出**\n```\n{sample[1]}```\n\n'
+            problemContent += f'### 样例 #{i}\n\n**输入**\n```\n{sample[0]}\n```\n\n**输出**\n```\n{sample[1]}\n```\n\n'
     if problemData["hint"]:
         problemContent += f'## 说明/提示\n\n{problemData["hint"]}\n\n'
     problemContent += f'\n\n------\n\n[查看代码](https://github.com/renbaoshuo/Luogu/tree/master/problem/{problem}/{problem}.cpp)'
