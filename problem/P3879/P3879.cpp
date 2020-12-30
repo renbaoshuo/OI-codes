@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     int n, l;
     string s;
-    map<string, set<int>> m;
+    unordered_map<string, set<int> > m;
     cin >> n;
     for (int i = 1; i <= n; i++) {
         cin >> l;
