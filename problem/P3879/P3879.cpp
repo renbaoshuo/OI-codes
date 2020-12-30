@@ -5,13 +5,13 @@ using namespace std;
 int main() {
     int n, l;
     string s;
-    map<string, vector<int>> m;
+    map<string, set<int>> m;
     cin >> n;
     for (int i = 1; i <= n; i++) {
         cin >> l;
         for (int j = 0; j < l; j++) {
             cin >> s;
-            m[s].push_back(i);
+            m[s].insert(i);
         }
     }
     cin >> n;
@@ -21,10 +21,8 @@ int main() {
             cout << endl;
         }
         else {
-            for (int j = 0; j < m[s].size() - 1; j++) {
-                if(m[s][j] != m[s][j+1]) {
-                    cout << m[s][j] << ' ';
-                }
+            for (set<int>::iterator it = m[s].begin(); it != --m[s].end(); it++) {
+                cout << *it << ' ';
             }
             cout << *--m[s].end() << endl;
         }
