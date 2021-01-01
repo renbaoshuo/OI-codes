@@ -38,9 +38,9 @@
 !**/data/*
 
 # tempCodeRunnerFile
+temp/**
 **/tempCodeRunnerFile.cpp
 
 # Compile Temps
-
 *.ii
 *.s
