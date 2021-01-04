@@ -1,16 +1,27 @@
-# Luogu
+# OI-codes
 
-[Home](https://baoshuo.ren/) | [Blog](https://baoshuo.blog/) | [View on Github](https://github.com/renbaoshuo/Luogu)
+[Home](https://baoshuo.ren/) | [Blog](https://blog.baoshuo.ren/) | [View on Github](https://github.com/renbaoshuo/oi-codes)
 
-## 做题情况
-
-![做题情况](https://luogu.vercel.app/api?id=168214)
 ## 说明
 
-这里存放着我在洛谷上 2020 年 8 月 1 日之后的通过代码。
+这里存放与 **OI** 有关的代码。
 
 + 部分代码思路借鉴了题解。
 + 部分目录会有 `solution.md` 给出做题思路。
+
+## 做题情况
+
+### 洛谷
+
+![做题情况](https://luogu.vercel.app/api?id=168214)
+
+### LibreOJ
+
+可以查看[提交记录](https://loj.ac/s?submitter=renbaoshuo&status=Accepted)。
+
+### S2OJ
+
+看不到。
 
 ## 许可证
 
