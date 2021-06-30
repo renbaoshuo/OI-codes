@@ -2,17 +2,16 @@
 
 using namespace std;
 
+int n, m, k = 1, t;
 vector<int> listnode;
 
 int main() {
-    int n, m, k = 1;
-    listnode.clear();
     cin >> n >> m;
-    for (int i = 0; i < n; i++) {
+    for (int i = 1; i <= n; i++) {
         listnode.push_back(i);
     }
     for (int i = 1; i <= m; i++) {
-        int t = i * i * i % 5 + 1;
+        t = i * i * i % 5 + 1;
         k += t;
         if (k > listnode.size()) {
             k = t + 1;
@@ -21,6 +20,6 @@ int main() {
             listnode.erase(listnode.begin() + k - 1);
         }
     }
-    cout << listnode[k] << endl;
+    cout << listnode[k - 1] << endl;
     return 0;
 }
