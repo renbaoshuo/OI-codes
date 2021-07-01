@@ -10,8 +10,7 @@
                     "-g",
                     "\"${file}\"",
                     "-o",
-                    "\"${fileDirname}\\${fileBasenameNoExtension}.exe\"",
-                    "--save-temps"
+                    "\"${fileDirname}\\${fileBasenameNoExtension}.exe\""
                 ]
             },
             "linux": {
@@ -20,8 +19,7 @@
                     "-g",
                     "\"${file}\"",
                     "-o",
-                    "\"${fileDirname}/${fileBasenameNoExtension}.exe\"",
-                    "--save-temps"
+                    "\"${fileDirname}/${fileBasenameNoExtension}.exe\""
                 ]
             },
             "problemMatcher": {
