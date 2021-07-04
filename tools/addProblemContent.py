@@ -43,5 +43,5 @@ for problem in passedProblems:
     print(f'Successfully get {problem}.')
 
 f = open("../problem/README.md", "w")
-f.write(listContent)
+f.write(listContent.replace('|', '\|'))
 f.close()
