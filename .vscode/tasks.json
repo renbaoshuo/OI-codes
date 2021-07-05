@@ -7,6 +7,7 @@
             "windows": {
                 "command": "g++",
                 "args": [
+                    "--std=c++11",
                     "-g",
                     "\"${file}\"",
                     "-o",
@@ -16,6 +17,7 @@
             "linux": {
                 "command": "/usr/bin/g++",
                 "args": [
+                    "--std=c++11",
                     "-g",
                     "\"${file}\"",
                     "-o",
