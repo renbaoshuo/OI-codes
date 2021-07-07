@@ -16,6 +16,21 @@
             "intelliSenseMode": "gcc-x64"
         },
         {
+            "name": "Win32_Portable",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "/Applications/mingw64/bin/g++.exe",
+            "cStandard": "c89",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "gcc-x64"
+        },
+        {
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**"
