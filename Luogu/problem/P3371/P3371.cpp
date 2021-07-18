@@ -2,38 +2,39 @@
 
 using namespace std;
 
-int n, m, s, x, y, z, g[10005][10005], dist[10005];
-bool st[10005];
+int n, m, s, u, v, w, dist[200005];
+vector<pair<int, int>> g[200005];
+bool st[200005];
 
-void diskstra() {
+void dijkstra() {
     memset(dist, 0x3f, sizeof(dist));
     dist[s] = 0;
-    for (int i = 0; i < n - 1; i++) {
-        int t = -1;
-        for (int j = 1; j <= n; j++) {
-            if (!st[j] && (t == -1 || dist[t] > dist[j])) {
-                t = j;
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+    q.push(make_pair(0, s));
+    while (!q.empty()) {
+        auto t = q.top();
+        q.pop();
+        int tw = t.second;
+        int td = t.first;
+        if (st[tw]) continue;
+        for (auto i : g[tw]) {
+            int j = i.first;
+            if (dist[j] > td + i.second) {
+                dist[j] = td + i.second;
+                q.push(make_pair(dist[j], j));
             }
         }
-        for (int j = 1; j <= n; j++) {
-            dist[j] = min(dist[j], dist[t] + g[t][j]);
-        }
-        st[t] = true;
+        st[tw] = true;
     }
 }
 
 int main() {
     cin >> n >> m >> s;
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
-            g[i][j] = i == j ? 0 : 0x3f3f3f3f;
-        }
-    }
     for (int i = 1; i <= m; i++) {
-        cin >> x >> y >> z;
-        g[x][y] = min(g[x][y], z);
+        cin >> u >> v >> w;
+        g[u].push_back(make_pair(v, w));
     }
-    diskstra();
+    dijkstra();
     for (int i = 1; i <= n; i++) {
         cout << (dist[i] == 0x3f3f3f3f ? INT_MAX : dist[i]) << ' ';
     }
