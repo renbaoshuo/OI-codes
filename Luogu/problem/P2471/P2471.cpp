@@ -45,6 +45,57 @@ int query(int u, int l, int r) {
     return s;
 }
 
+const char* solve(int x, int y) {
+    if (x == y) {
+        return "true";
+    } else if (x > y) {
+        return "false";
+    }
+    auto p1 = m1.lower_bound(x);
+    auto p2 = m1.lower_bound(y);
+    if (p2 == m1.end() || p2->first != y) {
+        if (p1 == m1.end() || p1->first != x) {
+            return "maybe";
+        }
+        --p2;
+        if (p1->second + 1 > p2->second || query(1, p1->second + 1, p2->second) < a[p1->second]) {
+            return "maybe";
+        } else {
+            return "false";
+        }
+    }
+    if (p1 == m1.end()) {
+        return "maybe";
+    }
+    if (p1->first == x) {
+        if (a[p1->second] < a[p2->second]) {
+            return "false";
+        }
+        if (p1->second + 1 > p2->second - 1) {
+            return y - x == p2->second - p1->second ? "true" : "maybe";
+        } else {
+            int mx = query(1, p1->second + 1, p2->second - 1);
+            if (mx >= a[p2->second]) {
+                return "false";
+            } else {
+                return y - x == p2->second - p1->second ? "true" : "maybe";
+            }
+        }
+    } else {
+        if (p1 == p2) {
+            return "maybe";
+        } else {
+            int mx = query(1, p1->second, p2->second - 1);
+            if (mx >= a[p2->second]) {
+                return "false";
+            } else {
+                return "maybe";
+            }
+        }
+    }
+    return "";
+}
+
 int main() {
     cin >> n;
     for (int i = 1; i <= n; i++) {
@@ -55,44 +106,8 @@ int main() {
     build(1, 1, n);
     cin >> m;
     for (int i = 0; i < m; i++) {
-        cin >> y >> x;
-        if (y >= x) {
-            cout << "false" << endl;
-            continue;
-        }
-        bool exist_x = m1.count(x);
-        bool exist_y = m1.count(y);
-        auto it_x = m1.lower_bound(x);
-        auto it_y = m1.lower_bound(y);
-        if (!exist_x) {
-            if (!exist_y) {
-                cout << "maybe" << endl;
-            } else {
-                if (query(1, m1[y] + 1, (it_x == m1.end() ? (--m1.end())->second : it_x->second - 1)) < a[m1[x]]) {
-                    cout << "maybe" << endl;
-                } else {
-                    cout << "false" << endl;
-                }
-            }
-        } else {
-            if (exist_y) {
-                if (a[m1[y]] < a[m1[x]]) {
-                    cout << "false" << endl;
-                } else if (query(1, m1[y] + 1, m1[x] - 1) >= a[m1[x]]) {
-                    cout << "false" << endl;
-                } else if (x - y == m1[x] - m1[y]) {
-                    cout << "true" << endl;
-                } else {
-                    cout << "maybe" << endl;
-                }
-            } else {
-                if (it_y == m1.end() || query(1, it_y->second, m1[x] - 1) >= a[m1[x]]) {
-                    cout << "false" << endl;
-                } else {
-                    cout << "maybe" << endl;
-                }
-            }
-        }
+        cin >> x >> y;
+        cout << solve(x, y) << endl;
     }
     return 0;
 }
