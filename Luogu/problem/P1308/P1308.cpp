@@ -1,41 +1,22 @@
-// https://www.luogu.com.cn/record/38659937
-
 #include <bits/stdc++.h>
 
 using namespace std;
 
+int cnt, now;
+string w, s;
+
 int main() {
-    int    cnt = 0, t = 0;
-    string word, p;
-
-    getline(cin, word);
-    getline(cin, p);
-
-    for (int i = 0; i < word.size(); i++) {
-        if ('a' <= word[i] && word[i] <= 'z') {
-            word[i] -= 32;
-        }
-    }
-    for (int i = 0; i < p.size(); i++) {
-        if ('a' <= p[i] && p[i] <= 'z') {
-            p[i] -= 32;
-        }
-    }
-
-    word = ' ' + word + ' ';
-    p    = ' ' + p + ' ';
-
-    if (p.find(word) == string::npos) {
+    getline(cin, w);
+    getline(cin, s);
+    w = ' ' + w + ' ';
+    s = ' ' + s + ' ';
+    transform(w.begin(), w.end(), w.begin(), ::tolower);
+    transform(s.begin(), s.end(), s.begin(), ::tolower);
+    if (s.find(w) == string::npos) {
         cout << -1 << endl;
-        return 0;
+    } else {
+        while ((now = s.find(w, now)) != string::npos) cnt++, now++;
+        cout << cnt << ' ' << s.find(w) << endl;
     }
-
-    while (t != string::npos) {
-        cnt++;
-        t = p.find(word, t + 1);
-    }
-
-    cout << --cnt << ' ' << p.find(word) << endl;
-
     return 0;
 }
