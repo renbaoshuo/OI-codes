@@ -4,19 +4,19 @@ using namespace std;
 
 int n, p;
 string s;
-stack<pair<char, int>> st;
+stack<int> st;
 
 int main() {
     cin >> n >> p >> s;
     s = ' ' + s;
     for (int i = 1; i < s.size(); i++) {
         if (s[i] == '{') {
-            st.push(make_pair(s[i], i));
-        } else if (st.top().second == p) {
+            st.push(i);
+        } else if (st.top() == p) {
             cout << i << endl;
             exit(0);
         } else if (i == p) {
-            cout << st.top().second << endl;
+            cout << st.top() << endl;
             exit(0);
         } else {
             st.pop();
