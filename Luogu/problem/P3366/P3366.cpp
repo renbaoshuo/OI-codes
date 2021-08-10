@@ -2,41 +2,41 @@
 
 using namespace std;
 
-int n, m, u, v, w, g[5005][5005], dist[5005];
-bool vis[5005];
+int n, m, fa[5005], res, cnt;
+struct node {
+    int u, v, w;
 
-int prim() {
-    memset(dist, 0x3f, sizeof(dist));
-    int res = 0;
-    for (int i = 0; i < n; i++) {
-        int t = -1;
-        for (int j = 1; j <= n; j++) {
-            if (!vis[j] && (t == -1 || dist[j] < dist[t])) {
-                t = j;
-            }
-        }
-        if (i && dist[t] == 0x3f3f3f3f) return 0x3f3f3f3f;
-        if (i) res += dist[t];
-        for (int j = 1; j <= n; j++) {
-            dist[j] = min(dist[j], g[t][j]);
-        }
-        vis[t] = true;
+    bool operator<(const node x) const {
+        return w < x.w;
     }
-    return res;
+} g[200005];
+
+int find(int x) {
+    return fa[x] = fa[x] != x ? find(fa[x]) : fa[x];
 }
 
 int main() {
     cin >> n >> m;
-    memset(g, 0x3f, sizeof(g));
     for (int i = 0; i < m; i++) {
-        cin >> u >> v >> w;
-        g[u][v] = g[v][u] = min(g[u][v], w);
+        cin >> g[i].u >> g[i].v >> g[i].w;
     }
-    int ans = prim();
-    if (ans == 0x3f3f3f3f) {
+    sort(g, g + m);
+    for (int i = 1; i <= n; i++) {
+        fa[i] = i;
+    }
+    for (int i = 0; i < m; i++) {
+        g[i].u = find(g[i].u);
+        g[i].v = find(g[i].v);
+        if (g[i].u != g[i].v) {
+            fa[g[i].u] = g[i].v;
+            res += g[i].w;
+            cnt++;
+        }
+    }
+    if (cnt < n - 1) {
         cout << "orz" << endl;
     } else {
-        cout << ans << endl;
+        cout << res << endl;
     }
     return 0;
 }
