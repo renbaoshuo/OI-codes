@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int n, m, v[1005], w[1005], f[1005][1005];
+int n, m, v[1005], w[1005], f[1005];
 
 int main() {
     cin >> n >> m;
@@ -10,10 +10,10 @@ int main() {
         cin >> v[i] >> w[i];
     }
     for (int i = 1; i <= n; i++) {
-        for (int j = 0; j <= m; j++) {
-            f[i][j] = max(f[i - 1][j], j >= v[i] ? f[i - 1][j - v[i]] + w[i] : f[i - 1][j]);
+        for (int j = m; j >= v[i]; j--) {
+            f[j] = max(f[j], f[j - v[i]] + w[i]);
         }
     }
-    cout << f[n][m] << endl;
+    cout << f[m] << endl;
     return 0;
 }
