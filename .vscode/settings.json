@@ -74,6 +74,13 @@
         "any": "cpp",
         "bit": "cpp",
         "variant": "cpp",
-        "rope": "cpp"
+        "rope": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "coroutine": "cpp",
+        "numbers": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "stop_token": "cpp"
     }
 }
