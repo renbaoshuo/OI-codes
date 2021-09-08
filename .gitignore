@@ -44,3 +44,6 @@ temp/**
 # Compile Temps
 *.ii
 *.s
+
+# Codespace Env Files
+.venv
