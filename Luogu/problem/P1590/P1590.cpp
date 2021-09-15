@@ -1,29 +1,17 @@
-// 70' Code (R38866815)
-
 #include <bits/stdc++.h>
 
 using namespace std;
 
-bool find(int s, int x) {
-    while (s) {
-        if (s % 10 == x) {
-            return true;
-        }
-        s /= 10;
-    }
-    return false;
-}
+long long t, n, m, ans;
 
 int main() {
-    int t, n, ans;
     cin >> t;
-    for (int i = 0; i < t; i++) {
+    while (t--) {
+        ans = m = 0;
         cin >> n;
-        ans = 0;
-        for (int i = 1; i <= n; i++) {
-            if (!find(i, 7)) {
-                ans++;
-            }
+        while (n) {
+            ans += (n % 10 - (n % 10 > 7)) * pow(9, m++);
+            n /= 10;
         }
         cout << ans << endl;
     }
