@@ -2,26 +2,30 @@
 
 using namespace std;
 
-int n, k, p, x;
-vector<int> a;
-map<int, bool> m;
+int n, k, p, m, x, t;
+list<int> a;
+list<int>::iterator b[100005];
 
 int main() {
-    scanf("%d", &n);
-    a.push_back(0);
+    cin >> n;
     a.push_back(1);
+    b[1] = a.begin();
     for (int i = 2; i <= n; i++) {
-        scanf("%d%d", &k, &p);
-        a.insert(find(a.begin(), a.end(), k) + p, i);
+        cin >> k >> p;
+        auto it = b[k];
+        b[i] = a.insert(p ? next(it) : it, i);
     }
-    scanf("%d", &n);
-    while (n--) {
-        scanf("%d", &x);
-        m[x] = 1;
+    cin >> m;
+    for (int i = 1; i <= m; i++) {
+        cin >> x;
+        if (b[x] != a.end()) {
+            a.erase(b[x]);
+            b[x] = a.end();
+        }
     }
-    for (vector<int>::iterator it = a.begin() + 1; it != a.end(); it++) {
-        if(!m[*it]) printf("%d ", *it);
+    for (auto it = a.begin(); it != a.end(); it++) {
+        cout << *it << ' ';
     }
-    printf("\n");
+    cout << endl;
     return 0;
 }
