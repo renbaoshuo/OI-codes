@@ -2,47 +2,35 @@
 
 using namespace std;
 
-struct node {
-    int size;
-    node* next[26];
+int n, p = 1, trie[10000005][26], size[10000005];
+char s[4000005];
 
-    ~node() {
-        for (auto& i : next) {
-            delete i;
-        }
-    }
-};
-
-void insert(node* root, string s) {
-    if (s.empty()) {
-        root->size = 1;
+void insert(int u, const char* s) {
+    if (!strlen(s)) {
+        size[u] = 1;
         return;
     }
-    if (root->next[s[0] - 'a'] == nullptr) root->next[s[0] - 'a'] = new node();
-    insert(root->next[s[0] - 'a'], s.substr(1));
+    if (!trie[u][s[0] - 'a']) trie[u][s[0] - 'a'] = ++p;
+    insert(trie[u][s[0] - 'a'], s + 1);
 }
 
-void calcsize(node* root) {
+void calcsize(int u) {
     for (int i = 0; i < 26; i++) {
-        if (root->next[i] != nullptr) {
-            calcsize(root->next[i]);
-            root->size += root->next[i]->size;
+        if (trie[u][i]) {
+            calcsize(trie[u][i]);
+            size[u] += size[trie[u][i]];
         }
     }
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
-    int n;
-    string s;
-    node* root = new node();
-    cin >> n;
-    while (n--) {
-        cin >> s;
-        insert(root, s);
+    scanf("%d", &n);
+    for (int i = 1; i <= n; i++) {
+        scanf("%s", s);
+        insert(1, s);
     }
-    calcsize(root);
-    cout << root->size << endl;
-    delete root;
+    calcsize(1);
+    printf("%d\n", size[1]);
     return 0;
 }
