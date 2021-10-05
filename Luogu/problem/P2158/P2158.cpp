@@ -2,21 +2,29 @@
 
 using namespace std;
 
-int n, ans, f[50000];
+int n, p, ans, mu[40005], primes[40005];
+bool vis[40005];
 
 int main() {
     cin >> n;
-    ans = (n - 1) * (n - 1);
-    if(!--n) {
+    if (!--n) {
         cout << 0 << endl;
-        return 0;
+        exit(0);
     }
-    for (int i = n; i >= 2; i--) {
-        f[i] = (n / i) * (n / i);
-        for (int j = 2 * i; j <= n; j += i) {
-            f[i] -= f[j];
+    mu[1] = 1;
+    for (int i = 2; i <= n; i++) {
+        if (!vis[i]) {
+            primes[++p] = i;
+            mu[i] = -1;
         }
-        ans -= f[i];
+        for (int j = 1; i * primes[j] <= n; j++) {
+            vis[i * primes[j]] = true;
+            if (i % primes[j] == 0) break;
+            mu[i * primes[j]] = -mu[i];
+        }
+    }
+    for (int i = 1; i <= n; i++) {
+        ans += mu[i] * pow(n / i, 2);
     }
     cout << ans + 2 << endl;
     return 0;
