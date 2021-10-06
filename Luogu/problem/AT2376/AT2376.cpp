@@ -2,40 +2,32 @@
 
 using namespace std;
 
+int n, u, v;
 vector<int> g[100005];
-int n, x, y, s[100005];
-bool flag;
+bool flag, vis[100005];
 
-void dfs(int u, int p) {
-    s[u] = 1;
-    int t = 0;
-    for (int i = 0; i < g[u].size(); i++) {
-        if (g[u][i] != p) {
-            dfs(g[u][i], u);
-            t += s[g[u][i]];
-            s[u] ^= s[g[u][i]];
+void dfs(int u, int f) {
+    if (flag) return;
+    for (int i : g[u]) {
+        if (i != f) dfs(i, u);
+    }
+    if (!vis[u]) {
+        if (f == -1 || vis[f]) {
+            flag = true;
+        } else {
+            vis[f] = vis[u] = true;
         }
     }
-    if (t > 1) flag = true;
 }
 
 int main() {
     cin >> n;
     for (int i = 1; i < n; i++) {
-        cin >> x >> y;
-        g[x].push_back(y);
-        g[y].push_back(x);
+        cin >> u >> v;
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
-    if (n & 1) {
-        cout << "First" << endl;
-        return 0;
-    }
-    dfs(1, 0);
-    if (flag) {
-        cout << "First" << endl;
-    }
-    else {
-        cout << "Second" << endl;
-    }
+    dfs(1, -1);
+    cout << (flag ? "First" : "Second") << endl;
     return 0;
 }
