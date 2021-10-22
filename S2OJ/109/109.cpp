@@ -1,56 +1,62 @@
+#pragma GCC optimize("Ofast")
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
-int n, m, s, x, y;
+int n, m, s, root, a, b, dep[500005], fa[500005][20];
+vector<int> tr[500005];
 
-struct node {
-    int depth, father;
-    vector<int> next;
-} tree[500005];
-bool vis[500005];
-
-void dfs(int depth, int root, int father) {
-    tree[root].father = father;
-    for (int i = 0; i < tree[root].next.size(); i++) {
-        if (tree[root].next[i] != father) {
-            tree[tree[root].next[i]].depth = depth + 1;
-            tree[tree[root].next[i]].father = root;
-            dfs(depth + 1, tree[root].next[i], root);
+void bfs(int root) {
+    memset(dep, 0x3f, sizeof(dep));
+    dep[0] = 0;
+    dep[root] = 1;
+    queue<int> q;
+    q.push(root);
+    while (!q.empty()) {
+        int t = q.front();
+        q.pop();
+        for (int i : tr[t]) {
+            if (dep[i] > dep[t] + 1) {
+                dep[i] = dep[t] + 1;
+                q.push(i);
+                fa[i][0] = t;
+                for (int k = 1; k <= 19; k++) {
+                    fa[i][k] = fa[fa[i][k - 1]][k - 1];
+                }
+            }
         }
     }
-    return;
 }
 
-void dfs2(int now) {
-    vis[now] = true;
-    if(now == s) return;
-    else dfs2(tree[now].father);
-}
-
-int dfs3(int now) {
-    if(vis[now]) return now;
-    else return dfs3(tree[now].father);
+int lca(int a, int b) {
+    if (dep[a] < dep[b]) swap(a, b);
+    for (int k = 19; k >= 0; k--) {
+        if (dep[fa[a][k]] >= dep[b]) {
+            a = fa[a][k];
+        }
+    }
+    if (a == b) return a;
+    for (int k = 19; k >= 0; k--) {
+        if (fa[a][k] != fa[b][k]) {
+            a = fa[a][k];
+            b = fa[b][k];
+        }
+    }
+    return fa[a][0];
 }
 
 int main() {
-    scanf("%d%d%d", &n, &m, &s);
+    scanf("%d%d%d", &n, &m, &root);
     for (int i = 1; i < n; i++) {
-        scanf("%d%d", &x, &y);
-        tree[x].next.push_back(y);
-        tree[y].next.push_back(x);
+        scanf("%d%d", &a, &b);
+        tr[a].push_back(b);
+        tr[b].push_back(a);
     }
-    dfs(1, s, s);
-    for(int i = 0 ; i < m ; i++) {
-        scanf("%d%d", &x, &y);
-        memset(vis, 0x00, sizeof(vis));
-        if(tree[x].depth > tree[y].depth) {
-            dfs2(x);
-            printf("%d\n", dfs3(y));
-        } else {
-            dfs2(y);
-            printf("%d\n", dfs3(x));
-        }
+    bfs(root);
+    for (int i = 0; i < m; i++) {
+        scanf("%d%d", &a, &b);
+        printf("%d\n", lca(a, b));
     }
     return 0;
 }
