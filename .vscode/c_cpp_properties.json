@@ -42,8 +42,12 @@
             ],
             "compilerPath": "/usr/bin/g++",
             "cStandard": "c89",
-            "cppStandard": "c++11",
-            "intelliSenseMode": "gcc-x64"
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x64",
+            "compilerArgs": [
+                "-lm",
+                "-O2"
+            ]
         }
     ],
     "version": 4
