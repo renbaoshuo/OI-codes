@@ -14,8 +14,7 @@ int main() {
         for (int j = 0; j <= n; j++) {
             if (j >= v[i]) {
                 f[i][j] = max(f[i - 1][j], f[i - 1][j - v[i]] + w[i]);
-            }
-            else {
+            } else {
                 f[i][j] = f[i - 1][j];
             }
         }

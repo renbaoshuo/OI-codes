@@ -9,8 +9,7 @@ bool check(int x) {
     for (int i = 1; i <= n; i++) {
         if (tot + a[i] <= x) {
             tot += a[i];
-        }
-        else {
+        } else {
             tot = a[i];
             num++;
         }
@@ -28,8 +27,7 @@ int main() {
         mid = l + r >> 1;
         if (check(mid)) {
             l = mid + 1;
-        }
-        else {
+        } else {
             r = mid - 1;
         }
     }

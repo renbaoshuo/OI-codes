@@ -2,9 +2,9 @@
 
 using namespace std;
 
-int         n, a, b, d, ans;
+int n, a, b, d, ans;
 vector<int> g[100005];
-bool        vis[100005];
+bool vis[100005];
 
 void dfs(int now, int dis) {
     vis[now] = true;

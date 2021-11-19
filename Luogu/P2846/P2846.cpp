@@ -66,11 +66,11 @@ int query(int u, int l, int r) {
 int main() {
     cin >> n >> m;
     build(1, 1, n);
-    for(int i = 0 ; i < m ; i++) {
+    for (int i = 0; i < m; i++) {
         cin >> op >> s >> e;
-        if(op == 0) {
+        if (op == 0) {
             modify(1, s, e);
-        } else if(op == 1) {
+        } else if (op == 1) {
             cout << query(1, s, e) << endl;
         }
     }

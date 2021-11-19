@@ -19,8 +19,7 @@ int main() {
         cin >> s;
         if (!m.count(s)) {
             cout << endl;
-        }
-        else {
+        } else {
             for (set<int>::iterator it = m[s].begin(); it != --m[s].end(); it++) {
                 cout << *it << ' ';
             }

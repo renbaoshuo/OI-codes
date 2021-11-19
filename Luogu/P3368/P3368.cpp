@@ -81,8 +81,7 @@ int main() {
         if (op == 1) {
             scanf("%d%d", &y, &k);
             modify(1, x, y, k);
-        }
-        else if (op == 2) {
+        } else if (op == 2) {
             printf("%d\n", query(1, x, x));
         }
     }

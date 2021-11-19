@@ -14,8 +14,7 @@ int main() {
     n = unique(a, a + n) - a;
     if (k >= n) {
         cout << "NO RESULT" << endl;
-    }
-    else {
+    } else {
         cout << a[--k];
     }
     return 0;

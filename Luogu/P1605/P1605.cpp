@@ -23,7 +23,7 @@ void dfs(int x, int y) {
 
 int main() {
     cin >> n >> m >> t >> sx >> sy >> fx >> fy;
-    for(int i = 0 ; i < t ; i++) {
+    for (int i = 0; i < t; i++) {
         int x, y;
         cin >> x >> y;
         vis[x][y] = -1;

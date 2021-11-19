@@ -62,7 +62,7 @@ char itoc(int x) {
 
 int main() {
     long long i, n = 0, p1, p2, x = 1;
-    string    s, res = "";
+    string s, res = "";
     cin >> p1 >> s >> p2;
     for (i = s.size() - 1; i >= 0; i--) {
         n += ctoi(s[i]) * x;

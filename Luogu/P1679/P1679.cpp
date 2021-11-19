@@ -16,7 +16,7 @@ void dfs(int cnt, int k, int last) {
         return;
     }
     int i = last;
-    while (i*i*i*i <= n - cnt) {
+    while (i * i * i * i <= n - cnt) {
         i++;
     }
     while (i >= last) {

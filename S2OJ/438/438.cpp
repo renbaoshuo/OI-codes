@@ -22,7 +22,7 @@ int main() {
     }
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {
-                f[i][j] = i == j ? 0 : 0x3f3f3f3f;
+            f[i][j] = i == j ? 0 : 0x3f3f3f3f;
         }
     }
     for (int i = 1; i <= n; i++) {
@@ -42,7 +42,7 @@ int main() {
             }
         }
     }
-    if(f[1][n] == 0x3f3f3f3f) {
+    if (f[1][n] == 0x3f3f3f3f) {
         cout << "No Solution" << endl;
     } else {
         cout << fixed << setprecision(3) << f[1][n] / v << endl;

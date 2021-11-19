@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int             n;
-int             u[8] = {0, -1, -1, -1, 0, 1, 1, 1};
-int             v[8] = {1, 1, 0, -1, -1, -1, 0, 1};
-bool            vis[101][101];
-string          s[105];
+int n;
+int u[8] = {0, -1, -1, -1, 0, 1, 1, 1};
+int v[8] = {1, 1, 0, -1, -1, -1, 0, 1};
+bool vis[101][101];
+string s[105];
 map<char, char> wd;
 
 bool dfs(int x, int y, char w, int p) {

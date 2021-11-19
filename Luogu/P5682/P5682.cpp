@@ -13,8 +13,7 @@ int main() {
     }
     if (s.size() <= 1) {
         cout << -1 << endl;
-    }
-    else {
+    } else {
         t = 0;
         for (int i : s) {
             a[++t] = i;

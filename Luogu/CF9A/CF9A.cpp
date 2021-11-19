@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-    int    a, b, c;
+    int a, b, c;
     string ans;
     cin >> a >> b;
     c = max(a, b);

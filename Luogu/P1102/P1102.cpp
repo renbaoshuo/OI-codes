@@ -3,8 +3,8 @@
 using namespace std;
 
 int main() {
-    long long     n, c, ans = 0;
-    int           a[200005];
+    long long n, c, ans = 0;
+    int a[200005];
     map<int, int> b;
     cin >> n >> c;
     for (int i = 1; i <= n; i++) {

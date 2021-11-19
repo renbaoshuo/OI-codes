@@ -3,9 +3,9 @@
 using namespace std;
 
 int main() {
-    int    n, m;
-    int    minx = 0x3f3f3f, miny = 0x3f3f3f;
-    int    maxx = 0x000000, maxy = 0x000000;
+    int n, m;
+    int minx = 0x3f3f3f, miny = 0x3f3f3f;
+    int maxx = 0x000000, maxy = 0x000000;
     string s[55];
     cin >> n >> m;
     for (int i = 0; i < n; i++) {

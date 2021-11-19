@@ -15,8 +15,7 @@ int main() {
             l++;
             r--;
             ans++;
-        }
-        else {
+        } else {
             r--;
             ans++;
         }

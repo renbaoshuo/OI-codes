@@ -13,19 +13,16 @@ int main() {
         for (int i = 0; i < s.size(); i++) {
             if (s[i] == '(' || s[i] == '[') {
                 st.push(s[i]);
-            }
-            else if (st.empty() || s[i] == ')' && st.top() != '(' || s[i] == ']' && st.top() != '[') {
+            } else if (st.empty() || s[i] == ')' && st.top() != '(' || s[i] == ']' && st.top() != '[') {
                 cout << "No" << endl;
                 goto end;
-            }
-            else {
+            } else {
                 st.pop();
             }
         }
         if (st.empty()) {
             cout << "Yes" << endl;
-        }
-        else {
+        } else {
             cout << "No" << endl;
         }
     end:;

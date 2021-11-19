@@ -118,12 +118,10 @@ signed main() {
         if (op == 1) {
             cin >> k;
             modify(1, x, y, k, 0);
-        }
-        else if (op == 2) {
+        } else if (op == 2) {
             cin >> k;
             modify(1, x, y, 1, k);
-        }
-        else if (op == 3) {
+        } else if (op == 3) {
             cout << query(1, x, y) % p << endl;
         }
     }

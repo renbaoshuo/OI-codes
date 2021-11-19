@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int    x = 0, y = 0, t = 0;
+int x = 0, y = 0, t = 0;
 string s;
 
 int main() {

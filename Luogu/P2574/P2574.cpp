@@ -81,8 +81,7 @@ int main() {
         cin >> op >> x >> y;
         if (op == 0) {
             modify(1, x, y);
-        }
-        else if (op == 1) {
+        } else if (op == 1) {
             cout << query(1, x, y) << endl;
         }
     }

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int         n, m, u, v, a[100010];
+int n, m, u, v, a[100010];
 vector<int> g[100010];
 
 void dfs(int x, int d) {

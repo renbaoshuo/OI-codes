@@ -29,8 +29,7 @@ int main() {
             mid2 = r - (r - l) / 3.0;
             if (check(mid1) > check(mid2)) {
                 l = mid1;
-            }
-            else {
+            } else {
                 r = mid2;
             }
         }

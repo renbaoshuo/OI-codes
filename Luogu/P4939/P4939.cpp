@@ -30,8 +30,7 @@ int main() {
             cin >> y;
             add(x, 1);
             add(y + 1, -1);
-        }
-        else if (op == 1) {
+        } else if (op == 1) {
             cout << sum(x) << endl;
         }
     }

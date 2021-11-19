@@ -1,6 +1,6 @@
 // https://www.luogu.com.cn/record/38654562
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -11,14 +11,14 @@ int main() {
     a = b = c = 0;
     cin >> s;
 
-    for(int i = 0 ; i < s.size() ; i += 5) {
-        cout << s[i] << ' ' << s[i+3] << ' ';
-        switch(s[i]) {
+    for (int i = 0; i < s.size(); i += 5) {
+        cout << s[i] << ' ' << s[i + 3] << ' ';
+        switch (s[i]) {
             case 'a':
-                if('0' <= s[i+3] && s[i+3] <= '9') {
-                    a = s[i+3] - '0';
+                if ('0' <= s[i + 3] && s[i + 3] <= '9') {
+                    a = s[i + 3] - '0';
                 } else {
-                    switch(s[i+3]) {
+                    switch (s[i + 3]) {
                         case 'a':
                             a = a;
                             break;
@@ -32,10 +32,10 @@ int main() {
                 }
                 break;
             case 'b':
-                if('0' <= s[i+3] && s[i+3] <= '9') {
-                    b = s[i+3] - '0';
+                if ('0' <= s[i + 3] && s[i + 3] <= '9') {
+                    b = s[i + 3] - '0';
                 } else {
-                    switch(s[i+3]) {
+                    switch (s[i + 3]) {
                         case 'a':
                             b = a;
                             break;
@@ -49,10 +49,10 @@ int main() {
                 }
                 break;
             case 'c':
-                if('0' <= s[i+3] && s[i+3] <= '9') {
-                    c = s[i+3] - '0';
+                if ('0' <= s[i + 3] && s[i + 3] <= '9') {
+                    c = s[i + 3] - '0';
                 } else {
-                    switch(s[i+3]) {
+                    switch (s[i + 3]) {
                         case 'a':
                             c = a;
                             break;

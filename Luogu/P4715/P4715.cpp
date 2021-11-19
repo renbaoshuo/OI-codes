@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    int                   n, t;
+    int n, t;
     queue<pair<int, int>> q;
     cin >> n;
     n = 1 << n;

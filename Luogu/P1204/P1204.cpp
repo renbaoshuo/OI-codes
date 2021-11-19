@@ -26,8 +26,7 @@ int main() {
     for (int i = 1; i < n; i++) {
         if (a[i].start <= end) {
             end = max(end, a[i].end);
-        }
-        else {
+        } else {
             ans1 = max(ans1, end - start);
             ans2 = max(ans2, a[i].start - end);
             start = a[i].start;

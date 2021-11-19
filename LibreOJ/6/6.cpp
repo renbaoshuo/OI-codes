@@ -1,5 +1,6 @@
-#include "interaction.h"
 #include <bits/stdc++.h>
+
+#include "interaction.h"
 
 using namespace std;
 

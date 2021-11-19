@@ -80,20 +80,16 @@ int main() {
         if (op == 1) {
             cin >> x >> y >> k;
             modify(1, x, y, k);
-        }
-        else if(op == 2) {
+        } else if (op == 2) {
             cin >> k;
             modify(1, 1, 1, k);
-        }
-        else if(op == 3) {
+        } else if (op == 3) {
             cin >> k;
             modify(1, 1, 1, -k);
-        }
-        else if(op == 4) {
+        } else if (op == 4) {
             cin >> x >> y;
             cout << query(1, x, y) << endl;
-        }
-        else if(op == 5) {
+        } else if (op == 5) {
             cout << query(1, 1, 1) << endl;
         }
     }

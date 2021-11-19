@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     char c;
-    int  a[30] = {0};
+    int a[30] = {0};
     while (cin >> c) {
         a[c - 'a']++;
     }

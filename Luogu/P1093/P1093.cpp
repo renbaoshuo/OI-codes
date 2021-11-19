@@ -1,10 +1,10 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 struct node {
     int chinese, math, english, all, id;
-    
+
     node() {
         id = chinese = math = english = all = 0;
     }
@@ -18,8 +18,8 @@ struct node {
 };
 
 bool cmp(node a, node b) {
-    if(a.all == b.all) {
-        if(a.chinese == b.chinese) {
+    if (a.all == b.all) {
+        if (a.chinese == b.chinese) {
             return a.id < b.id;
         }
         return a.chinese > b.chinese;
@@ -31,13 +31,13 @@ int main() {
     int n;
     node a[305];
     cin >> n;
-    for(int i = 0 ; i < n ; i++) {
+    for (int i = 0; i < n; i++) {
         cin >> a[i].chinese >> a[i].math >> a[i].english;
         a[i].all = a[i].chinese + a[i].math + a[i].english;
-        a[i].id = i+1;
+        a[i].id = i + 1;
     }
-    sort(a, a+n, cmp);
-    for(int i = 0 ; i < 5 ; i++) {
+    sort(a, a + n, cmp);
+    for (int i = 0; i < 5; i++) {
         cout << a[i].id << ' ' << a[i].all << endl;
     }
     return 0;

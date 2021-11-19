@@ -21,7 +21,7 @@ bool isPrime(int x) {
 }
 
 int main() {
-    int  n, k;
+    int n, k;
     bool flag = false;
     cin >> n >> k;
     for (int i = 2; i + k <= n; i++) {

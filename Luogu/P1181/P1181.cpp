@@ -10,8 +10,7 @@ int main() {
         if (sum + t > m) {
             ans++;
             sum = t;
-        }
-        else {
+        } else {
             sum += t;
         }
     }

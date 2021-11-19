@@ -40,8 +40,7 @@ void change(int u, int x, int d) {
     int mid = tr[u].l + tr[u].r >> 1;
     if (x <= mid) {
         change(u << 1, x, d);
-    }
-    else {
+    } else {
         change(u << 1 | 1, x, d);
     }
     pushup(u);
@@ -68,8 +67,7 @@ int main() {
         cin >> op >> x >> y;
         if (op == 1) {
             change(1, x, y);
-        }
-        else if (op == 2) {
+        } else if (op == 2) {
             cout << query(1, x, y) << endl;
         }
     }

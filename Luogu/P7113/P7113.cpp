@@ -29,8 +29,7 @@ void dfs(int x, __int128 first, __int128 second) {
                 __int128 tmp = gcd(ans[x].first, ans[x].second);
                 ans[x].first /= tmp;
                 ans[x].second /= tmp;
-            }
-            else {
+            } else {
                 first *= ans[x].second;
                 ans[x].first *= second;
                 ans[x].first += first;
@@ -39,8 +38,7 @@ void dfs(int x, __int128 first, __int128 second) {
                 ans[x].first /= tmp;
                 ans[x].second /= tmp;
             }
-        }
-        else {
+        } else {
             ans[x].first = first;
             ans[x].second = second;
         }

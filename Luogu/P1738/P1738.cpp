@@ -3,9 +3,9 @@
 using namespace std;
 
 int main() {
-    int         n;
+    int n;
     set<string> disk;
-    string      s, dir;
+    string s, dir;
     cin >> n;
     for (int i = 0; i < n; i++) {
         cin >> s;

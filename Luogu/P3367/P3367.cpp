@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -11,15 +11,14 @@ int find(int x) {
 int main() {
     int n, m, z, x, y;
     cin >> n >> m;
-    for(int i = 0; i < n ; i++) {
+    for (int i = 0; i < n; i++) {
         f[i] = i;
     }
-    while(m--) {
+    while (m--) {
         cin >> z >> x >> y;
-        if(z == 1) {
+        if (z == 1) {
             f[find(x)] = find(y);
-        }
-        else {
+        } else {
             cout << (find(x) == find(y) ? "Y" : "N") << endl;
         }
     }

@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     string s;
-    int    boy, girl;
+    int boy, girl;
     boy = girl = 0;
     cin >> s;
 
@@ -17,6 +17,7 @@ int main() {
         girl += (s[i] == 'g' || s[i + 1] == 'i' || s[i + 2] == 'r' || s[i + 3] == 'l');
     }
 
-    cout << boy << endl << girl << endl;
+    cout << boy << endl
+         << girl << endl;
     return 0;
 }

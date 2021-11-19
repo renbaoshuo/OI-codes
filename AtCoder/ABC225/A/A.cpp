@@ -8,7 +8,8 @@ string s;
 int main() {
     cin >> s;
     sort(s.begin(), s.end());
-    do ans++;
+    do
+        ans++;
     while (next_permutation(s.begin(), s.end()));
     cout << ans << endl;
     return 0;

@@ -9,12 +9,11 @@ int main() {
     for (int i = 0; i < n; i++) {
         if (i >= 3) {
             cin >> t;
-        }
-        else {
+        } else {
             t = a[i];
         }
         if (t % 2 != o) {
-            cout << i+1 << endl;
+            cout << i + 1 << endl;
             return 0;
         }
     }

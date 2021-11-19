@@ -13,14 +13,12 @@ int main() {
             ans[2] += (string) "." + s[i] + ".*";
             ans[3] += "*.*.";
             ans[4] += ".*..";
-        }
-        else {
+        } else {
             ans[0] += ".#..";
             ans[1] += "#.#.";
             if ((i + 1) % 3 == 2 && i + 1 != s.size()) {
                 ans[2] += (string) "." + s[i] + ".*";
-            }
-            else {
+            } else {
                 ans[2] += (string) "." + s[i] + ".#";
             }
             ans[3] += "#.#.";

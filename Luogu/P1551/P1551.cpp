@@ -22,8 +22,7 @@ int main() {
         cin >> x >> y;
         if (find(x) == find(y)) {
             cout << "Yes" << endl;
-        }
-        else {
+        } else {
             cout << "No" << endl;
         }
     }

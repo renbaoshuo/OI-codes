@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -7,22 +7,22 @@ const int fib[] = {0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 
 int main() {
     int t, n;
     cin >> t;
-    while(t--) {
+    while (t--) {
         stack<int> st;
         cin >> n;
         cout << n << "=";
-        for(int i = 45 ; i > 0 ; i--) {
-            while(n >= fib[i]) {
+        for (int i = 45; i > 0; i--) {
+            while (n >= fib[i]) {
                 n -= fib[i];
                 st.push(fib[i]);
             }
-            if(n == 0) {
+            if (n == 0) {
                 break;
             }
         }
         cout << st.top();
         st.pop();
-        while(!st.empty()) {
+        while (!st.empty()) {
             cout << "+" << st.top();
             st.pop();
         }

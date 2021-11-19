@@ -6,13 +6,13 @@ using namespace std;
 
 struct node {
     string name;
-    int    chinese;
-    int    math;
-    int    english;
-    int    all;
+    int chinese;
+    int math;
+    int english;
+    int all;
 
     node() {
-        name    = "";
+        name = "";
         chinese = math = english = all = 0;
     }
 
@@ -27,7 +27,7 @@ bool cmp(node a, node b) {
 }
 
 int main() {
-    int  n;
+    int n;
     node a[1005];
     cin >> n;
     for (int i = 0; i < n; i++) {

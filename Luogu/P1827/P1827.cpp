@@ -9,12 +9,12 @@ void dfs(string pre, string in) {
         return;
     }
     char root = pre[0];
-    int  k    = in.find(root);
+    int k = in.find(root);
     pre.erase(pre.begin());
-    string leftpre  = pre.substr(0, k);
+    string leftpre = pre.substr(0, k);
     string rightpre = pre.substr(k);
-    string leftin   = in.substr(0, k);
-    string rightin  = in.substr(k + 1);
+    string leftin = in.substr(0, k);
+    string rightin = in.substr(k + 1);
     dfs(leftpre, leftin);
     dfs(rightpre, rightin);
     post.push_back(root);

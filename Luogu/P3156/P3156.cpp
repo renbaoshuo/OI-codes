@@ -12,7 +12,7 @@ int main() {
     }
     for (int i = 0; i < m; i++) {
         cin >> q;
-        cout << a[q-1] << endl;
+        cout << a[q - 1] << endl;
     }
     return 0;
 }

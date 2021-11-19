@@ -8,18 +8,14 @@ int main() {
     cin >> score;
     if (score >= 90) {
         gpa = 4.0;
-    }
-    else if (60 <= score && score <= 89) {
+    } else if (60 <= score && score <= 89) {
         gpa = 4.0 - (90 - score) * 0.1;
-    }
-    else {
+    } else {
         if (floor(sqrt(score) * 10.0) >= 90.0) {
             gpa = 4.0;
-        }
-        else if (floor(sqrt(score) * 10.0) >= 60.0) {
+        } else if (floor(sqrt(score) * 10.0) >= 60.0) {
             gpa = 4.0 - (90.0 - floor(sqrt(score) * 10.0)) * 0.1;
-        }
-        else {
+        } else {
             gpa = 0.0;
         }
     }

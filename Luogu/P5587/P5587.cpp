@@ -11,8 +11,7 @@ int main() {
         for (long long i = 0; i < tmp.size(); i++) {
             if (tmp[i] == '<') {
                 if (!s[n].empty()) s[n].pop_back();
-            }
-            else {
+            } else {
                 s[n].push_back(tmp[i]);
             }
         }
@@ -22,8 +21,7 @@ int main() {
         for (long long i = 0; i < tmp.size(); i++) {
             if (tmp[i] == '<') {
                 if (!r[m].empty()) r[m].pop_back();
-            }
-            else {
+            } else {
                 r[m].push_back(tmp[i]);
             }
         }

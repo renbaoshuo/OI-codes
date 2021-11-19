@@ -6,7 +6,7 @@ int main() {
     int t;
     cin >> t;
     while (t--) {
-        int  n, x, a[55], b[55];
+        int n, x, a[55], b[55];
         bool flag = false;
         cin >> n >> x;
         for (int i = 0; i < n; i++) {
@@ -25,11 +25,9 @@ int main() {
         }
         if (flag) {
             cout << "No" << endl;
-        }
-        else {
+        } else {
             cout << "Yes" << endl;
         }
     }
     return 0;
 }
-

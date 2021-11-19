@@ -6,10 +6,10 @@ struct edge {
     int u, v;
 };
 
-vector<int>  e[100001];
+vector<int> e[100001];
 vector<edge> s;
-bool         vis_dfs[100001] = {0}, vis_bfs[100001] = {0};
-vector<int>  ans_dfs, ans_bfs;
+bool vis_dfs[100001] = {0}, vis_bfs[100001] = {0};
+vector<int> ans_dfs, ans_bfs;
 
 bool cmp(edge x, edge y) {
     if (x.v == y.v) {
@@ -30,7 +30,7 @@ void dfs(int x) {
 }
 
 void bfs(int x) {
-    int        front, point;
+    int front, point;
     queue<int> q;
     vis_bfs[x] = true;
     q.push(x);

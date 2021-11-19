@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -7,24 +7,23 @@ int main() {
     priority_queue<int, vector<int>, less<int> > s;
     priority_queue<int, vector<int>, greater<int> > l;
     cin >> n;
-    for(int i = 1 ; i <= n ; i++) {
+    for (int i = 1; i <= n; i++) {
         cin >> a[i];
-        k = i/2+1;
-        if(!l.empty() && a[i] >= l.top()) {
+        k = i / 2 + 1;
+        if (!l.empty() && a[i] >= l.top()) {
             s.push(a[i]);
-        }
-        else {
+        } else {
             l.push(a[i]);
         }
-        while(l.size() < k) {
+        while (l.size() < k) {
             l.push(s.top());
             s.pop();
         }
-        while(s.size() < k) {
+        while (s.size() < k) {
             s.push(l.top());
             l.pop();
         }
-        if(i%2) {
+        if (i % 2) {
             cout << s.top() << endl;
         }
     }

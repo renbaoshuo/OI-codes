@@ -15,11 +15,9 @@ int main() {
         int p = lower_bound(a, a + m, q) - a;
         if (p == m) {
             ans += q - a[m - 1];
-        }
-        else if (p == 0) {
+        } else if (p == 0) {
             ans += a[0] - q;
-        }
-        else {
+        } else {
             ans += min(abs(a[p] - q), abs(q - a[p - 1]));
         }
     }

@@ -22,12 +22,10 @@ int main() {
             if (st.empty() || b[st.top()] != s[i]) {
                 if (s[i] == ')') {
                     b[i] = '(';
-                }
-                else {
+                } else {
                     b[i] = '[';
                 }
-            }
-            else {
+            } else {
                 b[st.top()] = ' ';
                 st.pop();
             }

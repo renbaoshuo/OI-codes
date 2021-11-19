@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    int         n, w, t;
+    int n, w, t;
     vector<int> score;
     cin >> n >> w;
     for (int i = 1; i <= n; i++) {

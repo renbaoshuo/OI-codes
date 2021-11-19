@@ -24,8 +24,7 @@ int main() {
         mid2 = r - (r - l) / 3.0;
         if (f(mid1) > f(mid2)) {
             r = mid2;
-        }
-        else {
+        } else {
             l = mid1;
         }
     }

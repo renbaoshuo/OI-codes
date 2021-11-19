@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     char c;
-    int  cnt[30];
+    int cnt[30];
     memset(cnt, 0x00, sizeof(cnt));
     while (cin >> c) {
         cnt[c - 'A']++;
@@ -30,8 +30,7 @@ int main() {
             if (cnt[j] == max) {
                 printf("%s%c", j == 0 ? "" : " ", '*');
                 cnt[j]--;
-            }
-            else {
+            } else {
                 printf("%s%s", j == 0 ? "" : " ", " ");
             }
         }

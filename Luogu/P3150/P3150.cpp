@@ -9,8 +9,7 @@ int main() {
         cin >> t;
         if (t % 2 == 0) {
             cout << "pb wins" << endl;
-        }
-        else {
+        } else {
             cout << "zs wins" << endl;
         }
     }

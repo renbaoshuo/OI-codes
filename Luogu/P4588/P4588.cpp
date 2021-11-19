@@ -42,8 +42,7 @@ void modify(int u, int x, int v) {
     int mid = tr[u].l + tr[u].r >> 1;
     if (x <= mid) {
         modify(u << 1, x, v);
-    }
-    else {
+    } else {
         modify(u << 1 | 1, x, v);
     }
     pushup(u);
@@ -58,8 +57,7 @@ int main() {
             cin >> op >> m;
             if (op == 1) {
                 modify(1, i, m);
-            }
-            else if (op == 2) {
+            } else if (op == 2) {
                 modify(1, m, 1);
             }
             cout << tr[1].s << endl;

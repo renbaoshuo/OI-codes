@@ -4,7 +4,7 @@ using namespace std;
 
 int main() {
     vector<int> a;
-    int         n, m, l, r;
+    int n, m, l, r;
     scanf("%d%d", &n, &m);
     for (int i = 0; i <= n; i++) {
         a.push_back(i);

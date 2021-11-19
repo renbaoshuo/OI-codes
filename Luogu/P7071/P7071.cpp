@@ -7,8 +7,7 @@ int main() {
     cin >> n;
     if (n & 1) {
         cout << -1 << endl;
-    }
-    else {
+    } else {
         for (int i = 24; i > 0; i--) {
             if (n >> i & 1) {
                 cout << (1 << i) << ' ';

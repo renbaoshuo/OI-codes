@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 long long n, m, l, r, ans, a[1000005];
 
 bool check(long long x) {
@@ -25,8 +24,7 @@ int main() {
         long long mid = l + r >> 1;
         if (check(mid)) {
             l = (ans = mid) + 1;
-        }
-        else {
+        } else {
             r = mid - 1;
         }
     }

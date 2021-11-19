@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int       n, m;
+int n, m;
 long long w[1005][1005], f[1005][1005][2];
 
 long long dfs(int x, int y, int from) {
@@ -14,8 +14,7 @@ long long dfs(int x, int y, int from) {
     }
     if (from == 0) {
         f[x][y][from] = max({dfs(x + 1, y, 0), dfs(x, y - 1, 0), dfs(x, y - 1, 1)}) + w[x][y];
-    }
-    else {
+    } else {
         f[x][y][from] = max({dfs(x - 1, y, 1), dfs(x, y - 1, 0), dfs(x, y - 1, 1)}) + w[x][y];
     }
     return f[x][y][from];

@@ -3,9 +3,9 @@
 using namespace std;
 
 int main() {
-    int              n, t, max_score = -0x3f3f3f3f;
-    int              scores[1005];
-    string           s, max_player, players[1005];
+    int n, t, max_score = -0x3f3f3f3f;
+    int scores[1005];
+    string s, max_player, players[1005];
     map<string, int> m, m1;
     cin >> n;
     for (int i = 0; i < n; i++) {

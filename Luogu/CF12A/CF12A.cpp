@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -10,8 +10,8 @@ int main() {
     s += t;
     cin >> t;
     s += t;
-    for(int i = 0 ; i < 9 ; i++) {
-        if(s[i] != s[8-i]) {
+    for (int i = 0; i < 9; i++) {
+        if (s[i] != s[8 - i]) {
             cout << "NO" << endl;
             return 0;
         }

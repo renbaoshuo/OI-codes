@@ -3,7 +3,7 @@
 using namespace std;
 
 string s;
-int    st, cnt = 0, a[1000005], ans[1000005];
+int st, cnt = 0, a[1000005], ans[1000005];
 
 int main() {
     cin >> s >> st;
@@ -23,11 +23,9 @@ int main() {
     }
     if (ans[3] == 1 && ans[2] == 0 && ans[1] == 0) {
         cout << 100 << endl;
-    }
-    else if ((ans[2] + ans[3]) % 10) {
+    } else if ((ans[2] + ans[3]) % 10) {
         cout << (ans[2] + ans[3]) % 10 << (ans[1] + ans[2]) % 10 << endl;
-    }
-    else {
+    } else {
         cout << (ans[1] + ans[2]) % 10 << endl;
     }
     return 0;

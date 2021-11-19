@@ -3,7 +3,7 @@
 using namespace std;
 
 int main() {
-    int         n, t, m;
+    int n, t, m;
     vector<int> nums;
     cin >> n >> m;
     for (int i = 0; i < n; i++) {
@@ -15,8 +15,7 @@ int main() {
         vector<int>::iterator it = lower_bound(nums.begin(), nums.end(), t);
         if (*it == t) {
             cout << it - nums.begin() + 1 << ' ';
-        }
-        else {
+        } else {
             cout << "-1 ";
         }
     }

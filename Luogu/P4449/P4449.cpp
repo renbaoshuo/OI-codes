@@ -28,8 +28,7 @@ void euler(long long n) {
             if (i % pri[j] == 0) {
                 f[i * pri[j]] = f[i] * powk[pri[j]] % mod;
                 break;
-            }
-            else {
+            } else {
                 f[i * pri[j]] = f[i] * f[pri[j]] % mod;
             }
         }

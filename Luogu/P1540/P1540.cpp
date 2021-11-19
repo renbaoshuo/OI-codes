@@ -5,10 +5,10 @@
 using namespace std;
 
 int main() {
-    int         m, n, t, f = 0, ans = 0;
-    bool        flag = false;
+    int m, n, t, f = 0, ans = 0;
+    bool flag = false;
     vector<int> memory;
-    queue<int>  mq;
+    queue<int> mq;
     cin >> m >> n;
     for (int i = 0; i < n; i++) {
         cin >> t;

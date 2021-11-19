@@ -7,8 +7,7 @@ extern "C" int Chtholly(int n, int OvO) {
         if (Seniorious(mid) >= 0) {
             ans = mid;
             r = mid - 1;
-        }
-        else {
+        } else {
             l = mid + 1;
         }
         mid = l + r >> 1;

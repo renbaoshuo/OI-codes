@@ -13,8 +13,7 @@ void merge_sort(long long a[], long long l, long long r) {
     while (i <= mid && j <= r) {
         if (a[i] <= a[j]) {
             t[k++] = a[i++];
-        }
-        else {
+        } else {
             t[k++] = a[j++];
             ans += (mid - i + 1);
         }

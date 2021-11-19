@@ -3,7 +3,7 @@
 using namespace std;
 
 vector<int> l[100010];
-int         n, m, f, s, ans, pd[100010];
+int n, m, f, s, ans, pd[100010];
 
 void dfs(int x) {
     for (int y = 0; y < l[x].size(); y++) {

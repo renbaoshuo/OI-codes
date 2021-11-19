@@ -11,11 +11,9 @@ bool check(long long x) {
     for (i = 1; i < n; i++) {
         if (a[i] == -1) {
             t[++top] = x;
-        }
-        else if (a[i] > 0) {
+        } else if (a[i] > 0) {
             t[++top] = a[i];
-        }
-        else if (top > 1) {
+        } else if (top > 1) {
             t[top - 1] += t[top];
             top--;
         }
@@ -40,8 +38,7 @@ int main() {
         mid = l + r + 1 >> 1;
         if (check(mid)) {
             l = mid;
-        }
-        else {
+        } else {
             r = mid - 1;
         }
     }

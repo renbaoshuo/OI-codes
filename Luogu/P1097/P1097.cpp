@@ -3,9 +3,9 @@
 using namespace std;
 
 int main() {
-    set<int>      s;
+    set<int> s;
     map<int, int> m;
-    int           n, t;
+    int n, t;
     cin >> n;
     while (n--) {
         cin >> t;

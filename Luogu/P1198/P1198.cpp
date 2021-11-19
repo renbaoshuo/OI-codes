@@ -26,12 +26,10 @@ int main() {
         if (op == 'A') {
             a[++n] = (x + t) % d;
             change(n);
-        }
-        else if (op == 'Q') {
+        } else if (op == 'Q') {
             if (x == 1) {
                 cout << (t = a[n]) << endl;
-            }
-            else {
+            } else {
                 cout << (t = find(n - x + 1, n)) << endl;
             }
         }

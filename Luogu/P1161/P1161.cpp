@@ -1,6 +1,6 @@
 // R36448353
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -10,10 +10,10 @@ int main() {
     double a;
     n = t = ans = 0;
     cin >> n;
-    for(int i = 1 ; i <= n ; i++) {
+    for (int i = 1; i <= n; i++) {
         cin >> a >> t;
-        for(int j = 1 ; j <= t ; j++) {
-            ans ^= int(j*a);
+        for (int j = 1; j <= t; j++) {
+            ans ^= int(j * a);
         }
     }
     cout << ans << endl;

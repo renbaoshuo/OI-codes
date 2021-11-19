@@ -32,8 +32,7 @@ int main() {
             if (d >= 365) {
                 ans++;
             }
-        }
-        else {
+        } else {
             m++;
         }
     }

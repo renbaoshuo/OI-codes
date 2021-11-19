@@ -21,18 +21,16 @@ struct node {
 
 int main() {
     long long op;
-    node      ans;
+    node ans;
     set<node> a;
     while (cin >> op, op != -1) {
         if (op == 1) {
             long long w, c;
             cin >> w >> c;
             a.insert(node(w, c));
-        }
-        else if (op == 2 && !a.empty()) {
+        } else if (op == 2 && !a.empty()) {
             a.erase(--a.end());
-        }
-        else if (op == 3  && !a.empty()) {
+        } else if (op == 3 && !a.empty()) {
             a.erase(a.begin());
         }
     }

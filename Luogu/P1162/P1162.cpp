@@ -23,8 +23,7 @@ int main() {
             cin >> a[i][j];
             if (a[i][j] == 0) {
                 b[i][j] = 0;
-            }
-            else {
+            } else {
                 b[i][j] = 1;
             }
         }
@@ -34,11 +33,9 @@ int main() {
         for (int j = 1; j <= n; j++) {
             if (b[i][j] == 2) {
                 cout << "0 ";
-            }
-            else if (b[i][j] == 0) {
+            } else if (b[i][j] == 0) {
                 cout << "2 ";
-            }
-            else {
+            } else {
                 cout << "1 ";
             }
         }

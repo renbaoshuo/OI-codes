@@ -9,8 +9,7 @@ int main() {
         if ((1ull << n) - 1 < k) {
             printf("1");
             k = (1ull << n) - k + (1ull << n) - 1;
-        }
-        else {
+        } else {
             printf("0");
         }
     }

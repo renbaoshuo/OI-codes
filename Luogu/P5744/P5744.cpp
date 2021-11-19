@@ -5,10 +5,10 @@
 using namespace std;
 
 int main() {
-    int    n;
+    int n;
     string name;
-    int    age;
-    int    score;
+    int age;
+    int score;
 
     cin >> n;
     for (int i = 0; i < n; i++) {

@@ -5,7 +5,7 @@
 using namespace std;
 
 struct node {
-    int    score[22];
+    int score[22];
     double sum, all;
 
     node() {
@@ -30,7 +30,7 @@ bool cmp(node a, node b) {
 }
 
 int main() {
-    int  n, m;
+    int n, m;
     node student[105];
     cin >> n >> m;
     for (int i = 0; i < n; i++) {

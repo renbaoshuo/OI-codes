@@ -9,8 +9,7 @@ int main() {
     cin >> a >> b >> c >> d >> e >> f >> g >> h >> i;
     if ((h && 50 + a + b + c + d + e + f + g + 5 >= i) || (50 + a + b + c + d + e + f + g >= i)) {
         cout << "AKIOI" << endl;
-    }
-    else {
+    } else {
         cout << "AFO" << endl;
     }
     return 0;

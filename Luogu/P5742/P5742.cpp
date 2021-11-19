@@ -11,8 +11,7 @@ int main() {
         cin >> tmp >> x >> s;
         if (x + s > 140 && x * 0.7 + s * 0.3 >= 80) {
             cout << "Excellent" << endl;
-        }
-        else {
+        } else {
             cout << "Not excellent" << endl;
         }
     }

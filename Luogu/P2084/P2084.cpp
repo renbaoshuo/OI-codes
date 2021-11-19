@@ -8,7 +8,7 @@ string s;
 int main() {
     cin >> m >> s;
     for (int i = 0; i < s.size(); i++) {
-        if(s[i] == '0') {
+        if (s[i] == '0') {
             continue;
         }
         if (i != 0) {

@@ -62,8 +62,7 @@ int main() {
         if (t == 1) {
             cin >> y;
             change(1, x, y);
-        }
-        else {
+        } else {
             cout << query(1, x) << endl;
         }
     }

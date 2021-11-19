@@ -6,10 +6,10 @@ struct point {
     long long x, y;
 };
 
-int       n, m;
-bool      v[5005];
+int n, m;
+bool v[5005];
 long long d[5005];
-point     city[5005];
+point city[5005];
 
 void prim() {
     memset(d, 0x3f, sizeof(d));

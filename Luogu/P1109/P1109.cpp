@@ -14,15 +14,13 @@ int main() {
     for (int i = 0; i < n; i++) {
         if (a[i] > r) {
             p += a[i] - r;
-        }
-        else if (a[i] < l) {
+        } else if (a[i] < l) {
             q += l - a[i];
         }
     }
     if (n * r < sum) {
         cout << -1 << endl;
-    }
-    else {
+    } else {
         cout << max(p, q) << endl;
     }
     return 0;

@@ -13,7 +13,7 @@ int count(string str) {
 }
 
 int main() {
-    int    n, max;
+    int n, max;
     string str;
 
     cin >> n >> str;
@@ -23,8 +23,7 @@ int main() {
     for (int i = 0; i < str.size(); i++) {
         if (str[i] == 'V') {
             str[i] = 'K';
-        }
-        else {
+        } else {
             str[i] = 'V';
         }
 
@@ -35,8 +34,7 @@ int main() {
         }
         if (str[i] == 'V') {
             str[i] = 'K';
-        }
-        else {
+        } else {
             str[i] = 'V';
         }
     }

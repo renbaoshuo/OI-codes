@@ -3,9 +3,9 @@
 using namespace std;
 
 int main() {
-    int    n, f[105], ans = 0;
+    int n, f[105], ans = 0;
     string s[105];
-    char   now = 'A';
+    char now = 'A';
     memset(f, 0x00, sizeof(f));
     cin >> n;
     for (int i = 0; i < n; i++) {

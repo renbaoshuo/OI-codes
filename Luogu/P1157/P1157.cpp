@@ -4,8 +4,8 @@
 
 using namespace std;
 
-int  n, m;
-int  num[105];
+int n, m;
+int num[105];
 bool vis[105];
 
 void dfs(int k) {

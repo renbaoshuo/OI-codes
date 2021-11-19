@@ -6,12 +6,12 @@ using namespace std;
 
 struct node {
     string name;
-    bool   towards;
+    bool towards;
 };
 
 int main() {
     // freopen("data/P1563_sample1.in", "r", stdin);
-    int  n, m, now = 0, x, y;
+    int n, m, now = 0, x, y;
     node a[100005];
     cin >> n >> m;
     for (int i = 0; i < n; i++) {
@@ -22,16 +22,13 @@ int main() {
         if (a[now].towards == 0) {
             if (x == 0) {
                 now = (now + n - y) % n;
-            }
-            else if (x == 1) {
+            } else if (x == 1) {
                 now = (now + y) % n;
             }
-        }
-        else if (a[now].towards == 1) {
+        } else if (a[now].towards == 1) {
             if (x == 0) {
                 now = (now + y) % n;
-            }
-            else if (x == 1) {
+            } else if (x == 1) {
                 now = (now + n - y) % n;
             }
         }

@@ -30,8 +30,7 @@ int main() {
         cin >> l >> r;
         if (l > m || r > m || l < 1 || r < 1) {
             cout << "Crossing the line" << endl;
-        }
-        else {
+        } else {
             cout << ans[r] - ans[l - 1] << endl;
         }
     }

@@ -21,7 +21,7 @@ int main() {
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
     }
-    a[n+1] = r;
+    a[n + 1] = r;
     l = 1;
     while (l <= r) {
         mid = l + r >> 1;

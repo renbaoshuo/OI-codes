@@ -9,8 +9,7 @@ int main() {
         int n = 30;
         if (i == 1 || i == 3 || i == 5 || i == 7 || i == 8 || i == 10 || i == 12) {
             n = 31;
-        }
-        else if (i == 2) {
+        } else if (i == 2) {
             n = 28;
         }
         for (int j = 1; j <= n; j++) {

@@ -37,8 +37,10 @@ void modify(int u, int x, int d) {
         return;
     }
     int mid = tr[u].l + tr[u].r >> 1;
-    if (x <= mid) modify(u << 1, x, d);
-    else modify(u << 1 | 1, x, d);
+    if (x <= mid)
+        modify(u << 1, x, d);
+    else
+        modify(u << 1 | 1, x, d);
     pushup(u);
 }
 
@@ -60,8 +62,7 @@ int main() {
         cin >> op >> a >> b;
         if (op == 'x') {
             modify(1, a, b);
-        }
-        else if (op == 'y') {
+        } else if (op == 'y') {
             cout << query(1, a, b) << endl;
         }
     }

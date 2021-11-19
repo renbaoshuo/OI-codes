@@ -25,12 +25,12 @@ int main() {
     node a[50005];
     double ans = 0.000;
     scanf("%d", &n);
-    for(int i = 0 ; i < n ; i++) {
+    for (int i = 0; i < n; i++) {
         scanf("%d%d%d", &a[i].x, &a[i].y, &a[i].z);
     }
-    sort(a, a+n, cmp);
-    for(int i = 1 ; i < n ;i++) {
-        ans += ed(a[i-1], a[i]);
+    sort(a, a + n, cmp);
+    for (int i = 1; i < n; i++) {
+        ans += ed(a[i - 1], a[i]);
     }
     printf("%.3lf", ans);
     return 0;

@@ -11,8 +11,7 @@ int main() {
         mid = (l + r) / 2;
         if (pow(1.0 / (1.0 + mid), k) >= 1 - n / m * mid) {
             r = mid;
-        }
-        else {
+        } else {
             l = mid;
         }
     }

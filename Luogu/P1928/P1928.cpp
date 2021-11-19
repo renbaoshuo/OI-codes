@@ -5,9 +5,9 @@
 using namespace std;
 
 string cnm() {
-    int    n;
-    char   ch;
-    string s   = "";
+    int n;
+    char ch;
+    string s = "";
     string str = "";
 
     while (cin >> ch) {
@@ -17,11 +17,9 @@ string cnm() {
             while (n--) {
                 s += str;
             }
-        }
-        else if (ch == ']') {
+        } else if (ch == ']') {
             return s;
-        }
-        else {
+        } else {
             s += ch;
         }
     }

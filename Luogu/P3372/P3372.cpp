@@ -111,8 +111,7 @@ int main() {
         if (op == 1) {
             cin >> k;
             modify(1, x, y, k);
-        }
-        else if (op == 2) {
+        } else if (op == 2) {
             cout << query(1, x, y) << endl;
         }
     }

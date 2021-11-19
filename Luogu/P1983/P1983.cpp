@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int  n, m, k, ans, l, a[1005], d[1005], c[1005][1005], f[1005];
+int n, m, k, ans, l, a[1005], d[1005], c[1005][1005], f[1005];
 bool v[1005][1005];
 
 int dfs(int x) {
@@ -26,14 +26,13 @@ int main() {
         for (int j = a[1]; j < a[a[0]]; j++) {
             if (a[l] == j) {
                 l++;
-            }
-            else {
+            } else {
                 for (int k = 1; k <= a[0]; k++) {
                     if (!v[a[k]][j]) {
                         int t = a[k];
                         c[t][0]++;
                         c[t][c[t][0]] = j;
-                        v[t][j]       = 1;
+                        v[t][j] = 1;
                     }
                 }
             }

@@ -6,7 +6,7 @@ using namespace std;
 
 struct node {
     string name;
-    int    y, m, d, i;
+    int y, m, d, i;
 
     node() {
         name = "";
@@ -28,7 +28,7 @@ bool cmp(node a, node b) {
 }
 
 int main() {
-    int  n;
+    int n;
     node a[1005];
     cin >> n;
     for (int i = 0; i < n; i++) {

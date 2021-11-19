@@ -4,8 +4,8 @@ using namespace std;
 
 /* Template: 树形 DP */
 vector<int> son[6005];
-int         n, l, k, f[6005][2], h[6005];
-bool        v[6005];
+int n, l, k, f[6005][2], h[6005];
+bool v[6005];
 
 void dp(int x) {
     int y;
