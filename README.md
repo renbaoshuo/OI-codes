@@ -12,32 +12,6 @@
 
 做题时间请参考 `Author Date` ，或根据题目对应提交中注明的提交记录编号查找。
 
-## 做题情况
-
-未在下方列出的 OJ 一般在 [Virtual Judge](https://vjudge.net/status#un=renbaoshuo&OJId=All&probNum=&res=1&language=&onlyFollowee=false) 上可找到提交记录。
-
-### 洛谷
-
-![](https://luogu.wao3.cn/api/practice?id=168214)
-
-可以查看 [提交记录](https://www.luogu.com.cn/record/list?user=168214&status=12) 。
-
-### LibreOJ
-
-可以查看 [提交记录](https://loj.ac/s?submitter=renbaoshuo&status=Accepted) 。
-
-### S2OJ
-
-可以查看 [提交记录](https://sjzezoj.com/submissions?submitter=2021renbaoshuo&min_score=100) 。
-
-### AcWing
-
-请根据题目对应提交中注明的提交记录链接查看。
-
-### POJ
-
-可以查看 [提交记录](http://poj.org/status?user_id=renbaoshuo&result=0) 。
-
 ## Author
 
 **OI-codes** © [Baoshuo](https://github.com/renbaoshuo), Released under the [GPL-3.0](./LICENSE) License.  
