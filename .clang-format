@@ -4,9 +4,11 @@ BasedOnStyle: Google
 ColumnLimit: 0
 IndentWidth: 4
 AccessModifierOffset: -2
+NamespaceIndentation: All
 AllowShortLoopsOnASingleLine: true
 AllowShortBlocksOnASingleLine: true
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: true
+EmptyLineBeforeAccessModifier: LogicalBlock
 PointerAlignment: Right
