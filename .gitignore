@@ -40,6 +40,7 @@
 # tempCodeRunnerFile
 temp/**
 **/tempCodeRunnerFile.*
+temp*
 
 # Compile Temps
 *.ii
