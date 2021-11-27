@@ -1,0 +1,24 @@
+type: default
+
+filename: null
+
+checker_type: testlib
+checker: spj.cc
+
+user_extra_files:
+  - coin.h
+
+time: 100ms
+memory: 256m
+
+cases:
+  - input: data1.in
+  - input: data2.in
+  - input: data3.in
+  - input: data4.in
+  - input: data5.in
+  - input: data6.in
+  - input: data7.in
+  - input: data8.in
+  - input: data9.in
+  - input: data10.in
