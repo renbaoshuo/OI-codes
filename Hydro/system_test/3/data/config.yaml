@@ -1,0 +1,19 @@
+type: default
+
+time: 1s
+memory: 256m
+
+checker_type: testlib
+checker: checker.cc
+
+cases:
+    - input: data1.in
+    - input: data2.in
+    - input: data3.in
+    - input: data4.in
+    - input: data5.in
+    - input: data6.in
+    - input: data7.in
+    - input: data8.in
+    - input: data9.in
+    - input: data10.in

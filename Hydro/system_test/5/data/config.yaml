@@ -1,0 +1,4 @@
+type: interactive
+time: 100ms
+memory: 64m
+interactor: interactor.cc
