@@ -1,0 +1,7 @@
+type: default
+score: 5
+time: 100ms
+memory: 64m
+
+checker_type: testlib
+checker: checker.cc
