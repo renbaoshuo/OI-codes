@@ -17,9 +17,9 @@
 	// }
 	"Default C++ Code Template": {
 		"scope": "cpp",
-		"prefix": "bitsstdcpp",
+		"prefix": "init",
 		"body": [
-			"#include <bits/stdc++.h>",
+			"#include <iostream>",
 			"",
 			"using std::cin;",
 			"using std::cout;",
