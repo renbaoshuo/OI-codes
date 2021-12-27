@@ -1,24 +1,29 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <limits>
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+
+const int N = 1005;
+
+int r, g[N][N], f[N][N], ans = std::numeric_limits<int>::min();
 
 int main() {
-    int n, a[1005][1005], f[1005][1005];
-    cin >> n;
-    for (int i = 1; i <= n; i++) {
+    cin >> r;
+    for (int i = 1; i <= r; i++) {
         for (int j = 1; j <= i; j++) {
-            cin >> a[i][j];
+            cin >> g[i][j];
         }
     }
-    f[1][1] = a[1][1];
-    for (int i = 1; i <= n; i++) {
+    f[1][1] = g[1][1];
+    for (int i = 1; i <= r; i++) {
         for (int j = 1; j <= i + 1; j++) {
-            f[i][j] = a[i][j] + max(f[i - 1][j], f[i - 1][j - 1]);
+            f[i][j] = std::max(f[i - 1][j - 1], f[i - 1][j]) + g[i][j];
         }
     }
-    int ans = -0x3f3f3f;
-    for (int i = 1; i <= n; i++) {
-        ans = max(ans, f[n][i]);
+    for (int i = 1; i <= r; i++) {
+        ans = std::max(ans, f[r][i]);
     }
     cout << ans << endl;
     return 0;
