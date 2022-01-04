@@ -1,71 +1,92 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <stack>
+#include <vector>
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
-int n, m, x, a, b, head[300005], vis[300005], used[300005], dis[300005], num;
-queue<int> q;
+const int N = 100005;
 
-struct {
-    int next, to, val;
-} g[1000005];
+int n, m, t, a, b;
+long long ans;
+std::vector<std::pair<int, int>> g[N], g2[N];
 
-void add(int u, int v, int w) {
-    g[++num].next = head[u];
-    g[num].to = v;
-    g[num].val = w;
-    head[u] = num;
+// Tarjan
+int cnt, dfn[N], low[N];
+int scc_cnt, id[N], siz[N];
+std::stack<int> st;
+bool vis[N];
+
+void tarjan(int u) {
+    dfn[u] = low[u] = ++cnt;
+    st.push(u);
+    vis[u] = true;
+    for (auto e : g[u]) {
+        int v = e.first;
+        if (!dfn[v]) {
+            tarjan(v);
+            low[u] = std::min(low[u], low[v]);
+        } else if (vis[v]) {
+            low[u] = std::min(low[u], dfn[v]);
+        }
+    }
+    if (low[u] == dfn[u]) {
+        scc_cnt++;
+        int v;
+        do {
+            v = st.top();
+            st.pop();
+            vis[v] = false;
+            id[v] = scc_cnt;
+            siz[scc_cnt]++;
+        } while (v != u);
+    }
 }
+
+// Longest Path
+int dist[N];
 
 int main() {
     cin >> n >> m;
-    for (int i = 1; i <= m; i++) {
-        cin >> x >> a >> b;
-        if (x == 1) {
-            add(a, b, 0);
-            add(b, a, 0);
-        } else if (x == 2) {
-            add(a, b, 1);
-        } else if (x == 3) {
-            add(b, a, 0);
-        } else if (x == 4) {
-            add(b, a, 1);
-        } else if (x == 5) {
-            add(a, b, 0);
-        }
-        if (x % 2 == 0 && a == b) {
-            cout << -1 << endl;
-            exit(0);
-        }
-    }
     for (int i = 1; i <= n; i++) {
-        vis[i] = 1;
-        dis[i] = 1;
-        used[i] = 1;
-        q.push(i);
+        g[0].push_back(std::make_pair(i, 1));
     }
-    while (!q.empty()) {
-        int z = q.front();
-        q.pop();
-        if (used[z] >= n - 1) {
-            cout << -1 << endl;
-            exit(0);
+    for (int i = 1; i <= m; i++) {
+        cin >> t >> a >> b;
+        if (t == 1) {
+            g[a].push_back(std::make_pair(b, 0));
+            g[b].push_back(std::make_pair(a, 0));
+        } else if (t == 2) {
+            g[a].push_back(std::make_pair(b, 1));
+        } else if (t == 3) {
+            g[b].push_back(std::make_pair(a, 0));
+        } else if (t == 4) {
+            g[b].push_back(std::make_pair(a, 1));
+        } else {
+            g[a].push_back(std::make_pair(b, 0));
         }
-        used[z]++;
-        for (int i = head[z]; i; i = g[i].next) {
-            int t = g[i].to;
-            if (dis[t] < dis[z] + g[i].val) {
-                dis[t] = dis[z] + g[i].val;
-                if (!vis[t]) {
-                    q.push(t);
-                    vis[t] = 1;
-                }
+    }
+    tarjan(0);
+    for (int i = 0; i <= n; i++) {
+        for (auto e : g[i]) {
+            if (id[e.first] != id[i]) {
+                g2[id[i]].push_back(std::make_pair(id[e.first], e.second));
+            } else if (e.second) {
+                cout << -1 << endl;
+                exit(0);
             }
         }
-        vis[z] = 0;
     }
-    long long ans = 0;
-    for (int i = 1; i <= n; i++) {
-        ans += dis[i];
+    for (int i = scc_cnt; i > 0; i--) {
+        for (auto e : g2[i]) {
+            int v = e.first,
+                w = e.second;
+            dist[v] = std::max(dist[v], dist[i] + w);
+        }
+    }
+    for (int i = 1; i <= scc_cnt; i++) {
+        ans += 1ll * dist[i] * siz[i];
     }
     cout << ans << endl;
     return 0;
