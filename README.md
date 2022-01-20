@@ -6,9 +6,9 @@
 
 本仓库存放与 **OI** 有关的代码。
 
-- 部分代码的思路借鉴了题解。
-- 部分题目文件夹下会有 `solution.md` 给出做题思路，也会有部分题目会在 [博客](https://oi.baoshuo.ren/) 中给出题解。
-- 部分题目的 `data` 文件夹下会存放该题的部分测试数据。
+-   部分代码的思路借鉴了题解。
+-   部分题目文件夹下会有 `solution.md` 给出做题思路，也会有部分题目会在 [博客](https://oi.baoshuo.ren/) 中给出题解。
+-   部分题目的 `data` 文件夹下会存放该题的部分测试数据。
 
 做题时间请参考 `Author Date` ，或根据题目对应提交中注明的提交记录编号查找。
 
@@ -24,11 +24,20 @@
 | NodeJS | `v14.18.1`                                                  | `node code.js`                            |
 |    PHP | `PHP 7.4.3 (cli) (built: Aug 13 2021 05:39:12) ( NTS )`     | `php code.php`                            |
 
-编译时所用系统版本为 `Ubuntu 20.04 LTS (Linux 5.10.60.1-microsoft-standard-WSL2, x86_64)` 。
+运行环境如下：
+
+|          |                                           |
+| -------: | :---------------------------------------- |
+|      CPU | `Intel(R) Core(TM) i7-9750H @ 2.60GHz`    |
+|     内存 | 32GiB                                     |
+| 系统版本 | `Ubuntu 20.04.3 LTS on Windows 10 x86_64` |
+| 内核版本 | `5.10.60.1-microsoft-standard-WSL2`       |
+
+代码运行时长均以此环境为准。
 
 ## Author
 
-**OI-codes** © [Baoshuo](https://github.com/renbaoshuo), Released under the [GPL-3.0](./LICENSE) License.  
+**OI-codes** © [Baoshuo](https://github.com/renbaoshuo), Released under the [GPL-3.0](./LICENSE) License.<br>
 Authored and maintained by Baoshuo with help from [contributors](https://github.com/renbaoshuo/OI-codes/contributors).
 
 > [Personal Website](https://baoshuo.ren) · [Blog](https://blog.baoshuo.ren) · GitHub [@renbaoshuo](https://github.com/renbaoshuo) · Twitter [@renbaoshuo](https://twitter.com/renbaoshuo)
