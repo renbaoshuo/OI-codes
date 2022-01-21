@@ -1,21 +1,24 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
+
+int t, m, v[105], w[105], f[105][105];
 
 int main() {
-    int t, m, w[1005], v[1005], dp[1005][1005];
     cin >> t >> m;
     for (int i = 1; i <= m; i++) {
-        cin >> w[i] >> v[i];
+        cin >> v[i] >> w[i];
     }
     for (int i = 1; i <= m; i++) {
         for (int j = t; j >= 0; j--) {
-            dp[i][j] = dp[i - 1][j];
-            if (j >= w[i]) {
-                dp[i][j] = max(dp[i][j], dp[i - 1][j - w[i]] + v[i]);
+            f[i][j] = f[i - 1][j];
+            if (j >= v[i]) {
+                f[i][j] = std::max(f[i][j], f[i - 1][j - v[i]] + w[i]);
             }
         }
     }
-    cout << dp[m][t] << endl;
+    cout << f[m][t] << endl;
     return 0;
 }
