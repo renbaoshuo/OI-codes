@@ -7,9 +7,8 @@ class BigInt {
     int sign;
     std::string s;
 
-    BigInt() {
-        s = "";
-    }
+    BigInt()
+        : s("") {}
 
     BigInt(std::string x) {
         *this = x;
@@ -42,6 +41,10 @@ class BigInt {
 
     bool operator==(const BigInt& x) const {
         return (s == x.s && sign == x.sign);
+    }
+
+    bool operator!=(const BigInt& x) const {
+        return (s != x.s || sign != x.sign);
     }
 
     bool operator<(const BigInt& x) const {
