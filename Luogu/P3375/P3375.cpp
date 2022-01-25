@@ -5,27 +5,29 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-int border[1000005];
+const int N = 1000005;
+
+int f[N], next[N];
 std::string s1, s2;
 
 int main() {
     cin >> s1 >> s2;
-    for (int i = 0; i < s1.size(); i++) {
-        bool flag = false;
-        if (s1.substr(i, s2.size()) == s2) {
-            cout << i + 1 << endl;
+    next[0] = -1;
+    for (int i = 1, j = -1; i < s2.size(); i++) {
+        while (j != -1 && s2[i] != s2[j + 1]) j = next[j];
+        if (s2[i] == s2[j + 1]) j++;
+        next[i] = j;
+    }
+    for (int i = 0, j = -1; i < s1.size(); i++) {
+        while (j != -1 && (j == s2.size() || s1[i] != s2[j + 1])) j = next[j];
+        if (s1[i] == s2[j + 1]) j++;
+        if (j == s2.size() - 1) {
+            cout << i - j + 1 << endl;
+            f[i] = j;
         }
     }
     for (int i = 0; i < s2.size(); i++) {
-        bool flag = false;
-        for (int j = i; j > 0; j--) {
-            if (s2.substr(0, j) == s2.substr(i - j + 1, j)) {
-                flag = true;
-                cout << j << ' ';
-                break;
-            }
-        }
-        if (!flag) cout << 0 << ' ';
+        cout << next[i] + 1 << ' ';
     }
     cout << endl;
     return 0;
