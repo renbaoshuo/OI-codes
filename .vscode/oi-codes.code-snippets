@@ -26,6 +26,7 @@
 			"#define endl '\\n'",
 			"",
 			"int main() {",
+			"    std::ios::sync_with_stdio(false);",
 			"    $0",
 			"    return 0;",
 			"}",
