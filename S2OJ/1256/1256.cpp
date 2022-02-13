@@ -1,52 +1,7 @@
-#pragma GCC optimize(3)
-#pragma GCC target("avx")
 #pragma GCC optimize("Ofast")
-#pragma GCC optimize("inline")
-#pragma GCC optimize("-fgcse")
-#pragma GCC optimize("-fgcse-lm")
-#pragma GCC optimize("-fipa-sra")
-#pragma GCC optimize("-ftree-pre")
-#pragma GCC optimize("-ftree-vrp")
-#pragma GCC optimize("-fpeephole2")
-#pragma GCC optimize("-ffast-math")
-#pragma GCC optimize("-fsched-spec")
-#pragma GCC optimize("unroll-loops")
-#pragma GCC optimize("-falign-jumps")
-#pragma GCC optimize("-falign-loops")
-#pragma GCC optimize("-falign-labels")
-#pragma GCC optimize("-fdevirtualize")
-#pragma GCC optimize("-fcaller-saves")
-#pragma GCC optimize("-fcrossjumping")
-#pragma GCC optimize("-fthread-jumps")
-#pragma GCC optimize("-funroll-loops")
-#pragma GCC optimize("-fwhole-program")
-#pragma GCC optimize("-freorder-blocks")
-#pragma GCC optimize("-fschedule-insns")
-#pragma GCC optimize("inline-functions")
-#pragma GCC optimize("-ftree-tail-merge")
-#pragma GCC optimize("-fschedule-insns2")
-#pragma GCC optimize("-fstrict-aliasing")
-#pragma GCC optimize("-fstrict-overflow")
-#pragma GCC optimize("-falign-functions")
-#pragma GCC optimize("-fcse-skip-blocks")
-#pragma GCC optimize("-fcse-follow-jumps")
-#pragma GCC optimize("-fsched-interblock")
-#pragma GCC optimize("-fpartial-inlining")
-#pragma GCC optimize("no-stack-protector")
-#pragma GCC optimize("-freorder-functions")
-#pragma GCC optimize("-findirect-inlining")
-#pragma GCC optimize("-fhoist-adjacent-loads")
-#pragma GCC optimize("-frerun-cse-after-loop")
-#pragma GCC optimize("inline-small-functions")
-#pragma GCC optimize("-finline-small-functions")
-#pragma GCC optimize("-ftree-switch-conversion")
-#pragma GCC optimize("-foptimize-sibling-calls")
-#pragma GCC optimize("-fexpensive-optimizations")
-#pragma GCC optimize("-funsafe-loop-optimizations")
-#pragma GCC optimize("inline-functions-called-once")
-#pragma GCC optimize("-fdelete-null-pointer-checks")
 
 #include <algorithm>
+#include <cctype>
 #include <cmath>
 #include <cstdio>
 #include <vector>
@@ -56,6 +11,22 @@ const int N = 2e5 + 5;
 int n;
 long long ans;
 std::vector<int> ys;
+
+template <typename T>
+void read(T& x) {
+    int f = 1;
+    char ch = getchar();
+    x = 0;
+    while (!isdigit(ch)) {
+        if (ch == '-') f = -1;
+        ch = getchar();
+    }
+    while (isdigit(ch)) {
+        x = x * 10 + ch - '0';
+        ch = getchar();
+    }
+    x *= f;
+}
 
 struct segment {
     int x, y1, y2, k;
@@ -124,6 +95,7 @@ void solve() {
     build(1, 0, ys.size() - 2);
     for (int i = 0; i < n * 2; i++) {
         int last = tr[1].len;
+        if (seg[i].y1 == seg[i].y2) continue;
         modify(1, find(seg[i].y1), find(seg[i].y2) - 1, seg[i].k);
         ans += abs(tr[1].len - last);
     }
@@ -131,9 +103,9 @@ void solve() {
 }
 
 int main() {
-    scanf("%d", &n);
+    read(n);
     for (int i = 0; i < n; i++) {
-        scanf("%d%d%d%d", &q[i].x1, &q[i].y1, &q[i].x2, &q[i].y2);
+        read(q[i].x1), read(q[i].y1), read(q[i].x2), read(q[i].y2);
     }
     for (int i = 0, j = 0; i < n; i++) {
         seg[j++] = segment(q[i].x1, q[i].y1, q[i].y2, 1);
