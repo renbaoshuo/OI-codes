@@ -13,21 +13,12 @@ class Treap {
         node *left, *right;
         int size, val, key;
 
-        node()
-            : left(nullptr), right(nullptr), size(1), val(0), key(rand()) {}
-        node(int _val)
-            : left(nullptr), right(nullptr), size(1), val(_val), key(rand()) {}
+        node();
+        node(int);
+        ~node();
 
-        ~node() {
-            delete left, right;
-        }
-
-        inline void pushup() {
-            this->size = 1;
-            if (this->left != nullptr) this->size += this->left->size;
-            if (this->right != nullptr) this->size += this->right->size;
-        }
-    } *root = nullptr;
+        void pushup();
+    } * root;
 
     int getNodeSize(node *);
     node *find(node *, int);
@@ -37,14 +28,41 @@ class Treap {
     int _getRank(node *, int);
 
   public:
-    Treap()
-        : root(nullptr) {}
+    Treap();
+    ~Treap();
 
     void insert(int);
     void erase(int);
     int getRank(int);
     int getKth(int);
 } tree;
+
+// struct Treap::node
+
+Treap::node::node()
+    : left(nullptr), right(nullptr), size(1), val(0), key(rand()) {}
+
+Treap::node::node(int _val)
+    : left(nullptr), right(nullptr), size(1), val(_val), key(rand()) {}
+
+Treap::node::~node() {
+    delete this->left, this->right;
+}
+
+inline void Treap::node::pushup() {
+    this->size = 1;
+    if (this->left != nullptr) this->size += this->left->size;
+    if (this->right != nullptr) this->size += this->right->size;
+}
+
+// class Treap
+
+Treap::Treap()
+    : root(nullptr) {}
+
+Treap::~Treap() {
+    delete root;
+}
 
 inline int Treap::getNodeSize(Treap::node *node) {
     return node == nullptr ? 0 : node->size;
