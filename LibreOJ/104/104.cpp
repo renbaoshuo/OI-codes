@@ -87,7 +87,6 @@ std::pair<Treap::node *, Treap::node *> Treap::splitByValue(Treap::node *p, int 
 Treap::node *Treap::merge(Treap::node *x, Treap::node *y) {
     if (x == nullptr) return y;
     if (y == nullptr) return x;
-    if (x->val > y->val) std::swap(x, y);
     if (x->key > y->key) {
         x->right = this->merge(x->right, y);
         x->pushup();
