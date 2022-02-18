@@ -23,7 +23,6 @@ class Treap {
     std::pair<int, int> splitByValue(int, int);
     int merge(int, int);
     int find(int, int);
-    int _getRank(int, int);
 
   public:
     void insert(int);
@@ -140,14 +139,11 @@ void Treap::erase(int v) {
     this->root = this->merge(o.first, t.second);
 }
 
-int Treap::_getRank(int p, int v) {
-    if (!p) return 1;
-    if (v <= this->tr[p].v) return this->_getRank(this->tr[p].l, v);
-    return this->tr[this->tr[p].l].s + 1 + this->_getRank(this->tr[p].r, v);
-}
-
 inline int Treap::getRank(int v) {
-    return this->_getRank(root, v);
+    auto x = this->splitByValue(this->root, v);
+    int r = this->tr[x.first].s;
+    this->root = merge(x.first, x.second);
+    return ++r;
 }
 
 int Treap::getKth(int k) {
