@@ -25,11 +25,9 @@ class Treap {
     std::pair<node *, node *> split(node *, int);
     std::pair<node *, node *> splitByValue(node *, int);
     node *merge(node *, node *);
-    int _getRank(node *, int);
 
   public:
     Treap();
-    ~Treap();
 
     void insert(int);
     void erase(int);
@@ -59,10 +57,6 @@ inline void Treap::node::pushup() {
 
 Treap::Treap()
     : root(nullptr) {}
-
-Treap::~Treap() {
-    delete root;
-}
 
 inline int Treap::getNodeSize(Treap::node *node) {
     return node == nullptr ? 0 : node->size;
@@ -138,14 +132,11 @@ void Treap::erase(int val) {
     this->root = this->merge(o.first, t.second);
 }
 
-int Treap::_getRank(Treap::node *p, int val) {
-    if (p == nullptr) return 1;
-    if (val <= p->val) return this->_getRank(p->left, val);
-    return this->getNodeSize(p->left) + 1 + this->_getRank(p->right, val);
-}
-
-inline int Treap::getRank(int val) {
-    return this->_getRank(this->root, val);
+int Treap::getRank(int val) {
+    auto x = this->splitByValue(this->root, val);
+    int r = this->getNodeSize(x.first) + 1;
+    this->root = merge(x.first, x.second);
+    return r;
 }
 
 int Treap::getKth(int k) {
