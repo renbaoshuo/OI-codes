@@ -23,7 +23,7 @@
 			"",
 			"using std::cin;",
 			"using std::cout;",
-			"#define endl '\\n'",
+			"const char endl = '\\n';",
 			"",
 			"int main() {",
 			"    std::ios::sync_with_stdio(false);",
