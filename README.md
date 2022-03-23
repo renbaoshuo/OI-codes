@@ -37,17 +37,17 @@
 
 ## 使用指南
 
-![](https://user-images.githubusercontent.com/47095648/159638339-9fd64689-9b21-4e09-8fd2-18efe2edcb9e.png)
+![](https://user-images.githubusercontent.com/47095648/159689834-dfe67eef-b5a2-484c-98a3-745e7a6f7714.png)
 
 ▲ 点击「Commits」按钮可以查看历史提交记录。
 
-![](https://user-images.githubusercontent.com/47095648/159638882-fadcbfb3-c0cf-487f-bfdd-0a007debfca1.png)
+![](https://user-images.githubusercontent.com/47095648/159689915-f4761f71-c203-4293-a23b-6ee2f77536fe.png)
 
 ▲ 在每个提交记录的说明中都会注明提交记录的链接/编号。
 
-![](https://user-images.githubusercontent.com/47095648/159640090-767cc160-5772-43af-97e2-c4d07a2592bd.png)
+![](https://user-images.githubusercontent.com/47095648/159690018-3d7b94e3-4e1d-4712-b26c-8f749c3e0988.png)
 
-![](https://user-images.githubusercontent.com/47095648/159640024-dd22e606-ff44-461b-8f7a-f960bb7aba3b.png)
+![](https://user-images.githubusercontent.com/47095648/159690097-43d2b381-d8a7-4cc6-aa0a-261078285fe1.png)
 
 ▲ 可以在提交历史中找到每份代码的不同版本。
 
