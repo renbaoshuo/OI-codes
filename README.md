@@ -35,6 +35,22 @@
 
 代码运行时长均以此环境为准。
 
+## 使用指南
+
+![](https://user-images.githubusercontent.com/47095648/159638339-9fd64689-9b21-4e09-8fd2-18efe2edcb9e.png)
+
+▲ 点击「Commits」按钮可以查看历史提交记录。
+
+![](https://user-images.githubusercontent.com/47095648/159638882-fadcbfb3-c0cf-487f-bfdd-0a007debfca1.png)
+
+▲ 在每个提交记录的说明中都会注明提交记录的链接/编号。
+
+![](https://user-images.githubusercontent.com/47095648/159640090-767cc160-5772-43af-97e2-c4d07a2592bd.png)
+
+![](https://user-images.githubusercontent.com/47095648/159640024-dd22e606-ff44-461b-8f7a-f960bb7aba3b.png)
+
+▲ 可以在提交历史中找到每份代码的不同版本。
+
 ## Author
 
 **OI-codes** © [Baoshuo](https://github.com/renbaoshuo), Released under the [GPL-3.0](./LICENSE) License.<br>
