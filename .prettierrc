@@ -1,0 +1,11 @@
+{
+    "tabSize": 4,
+    "overrides": [
+        {
+            "files": "*.md",
+            "options": {
+                "tabSize": 2
+            }
+        }
+    ]
+}
