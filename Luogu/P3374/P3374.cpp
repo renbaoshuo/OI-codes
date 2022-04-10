@@ -1,75 +1,46 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
-using namespace std;
+using std::cin;
+using std::cout;
+const char endl = '\n';
 
-struct node {
-    int l, r, s;
+const int N = 5e5 + 5;
 
-    node() {
-        l = r = s = 0;
-    }
-    node(int _l, int _r) {
-        l = _l;
-        r = _r;
-        s = 0;
-    }
-} tr[500005 << 2];
-int n, m, op, x, y, a[500005];
+int n, m, op, x, y;
+int c[N];
 
-void pushup(int u) {
-    tr[u].s = tr[u << 1].s + tr[u << 1 | 1].s;
+inline int lowbit(int x) {
+    return x & -x;
 }
 
-void build(int u, int l, int r) {
-    tr[u] = node(l, r);
-    if (l == r) {
-        tr[u].s = a[l];
-        return;
-    }
-    int mid = l + r >> 1;
-    build(u << 1, l, mid);
-    build(u << 1 | 1, mid + 1, r);
-    pushup(u);
+void add(int x, int y) {
+    for (; x <= n; x += lowbit(x)) c[x] += y;
 }
 
-void change(int u, int x, int d) {
-    if (tr[u].l == tr[u].r) {
-        tr[u].s += d;
-        return;
-    }
-    int mid = tr[u].l + tr[u].r >> 1;
-    if (x <= mid) {
-        change(u << 1, x, d);
-    } else {
-        change(u << 1 | 1, x, d);
-    }
-    pushup(u);
-}
-
-int query(int u, int l, int r) {
-    if (tr[u].l >= l && tr[u].r <= r) {
-        return tr[u].s;
-    }
-    int mid = tr[u].l + tr[u].r >> 1;
-    int s = 0;
-    if (l <= mid) s += query(u << 1, l, r);
-    if (r > mid) s += query(u << 1 | 1, l, r);
-    return s;
+int sum(int x) {
+    int ans = 0;
+    for (; x; x -= lowbit(x)) ans += c[x];
+    return ans;
 }
 
 int main() {
+    std::ios::sync_with_stdio(false);
+
     cin >> n >> m;
-    for (int i = 1; i <= n; i++) {
-        cin >> a[i];
+    for (int i = 1, x; i <= n; i++) {
+        cin >> x;
+        add(i, x);
     }
-    build(1, 1, n);
+
     while (m--) {
         cin >> op >> x >> y;
+
         if (op == 1) {
-            change(1, x, y);
-        } else if (op == 2) {
-            cout << query(1, x, y) << endl;
+            add(x, y);
+        } else {  // op == 2
+            cout << sum(y) - sum(x - 1) << endl;
         }
     }
+
     return 0;
 }
