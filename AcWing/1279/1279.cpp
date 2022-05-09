@@ -8,7 +8,7 @@ int n, m, u, v, c, color[N];
 char op;
 vector<int> g[N];
 
-// Link-cut Tree
+// Heavy Path Decomposition
 int cnt, dep[N], id[N], siz[N], fa[N], son[N], top[N], w[N];
 void dfs1(int, int);
 void dfs2(int u, int t);
@@ -48,7 +48,7 @@ int main() {
     return 0;
 }
 
-// === Link-cut Tree ===
+// === Heavy Path Decomposition ===
 
 void dfs1(int u, int f) {
     dep[u] = dep[f] + 1;
