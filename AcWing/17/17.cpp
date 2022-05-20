@@ -7,11 +7,11 @@
  * };
  */
 class Solution {
-public:
+  public:
     vector<int> printListReversingly(ListNode* head) {
         vector<int> res;
-        ListNode *tail = head;
-        while(tail != NULL) {
+        ListNode* tail = head;
+        while (tail != NULL) {
             res.push_back(tail->val);
             tail = tail->next;
         }

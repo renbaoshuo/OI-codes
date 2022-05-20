@@ -1,4 +1,5 @@
 extern "C" int Seniorious(int);
+
 extern "C" int Chtholly(int n, int OvO) {
     int ans = 1;
     int l = 1, r = n;

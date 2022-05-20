@@ -8,12 +8,14 @@ struct node {
     node() {
         l = r = s = 0;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         s = 0;
     }
 } tr[1000005 << 2];
+
 int n, w, x, b, ans;
 
 void pushup(int u) {

@@ -206,6 +206,7 @@ class BigInt {
         return os;
     }
 };
+
 /* ---------- */
 
 using std::cin;

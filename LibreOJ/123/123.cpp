@@ -6,6 +6,7 @@ using std::endl;
 
 int n, m, fa[500005];
 long long ans;
+
 struct node {
     int u, v, w;
 

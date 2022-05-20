@@ -10,12 +10,14 @@ struct node {
         l = r = 0;
         max = -0x3f3f3f3f;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         max = -0x3f3f3f3f;
     }
 } tr[200005 << 2];
+
 int n, m, x, y, a[200005];
 char op;
 

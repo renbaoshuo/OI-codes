@@ -13,9 +13,11 @@ double dis3d(int x1, int y1, int z1, int x2, int y2, int z2) {
 int main() {
     int n, r, d, v;
     double s = 9999999.00, f[1005][1005];
+
     struct {
         int x, y, z;
     } a[1005];
+
     cin >> n >> r >> d >> v;
     for (int i = 1; i <= n; i++) {
         cin >> a[i].x >> a[i].y >> a[i].z;

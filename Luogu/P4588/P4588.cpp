@@ -10,12 +10,14 @@ struct node {
         l = r = 0;
         s = 0;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         s = 0;
     }
 } tr[100005 << 2];
+
 int t, q, mod, op, m;
 
 void pushup(int u) {

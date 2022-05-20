@@ -9,6 +9,7 @@ struct node {
         w = 0;
         c = 0;
     }
+
     node(long long _w, long long _c) {
         w = _w;
         c = _c;

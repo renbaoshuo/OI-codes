@@ -16,6 +16,7 @@ struct data {
     data() {
         a = b = 0;
     }
+
     data(int _a, int _b) {
         int g = __gcd(_a, _b);
         a = _a / g;
@@ -25,9 +26,11 @@ struct data {
     bool operator<(const data& x) const {
         return a * x.b < b * x.a;
     }
+
     bool operator>(const data& x) const {
         return a * x.b > b * x.a;
     }
+
     bool operator==(const data& x) const {
         return a * x.b == b * x.a;
     }

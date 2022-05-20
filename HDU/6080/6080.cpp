@@ -8,10 +8,12 @@ struct node {
     int x, y;
 
     node() {}
+
     node(int _x, int _y) {
         x = _x;
         y = _y;
     }
+
     node operator-(node B) {
         return node(x - B.x, y - B.y);
     }

@@ -10,6 +10,7 @@ class node {
         }
         return x - 10 + 'A';
     }
+
     int len;
     int nums[20];
 
@@ -17,6 +18,7 @@ class node {
     node() {
         len = 0;
     }
+
     node(int x, int b) {
         len = 0;
         while (x) {
@@ -37,6 +39,7 @@ class node {
         }
         return s;
     }
+
     bool check() {
         for (int i = 0; i < len; i++) {
             if (nums[i] != nums[len - i - 1]) {

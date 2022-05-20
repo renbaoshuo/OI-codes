@@ -9,6 +9,7 @@ struct node {
     long long p;
 
     node() {}
+
     node(int _t, long long _p)
         : t(_t), p(_p) {}
 };

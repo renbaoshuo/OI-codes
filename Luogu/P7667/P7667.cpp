@@ -9,6 +9,7 @@ struct node {
         return a < b.a;
     }
 } a[500005];
+
 int n;
 long long s[500005], c, ans;
 

@@ -16,6 +16,7 @@ bool check(int x) {
     }
     return num >= m;
 }
+
 int main() {
     cin >> n >> m;
     for (int i = 1; i <= n; i++) {

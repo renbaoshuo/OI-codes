@@ -15,6 +15,7 @@ struct node {
 
     node()
         : l(0), r(0), s(0), v(0), d(false), k(rand()) {}
+
     node(int _v)
         : l(0), r(0), s(1), v(_v), d(false), k(rand()) {}
 } tr[N];

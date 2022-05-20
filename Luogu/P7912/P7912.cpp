@@ -8,6 +8,7 @@ struct node {
 
     node()
         : start(-1), end(-1), value(false) {}
+
     node(int _start, int _end, bool _value)
         : start(_start), end(_end), value(_value) {}
 };

@@ -9,12 +9,14 @@ struct node {
         l = r = 0;
         v = -0x3f3f3f3f;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         v = -0x3f3f3f3f;
     }
 } tr[200005 << 2];
+
 int m, p;
 char op;
 

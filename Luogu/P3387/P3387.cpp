@@ -48,6 +48,7 @@ void tarjan(int u) {
 
 // Shortest Path
 int dist[N];
+
 int spfa(int s) {
     memset(dist, -0x3f, sizeof(dist));
     std::queue<int> q;

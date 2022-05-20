@@ -40,6 +40,7 @@ struct node {
 
     node()
         : l(0), r(0), m(std::numeric_limits<int>::max()), d(0) {}
+
     node(int _l, int _r)
         : l(_l), r(_r), m(std::numeric_limits<int>::max()), d(0) {}
 } tr[1000005 << 1];

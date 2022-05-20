@@ -8,6 +8,7 @@ struct node {
     node() {
         x1 = x2 = 0;
     }
+
     node(int _x1, int _x2, int _y) {
         x1 = _x1;
         x2 = _x2;

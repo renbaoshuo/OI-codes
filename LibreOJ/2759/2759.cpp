@@ -15,6 +15,7 @@ std::vector<std::pair<int, long long>> g[N];
 // Dijkstra - Shortest Path
 long long dist[N];
 bool vis[N];
+
 void dijkstra() {
     memset(dist, 0x3f, sizeof(dist));
     dist[1] = 0;

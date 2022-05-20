@@ -14,12 +14,16 @@ struct node {
 
     node()
         : x(0), y(0), step(0) {}
+
     node(int _x, int _y)
         : x(_x), y(_y), step(0) {}
+
     node(pair<int, int> _point)
         : x(_point.first), y(_point.second), step(0) {}
+
     node(pair<int, int> _point, int _step)
         : x(_point.first), y(_point.second), step(_step) {}
+
     node(int _x, int _y, int _step)
         : x(_x), y(_y), step(_step) {}
 };

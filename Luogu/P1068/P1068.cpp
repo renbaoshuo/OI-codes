@@ -5,6 +5,7 @@
 using namespace std;
 
 int n, m, ans;
+
 struct node {
     int k, s;
 } a[100001];

@@ -16,6 +16,7 @@ int n, m, s, t, flow, cost;
 // Graph
 int idx, head[N], ver[M << 1], next[M << 1];
 std::pair<int, int> edge[M << 1];
+
 //      <flow, cost>
 
 void add(int u, int v, int c, int w) {

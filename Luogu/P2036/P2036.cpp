@@ -5,6 +5,7 @@ using namespace std;
 struct {
     int s, b;
 } a[15];
+
 int n, ans = 0x3f3f3f3f;
 
 void dfs(int now, int s, int b) {

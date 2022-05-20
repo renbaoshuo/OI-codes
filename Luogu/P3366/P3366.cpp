@@ -3,6 +3,7 @@
 using namespace std;
 
 int n, m, fa[5005], res, cnt;
+
 struct node {
     int u, v, w;
 

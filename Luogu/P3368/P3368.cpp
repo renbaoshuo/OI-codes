@@ -12,6 +12,7 @@ struct node {
         d = 0;
         s = 0;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
@@ -19,6 +20,7 @@ struct node {
         d = 0;
     }
 } tr[500005 << 2];
+
 int n, m, op, x, y, k, a[500005];
 
 void pushup(int u) {

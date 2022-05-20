@@ -8,6 +8,7 @@ struct node {
     node() {
         id = chinese = math = english = all = 0;
     }
+
     node(int _id, int _chinese, int _math, int _english) {
         id = _id;
         chinese = _chinese;

@@ -10,12 +10,14 @@ struct node {
         l = r = s = d = 0;
         x = 1;
     }
+
     node(int _l, int _r) {
         l = _l, r = _r;
         s = d = 0;
         x = 1;
     }
 } tr[100005 << 2];
+
 int n, m, p, op, x, y;
 long long k, a[100005];
 
@@ -90,10 +92,10 @@ void modify(int u, int l, int r, long long x, long long d) {
 
 /**
  * @brief 求区间和
- * @param u 
- * @param l 
- * @param r 
- * @return int 
+ * @param u
+ * @param l
+ * @param r
+ * @return int
  */
 long long query(int u, int l, int r) {
     if (tr[u].l >= l && tr[u].r <= r) {  // 被包含直接返回

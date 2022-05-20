@@ -9,12 +9,14 @@ struct node {
         l = r = 0;
         min = 0x3f3f3f3f;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         min = 0x3f3f3f3f;
     }
 } tr[25005 << 2];
+
 int n, q, x, y, a[25005];
 
 void pushup(int u) {

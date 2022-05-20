@@ -6,6 +6,7 @@ int n, ans[20005];
 
 struct node {
     int id, h, l, r;
+
     struct {
         int l, r;
     } ans;

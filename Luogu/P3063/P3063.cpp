@@ -6,6 +6,7 @@ struct node {
     int v, l, c;
 
     node() {}
+
     node(int _v, int _l, int _c)
         : v(_v), l(_l), c(_c) {}
 };

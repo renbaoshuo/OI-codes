@@ -102,6 +102,7 @@ struct node {
 
     node()
         : l(0), r(0), s(0), d(-1) {}
+
     node(int _l, int _r)
         : l(_l), r(_r), s(0), d(-1) {}
 } tr[N << 2];

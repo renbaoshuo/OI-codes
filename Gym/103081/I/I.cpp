@@ -16,6 +16,7 @@ std::vector<int> g[N];
 // Shortest Path
 int dist[N], max;
 bool vis[N];
+
 void spfa() {
     memset(dist, 0x3f, sizeof(dist));
     std::queue<int> q;

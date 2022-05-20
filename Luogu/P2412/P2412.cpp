@@ -10,12 +10,14 @@ struct node {
         l = r = 0;
         s = "";
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         s = "";
     }
 } tr[50005 << 2];
+
 int n, m, x, y;
 string a[50005], b[50005];
 map<string, string> m1;

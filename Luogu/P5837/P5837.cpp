@@ -8,6 +8,7 @@ struct node {
     node() {
         to = cost = limit = 0;
     }
+
     node(int _to, int _cost, int _limit) {
         to = _to;
         cost = _cost;

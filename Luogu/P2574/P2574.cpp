@@ -5,15 +5,18 @@ using namespace std;
 struct node {
     int l, r;
     int s, d;
+
     node() {
         l = r = s = d = 0;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         s = d = 0;
     }
 } tr[200005 << 2];
+
 int n, m, op, x, y, a[200005];
 
 void pushup(int u) {

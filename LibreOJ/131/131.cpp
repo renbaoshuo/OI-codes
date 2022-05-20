@@ -11,12 +11,14 @@ struct node {
     node() {
         l = r = s = d = 0;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         s = d = 0;
     }
 } tr[1000005 << 2];
+
 int n, m, op, x, y, k;
 long long a[1000005];
 

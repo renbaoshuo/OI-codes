@@ -15,6 +15,7 @@ class Treap {
 
         node()
             : left(nullptr), right(nullptr), size(1), val(0), key(rand()) {}
+
         node(int _val)
             : left(nullptr), right(nullptr), size(1), val(_val), key(rand()) {}
 

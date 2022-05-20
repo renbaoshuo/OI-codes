@@ -9,12 +9,14 @@ struct node {
         l = r = 0;
         v = d = 0;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;
         v = d = 0;
     }
 } tr[100005 << 2];
+
 int n, m, t, x, y;
 
 void build(int u, int l, int r) {

@@ -8,6 +8,7 @@ struct node {
     node() {
         l = r = max = 0;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;

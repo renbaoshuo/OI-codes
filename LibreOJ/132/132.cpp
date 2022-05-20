@@ -11,6 +11,7 @@ struct node {
     node() {
         l = r = s = d = 0;
     }
+
     node(int _l, int _r) {
         l = _l;
         r = _r;

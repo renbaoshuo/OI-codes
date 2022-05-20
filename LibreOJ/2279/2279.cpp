@@ -7,6 +7,7 @@ struct node {
 
     node()
         : l(0), r(0), max(0) {}
+
     node(int _l, int _r)
         : l(_l), r(_r), max(0) {}
 } tr[50005 << 2];

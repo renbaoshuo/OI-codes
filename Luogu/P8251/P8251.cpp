@@ -13,6 +13,7 @@ struct node {
 
     node()
         : a(0), b(0), idx(0) {}
+
     node(int _a, int _b, int _idx)
         : a(_a), b(_b), idx(_idx) {}
 };

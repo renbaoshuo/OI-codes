@@ -61,6 +61,7 @@ int main() {
 
 Treap::node::node()
     : l(0), r(0), s(0), v(0), k(rand()) {}
+
 Treap::node::node(int _v)
     : l(0), r(0), s(1), v(_v), k(rand()) {}
 

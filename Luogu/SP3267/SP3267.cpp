@@ -50,6 +50,7 @@ struct node {
 
     node()
         : l(0), r(0), c(0), lid(0), rid(0) {}
+
     node(int _l, int _r)
         : l(_l), r(_r), c(0), lid(0), rid(0) {}
 } tr[N << 7];
