@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 
-/* imported from ../../templates/BigInt.h */
+/* imported from ../../utils/BigInt.h */
 #include <algorithm>
 #include <iostream>
 #include <string>

@@ -42,8 +42,8 @@ temp/**
 **/tempCodeRunnerFile.*
 temp*
 
-# Templates
-!/templates/
+# Utils
+!/utils/
 
 # Compile Temps
 *.ii
