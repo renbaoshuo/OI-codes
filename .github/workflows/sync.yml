@@ -1,0 +1,24 @@
+name: Sync Repo
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  gitsb:
+    name: Sync to GitSB
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Push to remote
+        run: |
+          git push --force "https://$GIT_USERNAME:$GIT_PASSWORD@git.sb/baoshuo/OI-codes.git"
+        env:
+          GIT_USERNAME: project_62_bot
+          GIT_PASSWORD: ${{ secrets.GITSB_SYNC_TOKEN }}

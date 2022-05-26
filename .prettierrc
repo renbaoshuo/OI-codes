@@ -6,6 +6,12 @@
             "options": {
                 "tabWidth": 2
             }
+        },
+        {
+            "files": "*.y{,a}ml",
+            "options": {
+                "tabWidth": 2
+            }
         }
     ]
 }
