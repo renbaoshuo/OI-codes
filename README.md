@@ -2,6 +2,8 @@
 
 [![Author](https://img.shields.io/badge/Author-Baoshuo-b68469.svg?style=flat-square)](https://baoshuo.ren) [![Stars](https://img.shields.io/github/stars/renbaoshuo/OI-codes?style=flat-square)](https://github.com/renbaoshuo/OI-codes/stargazers) [![GPL-3.0 License](https://img.shields.io/github/license/renbaoshuo/OI-codes?style=flat-square)](/LICENSE)
 
+本仓库在 [GitSB](https://git.sb/baoshuo/OI-codes.git) 上设立了镜像。
+
 ## 说明
 
 本仓库存放与 **OI** 有关的代码。
