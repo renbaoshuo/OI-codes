@@ -22,3 +22,19 @@ jobs:
         env:
           GIT_USERNAME: project_62_bot
           GIT_PASSWORD: ${{ secrets.GITSB_SYNC_TOKEN }}
+
+  acgit:
+    name: Sync to AcGit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Push to remote
+        run: |
+          git push --force "https://$GIT_USERNAME:$GIT_PASSWORD@git.acwing.com/baoshuo/OI-codes.git"
+        env:
+          GIT_USERNAME: project_9950_bot
+          GIT_PASSWORD: ${{ secrets.ACGIT_SYNC_TOKEN }}
