@@ -16,17 +16,17 @@
 
 ## 仓库使用指南
 
-![](https://user-images.githubusercontent.com/47095648/159689834-dfe67eef-b5a2-484c-98a3-745e7a6f7714.png)
+![](https://arina.loli.net/2022/05/29/zVmpsoQ34KiYDGc.png)
 
 ▲ 点击「Commits」按钮可以查看历史提交记录。
 
-![](https://user-images.githubusercontent.com/47095648/159689915-f4761f71-c203-4293-a23b-6ee2f77536fe.png)
+![](https://arina.loli.net/2022/05/29/bcQpPV1d7843nDX.png)
 
 ▲ 在每个提交记录的说明中都会注明提交记录的链接/编号。
 
-![](https://user-images.githubusercontent.com/47095648/159690018-3d7b94e3-4e1d-4712-b26c-8f749c3e0988.png)
+![](https://arina.loli.net/2022/05/29/N6A2kDgCnu8Jc9r.png)
 
-![](https://user-images.githubusercontent.com/47095648/159690097-43d2b381-d8a7-4cc6-aa0a-261078285fe1.png)
+![](https://arina.loli.net/2022/05/29/3IyAo9KdtQgslhL.png)
 
 ▲ 可以在提交历史中找到每份代码的不同版本。
 
@@ -52,25 +52,25 @@ git lfs pull
 
 ## 文件目录结构
 
-| 文件夹                                | 测评系统                                                                               | 账号                                                               | 说明                                |
-| ------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------------- |
-| [`AcWing`](./AcWing/)                 | [AcWing 在线题库](https://www.acwing.com/problem/)                                     | [宝硕](https://www.acwing.com/user/myspace/index/32848/)           | 部分题目为权限题，需购买对应课程。  |
-| [`AtCoder`](./AtCoder/)               | [AtCoder](https://atcoder.jp/contests/archive)                                         | [baoshuo](https://atcoder.jp/users/baoshuo)                        | 题目为比赛题。                      |
-| [`BZOJ`](./BZOJ/)                     | [Hydro BZOJ 域](https://hydro.ac/d/bzoj/)、[DarkBZOJ](https://darkbzoj.tk/problems)    | -                                                                  | 原 BZOJ 已经停止运营。              |
-| [`Codeforces`](./Codeforces/)         | [Codeforces](https://codeforces.com/problemset)                                        | [baoshuo](https://codeforces.com/profile/baoshuo)                  |                                     |
-| [`Gym`](./Gym/)                       | [Codeforces::Gym](https://codeforces.com/gyms)                                         | [baoshuo](https://codeforces.com/profile/baoshuo)                  |                                     |
-| [`HDU`](./HDU/)                       | [Hangzhou Dianzi University Online Judge](http://acm.hdu.edu.cn/listproblem.php?vol=1) | [renbaoshuo](http://acm.hdu.edu.cn/userstatus.php?user=renbaoshuo) | 需要实名认证。                      |
-| [`LibreOJ`](./LibreOJ/)               | [LibreOJ](https://loj.ac/p)                                                            | [baoshuo](https://loj.ac/u/baoshuo)                                |                                     |
-| [`Luogu`](./Luogu/)                   | [洛谷](https://www.luogu.com.cn/problem/list)                                          | [宝硕](https://www.luogu.com.cn/user/168214)                       |                                     |
-| [`NowCoder`](./NowCoder/)             | [牛客竞赛 OJ](https://ac.nowcoder.com/acm/problem/list)                                | [宝硕](https://ac.nowcoder.com/acm/contest/profile/742234351)      |                                     |
-| [`POJ`](./POJ/)                       | [Peking University JudgeOnline](http://poj.org/problemlist)                            | [renbaoshuo](http://poj.org/userstatus?user_id=renbaoshuo)         |                                     |
-| [`S2OJ`](./S2OJ/)                     | [石家庄二中信息学在线测评系统](https://www.sjzezoj.com/problems)                       | [baoshuo](https://www.sjzezoj.com/user/profile/baoshuo)            | 校内 OJ，需要访问权限。存在登录墙。 |
-| [`tk.hustoj.com`](./tk.hustoj.com/)   | [HUSTOJ TK 题库](http://tk.hustoj.com/problemset.php)                                  | [renbaoshuo](http://tk.hustoj.com/userinfo.php?user=renbaoshuo)    |                                     |
-| [`USACO`](./USACO/)                   | [USACO](https://www.usaco.org)                                                         | -                                                                  |                                     |
-| [`USACO-Training`](./USACO-Training/) | [USACO Training](https://train.usaco.org/)                                             | -                                                                  |                                     |
-| [`Vijos`](./Vijos/)                   | [Vijos](https://vijos.org/p)                                                           | [renbaoshuo](https://vijos.org/user/145797)                        |                                     |
-| [`XJOI`](./XJOI/)                     | [XJOI](https://xjoi.net/problemlist)                                                   | [renbaoshuo](https://xjoi.net/user/profile/renbaoshuo)             | 存在登录墙。                        |
-| [`ybt`](./ybt/)                       | [信息学奥赛一本通（C++ 版）在线评测系统](http://ybt.ssoier.cn:8088/problem_list.php)   | baoshuo                                                            |                                     |
+| 文件夹                                | 测评系统                                                                                                                                              | 账号                                                               | 说明                                |
+| ------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ----------------------------------- |
+| [`AcWing`](./AcWing/)                 | [![AcWing](https://arina.loli.net/2022/05/29/P2bn7gmuZKvAqIV.png/250/50)](https://www.acwing.com/problem/)                                            | [宝硕](https://www.acwing.com/user/myspace/index/32848/)           | 部分题目为权限题，需购买对应课程。  |
+| [`AtCoder`](./AtCoder/)               | [![AtCoder](https://arina.loli.net/2022/05/29/wZ2Ge4uRt7S9Qxz.png/1000/75)](https://atcoder.jp/contests/archive)                                      | [baoshuo](https://atcoder.jp/users/baoshuo)                        | 题目为比赛题。                      |
+| [`BZOJ`](./BZOJ/)                     | [Hydro BZOJ 域](https://hydro.ac/d/bzoj/)、[DarkBZOJ](https://darkbzoj.tk/problems)                                                                   | -                                                                  | 原 BZOJ 已经停止运营。              |
+| [`Codeforces`](./Codeforces/)         | [![Codeforces](https://arina.loli.net/2022/05/29/34Lz8cShuaVDEZI.png/250/50)](https://codeforces.com/problemset)                                      | [baoshuo](https://codeforces.com/profile/baoshuo)                  |                                     |
+| [`Gym`](./Gym/)                       | [![Codeforces::Gym](https://arina.loli.net/2022/05/29/34Lz8cShuaVDEZI.png/250/50)](https://codeforces.com/gyms)                                       | [baoshuo](https://codeforces.com/profile/baoshuo)                  |                                     |
+| [`HDU`](./HDU/)                       | [Hangzhou Dianzi University Online Judge](http://acm.hdu.edu.cn/listproblem.php?vol=1)                                                                | [renbaoshuo](http://acm.hdu.edu.cn/userstatus.php?user=renbaoshuo) | 需要实名认证。                      |
+| [`LibreOJ`](./LibreOJ/)               | [![LibreOJ](https://arina.loli.net/2022/05/29/bSj28sOMdiJc9Lp.png/250/50)](https://loj.ac/p)                                                          | [baoshuo](https://loj.ac/u/baoshuo)                                |                                     |
+| [`Luogu`](./Luogu/)                   | [![洛谷](https://arina.loli.net/2022/05/29/hUrC3Ky4n6XiSx2.png/250/50)](https://www.luogu.com.cn/problem/list)                                        | [宝硕](https://www.luogu.com.cn/user/168214)                       |                                     |
+| [`NowCoder`](./NowCoder/)             | ![牛客竞赛](https://arina.loli.net/2022/05/29/K24iPrRsmF6CGBT.png/250/50)                                                                             | [宝硕](https://ac.nowcoder.com/acm/contest/profile/742234351)      |                                     |
+| [`POJ`](./POJ/)                       | [Peking University JudgeOnline](http://poj.org/problemlist)                                                                                           | [renbaoshuo](http://poj.org/userstatus?user_id=renbaoshuo)         |                                     |
+| [`S2OJ`](./S2OJ/)                     | [![石家庄二中在线评测系统](https://arina.loli.net/2022/05/29/RdHeuitDCTGgNcQ.png/300/50)](https://www.sjzezoj.com/problems)                           | [baoshuo](https://www.sjzezoj.com/user/profile/baoshuo)            | 校内 OJ，需要访问权限。存在登录墙。 |
+| [`tk.hustoj.com`](./tk.hustoj.com/)   | [HUSTOJ TK 题库](http://tk.hustoj.com/problemset.php)                                                                                                 | [renbaoshuo](http://tk.hustoj.com/userinfo.php?user=renbaoshuo)    |                                     |
+| [`USACO`](./USACO/)                   | [USACO](https://www.usaco.org)                                                                                                                        | -                                                                  |                                     |
+| [`USACO-Training`](./USACO-Training/) | [USACO Training](https://train.usaco.org/)                                                                                                            | -                                                                  |                                     |
+| [`Vijos`](./Vijos/)                   | [Vijos](https://vijos.org/p)                                                                                                                          | [renbaoshuo](https://vijos.org/user/145797)                        |                                     |
+| [`XJOI`](./XJOI/)                     | [XJOI](https://xjoi.net/problemlist)                                                                                                                  | [renbaoshuo](https://xjoi.net/user/profile/renbaoshuo)             | 存在登录墙。                        |
+| [`ybt`](./ybt/)                       | [![信息学奥赛一本通（C++ 版）在线测评系统](https://arina.loli.net/2022/05/29/k92iPQR1ZLabzmB.jpg/250/50)](http://ybt.ssoier.cn:8088/problem_list.php) | baoshuo                                                            |                                     |
 
 ## 语言环境信息
 
