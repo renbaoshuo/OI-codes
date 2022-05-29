@@ -2,7 +2,7 @@
 
 [![Author](https://img.shields.io/badge/Author-Baoshuo-b68469.svg?style=flat-square)](https://baoshuo.ren) [![Stars](https://img.shields.io/github/stars/renbaoshuo/OI-codes?style=flat-square)](https://github.com/renbaoshuo/OI-codes/stargazers) [![GPL-3.0 License](https://img.shields.io/github/license/renbaoshuo/OI-codes?style=flat-square)](/LICENSE)
 
-本仓库在 [GitLab](https://gitlab.com/baoshuo/OI-codes) 和 [GitSB](https://git.sb/baoshuo/OI-codes) 上设立了镜像。
+本仓库的主仓库位于 [GitSB](https://git.sb/baoshuo/OI-codes) 上，并在 [GitHub](https://github.com/renbaoshuo/OI-codes) 和 [GitLab](https://gitlab.com/baoshuo/OI-codes) 上设立了镜像。
 
 ## 说明
 
@@ -10,13 +10,29 @@
 
 - 部分代码的思路借鉴了题解。
 - 部分题目文件夹下会有 `solution.md` 给出做题思路，也会有部分题目会在 [博客](https://oi.baoshuo.ren/) 中给出题解。
-- 部分题目的 `data` 文件夹下会存放该题的部分测试数据。
+- 部分题目的 `data` 文件夹下会存放该题的部分测试数据，这部分内容使用 Git LFS 存储，请参阅下方的「关于 Git LFS」一节。
 
 做题时间请参考 `Author Date` ，或根据题目对应提交中注明的提交记录编号查找。
 
 ## 关于 Git LFS
 
-本仓库使用了 [GitSB](https://git.sb/baoshuo/OI-codes) 上的 Git LFS 服务来存储题目的测试数据。先前的历史遗留数据目前还尚未切换到 Git LFS 中。在克隆仓库前请先安装 Git LFS。
+本仓库使用了 [Git LFS](https://git-lfs.github.com) 来存储题目的测试数据。在克隆仓库前请先安装 Git LFS，并使用如下命令以获得更快的克隆速度：
+
+```bash
+git lfs clone https://git.sb/baoshuo/OI-codes.git
+```
+
+如果克隆仓库时不需要拉取测试数据，可以使用以下命令：
+
+```bash
+git clone https://git.sb/baoshuo/OI-codes.git --skip-smudge
+```
+
+后期如果希望再次拉取测试数据，可以使用以下命令：
+
+```bash
+git lfs pull
+```
 
 ## 仓库使用指南
 
