@@ -14,6 +14,10 @@
 
 做题时间请参考 `Author Date` ，或根据题目对应提交中注明的提交记录编号查找。
 
+## 关于 Git LFS
+
+本仓库使用了 [GitSB](https://git.sb/baoshuo/OI-codes) 上的 Git LFS 服务来存储题目的测试数据。先前的历史遗留数据目前还尚未切换到 Git LFS 中。在克隆仓库前请先安装 Git LFS。
+
 ## 仓库使用指南
 
 ![](https://user-images.githubusercontent.com/47095648/159689834-dfe67eef-b5a2-484c-98a3-745e7a6f7714.png)
