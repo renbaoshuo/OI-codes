@@ -7,3 +7,4 @@
 *.tar filter=lfs diff=lfs merge=lfs -text
 *.tar.gz filter=lfs diff=lfs merge=lfs -text
 *.gz filter=lfs diff=lfs merge=lfs -text
+**/data/**/* filter=lfs diff=lfs merge=lfs -text
