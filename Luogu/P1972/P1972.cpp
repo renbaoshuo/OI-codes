@@ -1,5 +1,5 @@
-#include <cctype>
 #include <cstdio>
+#include <cctype>
 
 const int N = 1000005;
 

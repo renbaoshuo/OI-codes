@@ -10,10 +10,16 @@ struct segment {
     int x, y1, y2, k;
 
     segment()
-        : x(0), y1(0), y2(0), k(0) {}
+        : x(0),
+          y1(0),
+          y2(0),
+          k(0) {}
 
     segment(int _x, int _y1, int _y2, int _k)
-        : x(_x), y1(_y1), y2(_y2), k(_k) {}
+        : x(_x),
+          y1(_y1),
+          y2(_y2),
+          k(_k) {}
 
     bool operator<(const segment& b) const {
         return x < b.x;
@@ -25,10 +31,16 @@ struct node {
     long long cnt, len;
 
     node()
-        : l(0), r(0), cnt(0), len(0) {}
+        : l(0),
+          r(0),
+          cnt(0),
+          len(0) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), cnt(0), len(0) {}
+        : l(_l),
+          r(_r),
+          cnt(0),
+          len(0) {}
 } tr[100005 << 3];
 
 int find(int y) {

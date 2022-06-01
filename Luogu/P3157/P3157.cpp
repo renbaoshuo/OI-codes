@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 
 using std::cin;
 using std::cout;
@@ -16,7 +16,9 @@ struct node {
     node() {}
 
     node(int _t, int _i, int _v)
-        : t(_t), i(_i), v(_v) {}
+        : t(_t),
+          i(_i),
+          v(_v) {}
 
     bool operator<(const node& x) {
         return i == x.i ? v < x.v : i < x.i;

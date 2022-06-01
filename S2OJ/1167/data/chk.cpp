@@ -1,17 +1,3 @@
-#include "testlib.h"
-#include <bits/stdc++.h>
-
-using ui = unsigned int;
-
-signed main(int argc, char** argv) {
-	registerTestlibCmd(argc, argv);
-
-	int n = inf.readInt();
-	for (int i = 1; i <= n; ++i) {
-		ui x = ui(ouf.readLong()), y = ui(ouf.readLong());
-		if (x != y) {
-			quitp(1.0 * (i - 1) / n, "jury's anwser is %u, but your answer is %u", x, y);
-		}
-	}
-	quitf(_ok, "Accept!");
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f242df81cba6b72c89ecbae9772c5fe339ed514ce1bdb395d12473464ca803f2
+size 426

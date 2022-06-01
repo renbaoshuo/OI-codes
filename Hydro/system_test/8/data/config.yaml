@@ -1,7 +1,3 @@
-type: default
-score: 5
-time: 100ms
-memory: 64m
-
-checker_type: testlib
-checker: checker.cc
+version https://git-lfs.github.com/spec/v1
+oid sha256:e337a949d4e1015b7548ef06ecd75e25034b39392f55e6bd387f919437e76e6e
+size 90

@@ -106,10 +106,16 @@ struct node {
     int l, r, sum, max;
 
     node()
-        : l(0), r(0), sum(0), max(numeric_limits<int>::min()) {}
+        : l(0),
+          r(0),
+          sum(0),
+          max(numeric_limits<int>::min()) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), sum(0), max(numeric_limits<int>::min()) {}
+        : l(_l),
+          r(_r),
+          sum(0),
+          max(numeric_limits<int>::min()) {}
 } tr[N << 2];
 
 void pushup(int u) {

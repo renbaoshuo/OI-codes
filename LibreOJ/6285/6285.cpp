@@ -1,7 +1,7 @@
+#include <iostream>
 #include <algorithm>
 #include <cmath>
 #include <cstring>
-#include <iostream>
 #include <vector>
 
 using std::cin;

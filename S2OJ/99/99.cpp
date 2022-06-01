@@ -1,5 +1,5 @@
-#include <cstdlib>
 #include <iostream>
+#include <cstdlib>
 
 using std::cin;
 using std::cout;
@@ -60,10 +60,18 @@ int main() {
 // struct Treap::node
 
 Treap::node::node()
-    : l(0), r(0), s(0), v(0), k(rand()) {}
+    : l(0),
+      r(0),
+      s(0),
+      v(0),
+      k(rand()) {}
 
 Treap::node::node(int _v)
-    : l(0), r(0), s(1), v(_v), k(rand()) {}
+    : l(0),
+      r(0),
+      s(1),
+      v(_v),
+      k(rand()) {}
 
 // class Treap
 

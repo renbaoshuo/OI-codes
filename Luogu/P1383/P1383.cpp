@@ -46,10 +46,16 @@ struct node {
     int l, r, s, d;
 
     node()
-        : l(0), r(0), s(0), d(0) {}
+        : l(0),
+          r(0),
+          s(0),
+          d(0) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), s(0), d(0) {}
+        : l(_l),
+          r(_r),
+          s(0),
+          d(0) {}
 } tr[N << 5];
 
 int insert(int p, int l, int r, int x) {

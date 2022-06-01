@@ -1,17 +1,3 @@
-#include<cstdio>
-#include<ctime>
-#include<cstdlib>
-using namespace std;
-int N=1e9;
-int Rand()
-{
-	int x=rand();
-	return (x*rand()+rand())%N+1;
-}
-int main()
-{
-	freopen("data10.in","w",stdout);
-	srand(time(0));
-	printf("%d %d %d",Rand(),Rand(),Rand());
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:c1cf7cb61d909cd3fd7c296d50f5d2f69053a45fb59cafaf09476168e9ff46ec
+size 305

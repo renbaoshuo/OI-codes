@@ -11,7 +11,8 @@ struct node {
     node() {}
 
     node(int _t, long long _p)
-        : t(_t), p(_p) {}
+        : t(_t),
+          p(_p) {}
 };
 
 int n, t;

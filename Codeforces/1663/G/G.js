@@ -4,18 +4,18 @@ const MIN = 32,
     MAX = 126;
 
 const SIMPLE = {
-    false: "![]",
-    true: "!![]",
-    undefined: "[][[]]",
-    NaN: "+[![]]",
-    Infinity: "+(+!+[]+(!+[]+[])[!+[]+!+[]+!+[]]+[+!+[]]+[+[]]+[+[]]+[+[]])", // +"1e1000"
+    false: '![]',
+    true: '!![]',
+    undefined: '[][[]]',
+    NaN: '+[![]]',
+    Infinity: '+(+!+[]+(!+[]+[])[!+[]+!+[]+!+[]]+[+!+[]]+[+[]]+[+[]]+[+[]])', // +"1e1000"
 };
 
 const CONSTRUCTORS = {
-    Array: "[]",
-    Number: "(+[])",
-    String: "([]+[])",
-    Boolean: "(![])",
+    Array: '[]',
+    Number: '(+[])',
+    String: '([]+[])',
+    Boolean: '(![])',
     Function: '[]["flat"]',
     RegExp: 'Function("return/"+false+"/")()',
     Object: '[]["entries"]()',
@@ -28,9 +28,9 @@ const MAPPING = {
     d: '(undefined+"")[2]',
     e: '(true+"")[3]',
     f: '(false+"")[0]',
-    g: "(false+[0]+String)[20]",
+    g: '(false+[0]+String)[20]',
     h: '(+(101))["to"+String["name"]](21)[1]',
-    i: "([false]+undefined)[10]",
+    i: '([false]+undefined)[10]',
     j: '([]["entries"]()+"")[3]',
     k: '(+(20))["to"+String["name"]](21)',
     l: '(false+"")[2]',
@@ -46,15 +46,15 @@ const MAPPING = {
     v: '(+(31))["to"+String["name"]](32)',
     w: '(+(32))["to"+String["name"]](33)',
     x: '(+(101))["to"+String["name"]](34)[1]',
-    y: "(NaN+[Infinity])[10]",
+    y: '(NaN+[Infinity])[10]',
     z: '(+(35))["to"+String["name"]](36)',
 
     A: '(NaN+[]["entries"]())[11]',
-    B: "(+[]+Boolean)[10]",
+    B: '(+[]+Boolean)[10]',
     C: 'Function("return escape")()(("")["italics"]())[2]',
     D: 'Function("return escape")()([]["flat"])["slice"]("-1")',
     E: '(RegExp+"")[12]',
-    F: "(+[]+Function)[10]",
+    F: '(+[]+Function)[10]',
     G: '(false+Function("return Date")()())[30]',
     H: null,
     I: '(Infinity+"")[0]',
@@ -63,11 +63,11 @@ const MAPPING = {
     L: null,
     M: '(true+Function("return Date")()())[30]',
     N: '(NaN+"")[0]',
-    O: "(+[]+Object)[10]",
+    O: '(+[]+Object)[10]',
     P: null,
     Q: null,
-    R: "(+[]+RegExp)[10]",
-    S: "(+[]+String)[10]",
+    R: '(+[]+RegExp)[10]',
+    S: '(+[]+String)[10]',
     T: '(NaN+Function("return Date")()())[30]',
     U: '(NaN+Object()["to"+String["name"]]["call"]())[11]',
     V: null,
@@ -76,39 +76,39 @@ const MAPPING = {
     Y: null,
     Z: null,
 
-    " ": '(NaN+[]["flat"])[11]',
-    "!": null,
+    ' ': '(NaN+[]["flat"])[11]',
+    '!': null,
     '"': '("")["fontcolor"]()[12]',
-    "#": null,
+    '#': null,
     $: null,
-    "%": 'Function("return escape")()([]["flat"])[21]',
-    "&": '("")["fontcolor"](")[13]',
+    '%': 'Function("return escape")()([]["flat"])[21]',
+    '&': '("")["fontcolor"](")[13]',
     "'": null,
-    "(": '([]["flat"]+"")[13]',
-    ")": '([0]+false+[]["flat"])[20]',
-    "*": null,
-    "+": "(+(+!+[]+(!+[]+[])[!+[]+!+[]+!+[]]+[+!+[]]+[+[]]+[+[]])+[])[2]",
-    ",": '[[]]["concat"]([[]])+""',
-    "-": '(+(.+[0000001])+"")[2]',
-    ".": "(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]",
-    "/": '(false+[0])["italics"]()[10]',
-    ":": '(RegExp()+"")[3]',
-    ";": '("")["fontcolor"](NaN+")[21]',
-    "<": '("")["italics"]()[0]',
-    "=": '("")["fontcolor"]()[11]',
-    ">": '("")["italics"]()[2]',
-    "?": '(RegExp()+"")[2]',
-    "@": null,
-    "[": '([]["entries"]()+"")[0]',
-    "\\": '(RegExp("/")+"")[1]',
-    "]": '([]["entries"]()+"")[22]',
-    "^": null,
+    '(': '([]["flat"]+"")[13]',
+    ')': '([0]+false+[]["flat"])[20]',
+    '*': null,
+    '+': '(+(+!+[]+(!+[]+[])[!+[]+!+[]+!+[]]+[+!+[]]+[+[]]+[+[]])+[])[2]',
+    ',': '[[]]["concat"]([[]])+""',
+    '-': '(+(.+[0000001])+"")[2]',
+    '.': '(+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]',
+    '/': '(false+[0])["italics"]()[10]',
+    ':': '(RegExp()+"")[3]',
+    ';': '("")["fontcolor"](NaN+")[21]',
+    '<': '("")["italics"]()[0]',
+    '=': '("")["fontcolor"]()[11]',
+    '>': '("")["italics"]()[2]',
+    '?': '(RegExp()+"")[2]',
+    '@': null,
+    '[': '([]["entries"]()+"")[0]',
+    '\\': '(RegExp("/")+"")[1]',
+    ']': '([]["entries"]()+"")[22]',
+    '^': null,
     _: null,
-    "`": null,
-    "{": '(true+[]["flat"])[20]',
-    "|": null,
-    "}": '([]["flat"]+"")["slice"]("-1")',
-    "~": null,
+    '`': null,
+    '{': '(true+[]["flat"])[20]',
+    '|': null,
+    '}': '([]["flat"]+"")["slice"]("-1")',
+    '~': null,
 };
 
 const GLOBAL = 'Function("return this")()';
@@ -117,30 +117,30 @@ function fillMissingDigits() {
     var output, number, i;
 
     for (number = 0; number < 10; number++) {
-        output = "+[]";
+        output = '+[]';
 
         if (number > 0) {
-            output = "+!" + output;
+            output = '+!' + output;
         }
         for (i = 1; i < number; i++) {
-            output = "+!+[]" + output;
+            output = '+!+[]' + output;
         }
         if (number > 1) {
             output = output.substr(1);
         }
 
-        MAPPING[number] = "[" + output + "]";
+        MAPPING[number] = '[' + output + ']';
     }
 }
 
 function replaceMap() {
-    var character = "",
+    var character = '',
         value,
         i,
         key;
 
     function replace(pattern, replacement) {
-        value = value.replace(new RegExp(pattern, "gi"), replacement);
+        value = value.replace(new RegExp(pattern, 'gi'), replacement);
     }
 
     function digitReplacer(_, x) {
@@ -148,15 +148,15 @@ function replaceMap() {
     }
 
     function numberReplacer(_, y) {
-        var values = y.split("");
+        var values = y.split('');
         var head = +values.shift();
-        var output = "+[]";
+        var output = '+[]';
 
         if (head > 0) {
-            output = "+!" + output;
+            output = '+!' + output;
         }
         for (i = 1; i < head; i++) {
-            output = "+!+[]" + output;
+            output = '+!+[]' + output;
         }
         if (head > 1) {
             output = output.substr(1);
@@ -164,7 +164,7 @@ function replaceMap() {
 
         return [output]
             .concat(values)
-            .join("+")
+            .join('+')
             .replace(/(\d)/g, digitReplacer);
     }
 
@@ -176,20 +176,20 @@ function replaceMap() {
         }
 
         for (key in CONSTRUCTORS) {
-            replace("\\b" + key, CONSTRUCTORS[key] + '["constructor"]');
+            replace('\\b' + key, CONSTRUCTORS[key] + '["constructor"]');
         }
 
         for (key in SIMPLE) {
             replace(key, SIMPLE[key]);
         }
 
-        replace("(\\d\\d+)", numberReplacer);
-        replace("\\((\\d)\\)", digitReplacer);
-        replace("\\[(\\d)\\]", digitReplacer);
+        replace('(\\d\\d+)', numberReplacer);
+        replace('\\((\\d)\\)', digitReplacer);
+        replace('\\[(\\d)\\]', digitReplacer);
 
-        replace("GLOBAL", GLOBAL);
-        replace('\\+""', "+[]");
-        replace('""', "[]+[]");
+        replace('GLOBAL', GLOBAL);
+        replace('\\+""', '+[]');
+        replace('""', '[]+[]');
 
         MAPPING[character] = value;
     }
@@ -222,7 +222,7 @@ function replaceStrings() {
     }
 
     function mappingReplacer(a, b) {
-        return b.split("").join("+");
+        return b.split('').join('+');
     }
 
     function valueReplacer(c) {
@@ -248,7 +248,7 @@ function replaceStrings() {
         }
 
         if (count-- === 0) {
-            console.error("Could not compile the following chars:", missing);
+            console.error('Could not compile the following chars:', missing);
         }
     }
 }
@@ -256,32 +256,32 @@ function replaceStrings() {
 function escapeSequence(c) {
     var cc = c.charCodeAt(0);
     if (cc < 256) {
-        return "\\" + cc.toString(8);
+        return '\\' + cc.toString(8);
     } else {
         var cc16 = cc.toString(16);
-        return "\\u" + ("0000" + cc16).substring(cc16.length);
+        return '\\u' + ('0000' + cc16).substring(cc16.length);
     }
 }
 
 function escapeSequenceForReplace(c) {
-    return escapeSequence(c).replace("\\", "t");
+    return escapeSequence(c).replace('\\', 't');
 }
 
 function encode(input, wrapWithEval, runInParentScope) {
     var output = [];
 
     if (!input) {
-        return "";
+        return '';
     }
 
-    var unmappped = "";
+    var unmappped = '';
     for (var k in MAPPING) {
         if (MAPPING[k]) {
             unmappped += k;
         }
     }
-    unmappped = unmappped.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    unmappped = new RegExp("[^" + unmappped + "]", "g");
+    unmappped = unmappped.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    unmappped = new RegExp('[^' + unmappped + ']', 'g');
     var unmappedCharactersCount = (input.match(unmappped) || []).length;
     if (unmappedCharactersCount > 1) {
         // Without this optimization one unmapped caracter has encoded length
@@ -316,91 +316,91 @@ function encode(input, wrapWithEval, runInParentScope) {
         input = input.replace(unmappped, escapeSequence);
     }
 
-    var r = "";
+    var r = '';
     for (var i in SIMPLE) {
-        r += i + "|";
+        r += i + '|';
     }
-    r += ".";
+    r += '.';
 
-    input.replace(new RegExp(r, "g"), function (c) {
+    input.replace(new RegExp(r, 'g'), function (c) {
         var replacement = SIMPLE[c];
         if (replacement) {
-            output.push("(" + replacement + "+[])");
+            output.push('(' + replacement + '+[])');
         } else {
             replacement = MAPPING[c];
             if (replacement) {
                 output.push(replacement);
             } else {
-                throw new Error("Found unmapped character: " + c);
+                throw new Error('Found unmapped character: ' + c);
             }
         }
     });
 
-    output = output.join("+");
+    output = output.join('+');
 
     if (/^\d$/.test(input)) {
-        output += "+[]";
+        output += '+[]';
     }
 
     if (unmappedCharactersCount > 1) {
         // replace `t` with `\\`
         output =
-            "(" +
+            '(' +
             output +
-            ")[" +
-            encode("split") +
-            "](" +
-            encode("t") +
-            ")[" +
-            encode("join") +
-            "](" +
-            encode("\\") +
-            ")";
+            ')[' +
+            encode('split') +
+            '](' +
+            encode('t') +
+            ')[' +
+            encode('join') +
+            '](' +
+            encode('\\') +
+            ')';
     }
 
     if (unmappedCharactersCount > 0) {
         output =
-            "[][" +
-            encode("flat") +
-            "]" +
-            "[" +
-            encode("constructor") +
-            "]" +
-            "(" +
+            '[][' +
+            encode('flat') +
+            ']' +
+            '[' +
+            encode('constructor') +
+            ']' +
+            '(' +
             encode('return"') +
-            "+" +
+            '+' +
             output +
-            "+" +
+            '+' +
             encode('"') +
-            ")()";
+            ')()';
     }
 
     if (wrapWithEval) {
         if (runInParentScope) {
             output =
-                "[][" +
-                encode("flat") +
-                "]" +
-                "[" +
-                encode("constructor") +
-                "]" +
-                "(" +
-                encode("return eval") +
-                ")()" +
-                "(" +
+                '[][' +
+                encode('flat') +
+                ']' +
+                '[' +
+                encode('constructor') +
+                ']' +
+                '(' +
+                encode('return eval') +
+                ')()' +
+                '(' +
                 output +
-                ")";
+                ')';
         } else {
             output =
-                "[][" +
-                encode("flat") +
-                "]" +
-                "[" +
-                encode("constructor") +
-                "]" +
-                "(" +
+                '[][' +
+                encode('flat') +
+                ']' +
+                '[' +
+                encode('constructor') +
+                ']' +
+                '(' +
                 output +
-                ")()";
+                ')()';
         }
     }
 

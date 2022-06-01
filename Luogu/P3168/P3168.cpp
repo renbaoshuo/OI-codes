@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 using std::cin;
@@ -22,7 +22,10 @@ struct node {
     long long s;
 
     node()
-        : l(0), r(0), c(0), s(0) {}
+        : l(0),
+          r(0),
+          c(0),
+          s(0) {}
 } tr[N << 6];
 
 int build(int, int);

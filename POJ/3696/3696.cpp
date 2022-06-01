@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 #include <limits>
 
 using std::cin;

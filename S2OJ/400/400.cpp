@@ -1,7 +1,7 @@
 #pragma GCC optimize("Ofast")
 
-#include <algorithm>
 #include <cstdio>
+#include <algorithm>
 #include <cstring>
 #include <vector>
 

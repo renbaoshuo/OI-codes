@@ -1,13 +1,3 @@
-#include "testlib.h"
-
-int main()
-{
-    registerValidation();
-    int n = inf.readInt(2, 1e6 - 1); inf.readSpace();
-    inf.readInt(1, n - 1); inf.readSpace();
-    inf.readInt(1, 1e9 - 1); inf.readSpace();
-    inf.readInt(1, n); inf.readEoln();
-    inf.readEof();
-    return 0;
-}
-
+version https://git-lfs.github.com/spec/v1
+oid sha256:80765e83ddd7a625671b5b2274a69dd73de32352b8b03f22cad1b8dd4cb96188
+size 295

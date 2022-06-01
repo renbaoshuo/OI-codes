@@ -12,10 +12,14 @@ struct node {
     int a, b, idx;
 
     node()
-        : a(0), b(0), idx(0) {}
+        : a(0),
+          b(0),
+          idx(0) {}
 
     node(int _a, int _b, int _idx)
-        : a(_a), b(_b), idx(_idx) {}
+        : a(_a),
+          b(_b),
+          idx(_idx) {}
 };
 
 int n, q, a[N], b[N], id[N], t[N], ans[N];

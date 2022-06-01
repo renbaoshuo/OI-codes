@@ -1,5 +1,5 @@
-#include <cstdlib>
 #include <iostream>
+#include <cstdlib>
 
 using std::cin;
 using std::cout;
@@ -39,10 +39,18 @@ class Treap {
 // struct Treap::node
 
 Treap::node::node()
-    : left(nullptr), right(nullptr), size(1), val(0), key(rand()) {}
+    : left(nullptr),
+      right(nullptr),
+      size(1),
+      val(0),
+      key(rand()) {}
 
 Treap::node::node(int _val)
-    : left(nullptr), right(nullptr), size(1), val(_val), key(rand()) {}
+    : left(nullptr),
+      right(nullptr),
+      size(1),
+      val(_val),
+      key(rand()) {}
 
 Treap::node::~node() {
     delete this->left, this->right;

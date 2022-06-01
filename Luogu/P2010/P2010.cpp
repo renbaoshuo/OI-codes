@@ -1,6 +1,6 @@
-#include <algorithm>
 #include <cstdio>
 #include <iostream>
+#include <algorithm>
 #include <string>
 
 const int days[] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};

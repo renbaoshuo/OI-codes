@@ -5,11 +5,37 @@ ColumnLimit: 0
 IndentWidth: 4
 AccessModifierOffset: -2
 NamespaceIndentation: All
+AlignOperands: AlignAfterOperator
 AllowShortLoopsOnASingleLine: true
 AllowShortBlocksOnASingleLine: true
 AllowShortFunctionsOnASingleLine: Empty
 AllowShortCaseLabelsOnASingleLine: true
-AllowShortIfStatementsOnASingleLine: true
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 EmptyLineBeforeAccessModifier: LogicalBlock
 SeparateDefinitionBlocks: Always
 PointerAlignment: Right
+BinPackArguments: false
+BinPackParameters: false
+PackConstructorInitializers: CurrentLine
+IncludeCategories:
+  - Regex: '^<ext/.*\.h>'
+    Priority: 2
+    SortPriority: 0
+    CaseSensitive: false
+  - Regex: '^<.*\.h>'
+    Priority: 1
+    SortPriority: 0
+    CaseSensitive: false
+  - Regex: '^<(iostream|cstdio)>'
+    Priority: 2
+    SortPriority: 1
+    CaseSensitive: false
+  - Regex: '^<.*'
+    Priority: 2
+    SortPriority: 0
+    CaseSensitive: false
+  - Regex: '.*'
+    Priority: 3
+    SortPriority: 0
+    CaseSensitive: false
+# InsertBraces: true   ## clang-format 15

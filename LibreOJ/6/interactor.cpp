@@ -1,6 +1,6 @@
+#include <iostream>
 #include <cstdlib>
 #include <fstream>
-#include <iostream>
 #include <vector>
 
 std::ofstream score("score.txt");

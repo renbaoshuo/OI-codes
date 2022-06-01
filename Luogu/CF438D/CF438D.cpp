@@ -41,10 +41,16 @@ struct node {
     long long s, m;
 
     node()
-        : l(0), r(0), s(0), m(0) {}
+        : l(0),
+          r(0),
+          s(0),
+          m(0) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), s(0), m(0) {}
+        : l(_l),
+          r(_r),
+          s(0),
+          m(0) {}
 } tr[100005 << 2];
 
 inline void pushup(int u) {

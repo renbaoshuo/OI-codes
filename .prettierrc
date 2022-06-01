@@ -1,17 +1,36 @@
 {
-    "tabWidth": 4,
-    "overrides": [
-        {
-            "files": "*.md",
-            "options": {
-                "tabWidth": 2
-            }
-        },
-        {
-            "files": "*.y{,a}ml",
-            "options": {
-                "tabWidth": 2
-            }
-        }
-    ]
+  "tabWidth": 4,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.md",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": "*.y{,a}ml",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": "*.json",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ".prettierrc",
+      "options": {
+        "tabWidth": 2
+      }
+    },
+    {
+      "files": ".clang-format",
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
 }

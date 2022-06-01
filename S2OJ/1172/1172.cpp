@@ -84,10 +84,14 @@ struct node {
     int l, r, d;
 
     node()
-        : l(0), r(0), d(0) {}
+        : l(0),
+          r(0),
+          d(0) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), d(0) {}
+        : l(_l),
+          r(_r),
+          d(0) {}
 } tr[N << 2];
 
 void pushdown(int u) {

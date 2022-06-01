@@ -1,12 +1,12 @@
 #pragma GCC optimize("Ofast")
 
-#include <cmath>
 #include <iostream>
+#include <cmath>
 #include <vector>
 
 /* imported from ../../utils/BigInt.h */
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 #include <string>
 
 class BigInt {

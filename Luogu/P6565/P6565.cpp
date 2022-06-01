@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 
 using std::cin;
 using std::cout;
@@ -12,7 +12,8 @@ struct node {
     int id, cnt;
 
     node()
-        : id(0), cnt(0) {}
+        : id(0),
+          cnt(0) {}
 } a[N];
 
 int n;

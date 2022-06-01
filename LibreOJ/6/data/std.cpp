@@ -1,21 +1,3 @@
-#include "interaction.h"
-
-inline int solve(int i) {
-	int l = 0, r = 1000000;
-	while (l < r) {
-		int mid = l + (r - l) / 2;
-		if (guess(i, mid) >= 0) r = mid;
-		else l = mid + 1;
-	}
-	return l;
-}
-
-int main() {
-	int n = get_num();
-	std::vector<int> a(n);
-	for (int i = 0; i < n; i++) {
-		a[i] = solve(i);
-	}
-
-	submit(a);
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:bcd5174f7601d4eb68d97bec18b4873ecef64e42511c0c10958a0ba961363ef4
+size 371

@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 
 using std::cin;
 using std::cout;
@@ -11,10 +11,18 @@ struct node {
     int a, b, c, cnt, res;
 
     node()
-        : a(0), b(0), c(0), cnt(0), res(0) {}
+        : a(0),
+          b(0),
+          c(0),
+          cnt(0),
+          res(0) {}
 
     node(int _a, int _b, int _c)
-        : a(_a), b(_b), c(_c), cnt(1), res(0) {}
+        : a(_a),
+          b(_b),
+          c(_c),
+          cnt(1),
+          res(0) {}
 
     bool operator<(const node& x) const {
         return a == x.a ? b == x.b ? c < x.c : b < x.b : a < x.a;

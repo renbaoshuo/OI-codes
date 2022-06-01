@@ -1,9 +1,9 @@
-const fs = require('fs')
+const fs = require('fs');
 
 let str = fs.readFileSync(0).toString().replace(/\s+/g, ' ').split(' ');
-let ans = []
+let ans = [];
 
-str.forEach(word => {
+str.forEach((word) => {
     ans.push(word.length);
 });
 

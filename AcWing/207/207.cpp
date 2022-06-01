@@ -1,7 +1,7 @@
+#include <iostream>
 #include <algorithm>
 #include <cmath>
 #include <iomanip>
-#include <iostream>
 
 using std::cin;
 using std::cout;

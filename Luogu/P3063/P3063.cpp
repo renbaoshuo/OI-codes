@@ -8,7 +8,9 @@ struct node {
     node() {}
 
     node(int _v, int _l, int _c)
-        : v(_v), l(_l), c(_c) {}
+        : v(_v),
+          l(_l),
+          c(_c) {}
 };
 
 int n, m, x, u, v, l, c, tot, a[505], dist[505], ans = 0x3f3f3f3f;

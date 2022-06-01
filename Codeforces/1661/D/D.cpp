@@ -1,5 +1,5 @@
-#include <cmath>
 #include <iostream>
+#include <cmath>
 
 using std::cin;
 using std::cout;
@@ -12,10 +12,16 @@ struct node {
     long long s, d;
 
     node()
-        : l(0), r(0), s(0), d(0) {}
+        : l(0),
+          r(0),
+          s(0),
+          d(0) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), s(0), d(0) {}
+        : l(_l),
+          r(_r),
+          s(0),
+          d(0) {}
 } tr[N << 2];
 
 int n, k;

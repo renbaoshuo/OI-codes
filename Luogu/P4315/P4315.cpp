@@ -125,10 +125,18 @@ struct node {
     int l, r, m, da, dc;
 
     node()
-        : l(0), r(0), m(0), da(0), dc(-1) {}
+        : l(0),
+          r(0),
+          m(0),
+          da(0),
+          dc(-1) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), m(0), da(0), dc(-1) {}
+        : l(_l),
+          r(_r),
+          m(0),
+          da(0),
+          dc(-1) {}
 } tr[N << 2];
 
 inline void pushup(int u) {

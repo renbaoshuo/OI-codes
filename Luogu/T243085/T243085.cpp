@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 #include <string>
 
 using std::cin;
@@ -16,10 +16,16 @@ struct node {
     bool none;
 
     node()
-        : l(0), r(0), s(0), none(false) {}
+        : l(0),
+          r(0),
+          s(0),
+          none(false) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), s(0), none(false) {}
+        : l(_l),
+          r(_r),
+          s(0),
+          none(false) {}
 } tr[N << 2];
 
 inline void pushdown(int u) {

@@ -1,5 +1,5 @@
-#include <algorithm>
 #include <iostream>
+#include <algorithm>
 #include <map>
 #include <vector>
 
@@ -49,10 +49,18 @@ struct node {
     int lid, rid;
 
     node()
-        : l(0), r(0), c(0), lid(0), rid(0) {}
+        : l(0),
+          r(0),
+          c(0),
+          lid(0),
+          rid(0) {}
 
     node(int _l, int _r)
-        : l(_l), r(_r), c(0), lid(0), rid(0) {}
+        : l(_l),
+          r(_r),
+          c(0),
+          lid(0),
+          rid(0) {}
 } tr[N << 7];
 
 inline void pushup(int u) {

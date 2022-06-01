@@ -1,8 +1,8 @@
 #pragma GCC optimize("Ofast")
 
+#include <cstdio>
 #include <algorithm>
 #include <cmath>
-#include <cstdio>
 
 const int N = 15;
 const double eps = 1e-6;

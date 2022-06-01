@@ -1,5 +1,5 @@
-#include <cstdlib>
 #include <iostream>
+#include <cstdlib>
 
 using std::cin;
 using std::cout;
@@ -18,10 +18,18 @@ struct node {
     int l, r, s, v, k;
 
     node()
-        : l(0), r(0), s(0), v(0), k(rand()) {}
+        : l(0),
+          r(0),
+          s(0),
+          v(0),
+          k(rand()) {}
 
     node(int _v)
-        : l(0), r(0), s(1), v(_v), k(rand()) {}
+        : l(0),
+          r(0),
+          s(1),
+          v(_v),
+          k(rand()) {}
 } tr[N];
 
 void pushup(int u) {

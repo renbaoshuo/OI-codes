@@ -1,5 +1,5 @@
-#include <array>
 #include <iostream>
+#include <array>
 #include <stack>
 #include <vector>
 

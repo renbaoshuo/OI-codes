@@ -1,6 +1,6 @@
+#include <iostream>
 #include <algorithm>
 #include <cstring>
-#include <iostream>
 #include <vector>
 
 using std::cin;

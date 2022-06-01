@@ -1,6 +1,6 @@
+#include <iostream>
 #include <algorithm>
 #include <cmath>
-#include <iostream>
 #include <limits>
 
 using std::cin;
@@ -17,8 +17,7 @@ inline void process(int x) {
 }
 
 void change(int l, int r, int c) {
-    int p = pos[l],
-        q = pos[r];
+    int p = pos[l], q = pos[r];
 
     if (p == q) {
         for (int i = l; i <= r; i++) a[i] += c;
@@ -35,8 +34,7 @@ void change(int l, int r, int c) {
 }
 
 int query(int l, int r, int c) {
-    int p = pos[l],
-        q = pos[r];
+    int p = pos[l], q = pos[r];
     int res = std::numeric_limits<int>::min();
 
     if (p == q) {
@@ -52,7 +50,8 @@ int query(int l, int r, int c) {
         }
 
         for (int i = p + 1; i <= q - 1; i++) {
-            int _ = std::lower_bound(b + st[i], b + ed[i] + 1, c - add[i]) - b - 1;
+            int _ =
+                std::lower_bound(b + st[i], b + ed[i] + 1, c - add[i]) - b - 1;
 
             if (st[i] <= _ && _ <= ed[i]) res = std::max(res, b[_] + add[i]);
         }
@@ -80,9 +79,7 @@ int main() {
     }
 
     for (int i = 1; i <= c; i++) {
-        for (int j = st[i]; j <= ed[i]; j++) {
-            pos[j] = i;
-        }
+        for (int j = st[i]; j <= ed[i]; j++) { pos[j] = i; }
         std::sort(b + st[i], b + ed[i] + 1);
     }
 
