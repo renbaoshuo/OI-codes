@@ -66,7 +66,6 @@ int main() {
                 }
                 break;
         }
-        cout << a << ' ' << b << ' ' << c << endl;
     }
     printf("%d %d %d\n", a, b, c);
 
