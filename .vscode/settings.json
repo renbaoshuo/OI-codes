@@ -84,5 +84,16 @@
         "stop_token": "cpp"
     },
     "go.formatTool": "goformat",
-    "go.formatFlags": ["-style", "indent=4"]
+    "go.formatFlags": ["-style", "indent=4"],
+    "code-runner.fileDirectoryAsCwd": true,
+    "code-runner.runInTerminal": true,
+    "code-runner.executorMap": {
+        "c": "gcc $fileName -o $fileNameWithoutExt.exe -O2 -lm && ./$fileNameWithoutExt.exe",
+        "cpp": "g++ --std=c++14 $fileName -o $fileNameWithoutExt.exe -O2 -lm -fsanitize=address,undefined -fno-ms-extensions -Wall && ./$fileNameWithoutExt.exe",
+        "python": "python -u $fileName",
+        "go": "go run $fileName",
+        "javascript": "node $fileName",
+        "typescript": "ts-node $fileName",
+        "rust": "rustc $fileName -o $fileNameWithoutExt.exe && ./$fileNameWithoutExt.exe"
+    },
 }
