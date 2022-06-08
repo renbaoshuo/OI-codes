@@ -82,5 +82,7 @@
         "ranges": "cpp",
         "span": "cpp",
         "stop_token": "cpp"
-    }
+    },
+    "go.formatTool": "goformat",
+    "go.formatFlags": ["-style", "indent=4"]
 }
