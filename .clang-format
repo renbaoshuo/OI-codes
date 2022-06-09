@@ -16,7 +16,7 @@ SeparateDefinitionBlocks: Always
 PointerAlignment: Right
 BinPackArguments: false
 BinPackParameters: false
-PackConstructorInitializers: CurrentLine
+PackConstructorInitializers: NextLine
 IncludeCategories:
   - Regex: '^<ext/.*\.h>'
     Priority: 2
