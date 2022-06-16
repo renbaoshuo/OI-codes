@@ -51,3 +51,6 @@ temp*
 
 # Codespace Env Files
 .venv
+
+# https://github.com/agrawal-d/cph
+.cph/
