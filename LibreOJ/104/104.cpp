@@ -1,172 +1,323 @@
 #include <iostream>
-#include <cstdlib>
+#include <limits>
 
 using std::cin;
 using std::cout;
-#define endl '\n'
+const char endl = '\n';
 
-const int N = 1e5 + 5;
-
-class Treap {
+template <typename T>
+class Splay {
   private:
     struct node {
-        node *left, *right;
-        int size, val, key;
+        T value;
+        node *lchild, *rchild, *parent, **root;
+        std::size_t size, count;
 
         node()
-            : left(nullptr),
-              right(nullptr),
-              size(1),
-              val(0),
-              key(rand()) {}
+            : value(0), lchild(nullptr), rchild(nullptr), parent(nullptr), root(nullptr), size(0), count(0) {}
 
-        node(int _val)
-            : left(nullptr),
-              right(nullptr),
-              size(1),
-              val(_val),
-              key(rand()) {}
+        node(const T &_value, node *_parent, node **_root)
+            : value(_value), lchild(nullptr), rchild(nullptr), parent(_parent), root(_root), size(1), count(1) {}
 
         ~node() {
-            delete left, right;
+            if (lchild != nullptr) delete lchild;
+            if (rchild != nullptr) delete rchild;
         }
 
-        inline void pushup() {
-            this->size = 1;
-            if (this->left != nullptr) this->size += this->left->size;
-            if (this->right != nullptr) this->size += this->right->size;
+        node *&child(unsigned int x) {
+            return !x ? lchild : rchild;
         }
-    } *root = nullptr;
 
-    int getNodeSize(node *);
-    node *find(node *, int);
-    std::pair<node *, node *> split(node *, int);
-    std::pair<node *, node *> splitByValue(node *, int);
-    node *merge(node *, node *);
-    int _getRank(node *, int);
+        unsigned int relation() const {
+            // 如果当前节点是其父亲节点的左儿子则返回 0，否则返回 1
+            return this == parent->lchild ? 0 : 1;
+        }
+
+        // 左儿子大小
+        std::size_t lsize() const {
+            return lchild == nullptr ? 0 : lchild->size;
+        }
+
+        // 右儿子大小
+        std::size_t rsize() const {
+            return rchild == nullptr ? 0 : rchild->size;
+        }
+
+        // 上传信息
+        void pushup() {
+            size = lsize() + count + rsize();
+        }
+
+        // 旋转
+        void rotate() {
+            node *old = parent;
+            unsigned int x = relation();
+
+            if (old->parent != nullptr) {
+                old->parent->child(old->relation()) = this;
+            }
+            parent = old->parent;
+
+            old->child(x) = child(x ^ 1);
+            if (child(x ^ 1) != nullptr) {
+                child(x ^ 1)->parent = old;
+            }
+
+            child(x ^ 1) = old;
+            old->parent = this;
+
+            old->pushup();
+            pushup();
+
+            if (parent == nullptr) *root = this;
+        }
+
+        // Splay
+        void splay(node *target = nullptr) {
+            while (parent != target) {
+                if (parent->parent == target) {  // 父节点是目标节点
+                    rotate();
+                } else if (relation() == parent->relation()) {  // 关系相同
+                    parent->rotate();
+                    rotate();
+                } else {
+                    rotate();
+                    rotate();
+                }
+            }
+        }
+
+        // 前驱：左子树的最右点
+        node *predecessor() {
+            node *pred = lchild;
+
+            while (pred->rchild != nullptr) {
+                pred = pred->rchild;
+            }
+
+            return pred;
+        }
+
+        // 后继：右子树的最左点
+        node *successor() {
+            node *succ = rchild;
+
+            while (succ->lchild != nullptr) {
+                succ = succ->lchild;
+            }
+
+            return succ;
+        }
+    } * root;
+
+    // 插入（内部函数）
+    node *_insert(const T &value) {
+        node **target = &root, *parent = nullptr;
+
+        while (*target != nullptr && (*target)->value != value) {
+            parent = *target;
+            parent->size++;
+
+            // 根据大小向左右子树迭代
+            if (value < parent->value) {
+                target = &parent->lchild;
+            } else {
+                target = &parent->rchild;
+            }
+        }
+
+        if (*target == nullptr) {
+            *target = new node(value, parent, &root);
+        } else {
+            (*target)->count++;
+            (*target)->size++;
+        }
+
+        (*target)->splay();
+
+        return root;
+    }
+
+    // 查找指定的值对应的节点
+    node *find(const T &value) {
+        node *node = root;  // 从根节点开始查找
+
+        while (node != nullptr && value != node->value) {
+            if (value < node->value) {
+                node = node->lchild;
+            } else {
+                node = node->rchild;
+            }
+        }
+
+        if (node != nullptr) {
+            node->splay();
+        }
+
+        return node;
+    }
+
+    // 删除
+    void erase(node *u) {
+        if (u == nullptr) return;
+
+        if (u->count > 1) {  // 存在重复的数
+            u->splay();
+            u->count--;
+            u->size--;
+
+            return;
+        }
+
+        node *pred = u->predecessor(),
+             *succ = u->successor();
+
+        pred->splay();
+        succ->splay(pred);
+
+        delete succ->lchild;
+        succ->lchild = nullptr;
+
+        succ->pushup();
+        pred->pushup();
+    }
 
   public:
-    Treap()
-        : root(nullptr) {}
-
-    void insert(int);
-    void erase(int);
-    int getRank(int);
-    int getKth(int);
-} tree;
-
-inline int Treap::getNodeSize(Treap::node *node) {
-    return node == nullptr ? 0 : node->size;
-}
-
-std::pair<Treap::node *, Treap::node *> Treap::split(Treap::node *p, int k) {
-    if (p == nullptr) return std::make_pair(nullptr, nullptr);
-    std::pair<Treap::node *, Treap::node *> o;
-    if (k <= this->getNodeSize(p->left)) {
-        o = this->split(p->left, k);
-        p->left = o.second;
-        p->pushup();
-        o.second = p;
-    } else {
-        o = this->split(p->right, k - this->getNodeSize(p->left) - 1);
-        p->right = o.first;
-        p->pushup();
-        o.first = p;
+    Splay()
+        : root(nullptr) {
+        insert(std::numeric_limits<T>::min());
+        insert(std::numeric_limits<T>::max());
     }
-    return o;
-}
 
-std::pair<Treap::node *, Treap::node *> Treap::splitByValue(Treap::node *p, int val) {
-    if (p == nullptr) return std::make_pair(nullptr, nullptr);
-    std::pair<Treap::node *, Treap::node *> o;
-    if (p->val < val) {
-        o = this->splitByValue(p->right, val);
-        p->right = o.first;
-        p->pushup();
-        o.first = p;
-    } else {
-        o = this->splitByValue(p->left, val);
-        p->left = o.second;
-        p->pushup();
-        o.second = p;
+    ~Splay() {
+        delete root;
     }
-    return o;
-}
 
-Treap::node *Treap::merge(Treap::node *x, Treap::node *y) {
-    if (x == nullptr) return y;
-    if (y == nullptr) return x;
-    if (x->key > y->key) {
-        x->right = this->merge(x->right, y);
-        x->pushup();
-        return x;
+    // 插入
+    void insert(const T &value) {
+        _insert(value);
     }
-    y->left = this->merge(x, y->left);
-    y->pushup();
-    return y;
-}
 
-Treap::node *Treap::find(Treap::node *p, int val) {
-    if (p == nullptr) return nullptr;
-    if (p->val == val) return p;
-    if (p->val > val) return this->find(p->left, val);
-    return this->find(p->right, val);
-}
+    // 删除
+    void erase(const T &value) {
+        node *node = find(value);
 
-void Treap::insert(int val) {
-    auto o = this->splitByValue(this->root, val);
-    o.first = this->merge(o.first, new Treap::node(val));
-    this->root = this->merge(o.first, o.second);
-}
+        if (node == nullptr) return;
 
-void Treap::erase(int val) {
-    auto o = this->splitByValue(this->root, val);
-    auto t = o;
-    if (this->find(o.second, val) != nullptr) {
-        t = this->split(o.second, 1);
-        delete t.first;
+        erase(node);
     }
-    this->root = this->merge(o.first, t.second);
-}
 
-int Treap::_getRank(Treap::node *p, int val) {
-    if (p == nullptr) return 1;
-    if (val <= p->val) return this->_getRank(p->left, val);
-    return this->getNodeSize(p->left) + 1 + this->_getRank(p->right, val);
-}
+    // 排名
+    unsigned int rank(const T &value) {
+        node *node = find(value);
 
-inline int Treap::getRank(int val) {
-    return this->_getRank(this->root, val);
-}
+        if (node == nullptr) {
+            node = _insert(value);
+            // 此时 node 已经成为根节点，直接计算即可
+            int res = node->lsize();  // 由于「哨兵」的存在，此处无需 -1
+            erase(node);
 
-int Treap::getKth(int k) {
-    auto x = this->split(this->root, k - 1);
-    auto y = this->split(x.second, 1);
-    Treap::node *o = y.first;
-    this->root = this->merge(x.first, this->merge(y.first, y.second));
-    return o == nullptr ? -1 : o->val;
-}
+            return res;
+        }
 
-int n, op, x;
+        // 此时 node 已经成为根节点，直接计算即可
+        return node->lsize();
+    }
+
+    // 选择
+    const T &select(int k) {
+        node *node = root;
+
+        while (k < node->lsize() || k >= node->lsize() + node->count) {
+            if (k < node->lsize()) {  // 所需的节点在左子树中
+                node = node->lchild;
+            } else {
+                k -= node->lsize() + node->count;
+                node = node->rchild;
+            }
+        }
+
+        node->splay();
+
+        return node->value;
+    }
+
+    // 前驱
+    const T &predecessor(const T &value) {
+        node *node = find(value);
+
+        if (node == nullptr) {
+            node = _insert(value);
+            const T &result = node->predecessor()->value;
+            erase(node);
+            return result;
+        }
+
+        return node->predecessor()->value;
+    }
+
+    // 后继
+    const T &successor(const T &value) {
+        node *node = find(value);
+
+        if (node == nullptr) {
+            node = _insert(value);
+            const T &result = node->successor()->value;
+            erase(node);
+            return result;
+        }
+
+        return node->successor()->value;
+    }
+};
+
+int n;
+Splay<int> tree;
 
 int main() {
     std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     cin >> n;
-    while (n--) {
+
+    for (int i = 1; i <= n; i++) {
+        int op, x;
+
         cin >> op >> x;
-        if (op == 1) {
-            tree.insert(x);
-        } else if (op == 2) {
-            tree.erase(x);
-        } else if (op == 3) {
-            cout << tree.getRank(x) << endl;
-        } else if (op == 4) {
-            cout << tree.getKth(x) << endl;
-        } else if (op == 5) {
-            cout << tree.getKth(tree.getRank(x) - 1) << endl;
-        } else {
-            cout << tree.getKth(tree.getRank(x + 1) /* + 1*/) << endl;
+
+        switch (op) {
+            case 1: {
+                tree.insert(x);
+
+                break;
+            }
+            case 2: {
+                tree.erase(x);
+
+                break;
+            }
+            case 3: {
+                cout << tree.rank(x) << endl;
+
+                break;
+            }
+            case 4: {
+                cout << tree.select(x) << endl;
+
+                break;
+            }
+            case 5: {
+                cout << tree.predecessor(x) << endl;
+
+                break;
+            }
+            case 6: {
+                cout << tree.successor(x) << endl;
+
+                break;
+            }
         }
     }
+
     return 0;
 }
