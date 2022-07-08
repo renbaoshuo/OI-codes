@@ -2,7 +2,7 @@
 
 [![Author](https://img.shields.io/badge/Author-Baoshuo-b68469.svg?style=flat-square)](https://baoshuo.ren) [![Stars](https://img.shields.io/github/stars/renbaoshuo/OI-codes?style=flat-square)](https://github.com/renbaoshuo/OI-codes/stargazers) [![GPL-3.0 License](https://img.shields.io/github/license/renbaoshuo/OI-codes?style=flat-square)](/LICENSE)
 
-本仓库的主仓库位于 [GitSB](https://git.sb/baoshuo/OI-codes) 上，并在 [GitHub](https://github.com/renbaoshuo/OI-codes) 和 [GitLab](https://gitlab.com/baoshuo/OI-codes) 上设立了镜像。
+本仓库的主仓库位于 [GitSB](https://git.sb/baoshuo/OI-codes) 上，并在 [GitHub](https://github.com/renbaoshuo/OI-codes)、[GitLab](https://gitlab.com/baoshuo/OI-codes) 和 [GitMac](https://git.m.ac/baoshuo/OI-codes) 上设立了镜像。
 
 ## 说明
 
@@ -41,7 +41,7 @@ git lfs clone https://git.sb/baoshuo/OI-codes.git
 如果克隆仓库时不需要拉取测试数据，可以使用以下命令：
 
 ```bash
-git clone https://git.sb/baoshuo/OI-codes.git --skip-smudge
+GIT_LFS_SKIP_SMUDGE=1 git clone https://git.sb/baoshuo/OI-codes.git
 ```
 
 后期如果希望再次拉取测试数据，可以使用以下命令：
