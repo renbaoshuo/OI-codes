@@ -10,7 +10,7 @@
 
 - 部分代码的思路借鉴了题解。
 - 部分题目文件夹下会有 `solution.md` 给出做题思路，也会有部分题目会在 [博客](https://oi.baoshuo.ren/) 中给出题解。
-- 部分题目的 `data` 文件夹下会存放该题的部分测试数据，这部分内容使用 Git LFS 存储，请参阅下方的「关于 Git LFS」一节。
+- 部分题目的 `data` 文件夹下会存放该题的部分测试数据，这部分内容使用 Git LFS 存储，请参阅下方的「测试数据」一节。
 
 做题时间请参考 `Author Date` ，或根据题目对应提交中注明的提交记录编号查找。
 
@@ -30,9 +30,21 @@
 
 ▲ 可以在提交历史中找到每份代码的不同版本。
 
-## 关于 Git LFS
+## 测试数据
 
-本仓库使用了 [Git LFS](https://git-lfs.github.com) 来存储题目的测试数据。在克隆仓库前请先安装 Git LFS，并使用如下命令以获得更快的克隆速度：
+本仓库使用了 [Git LFS](https://git-lfs.github.com) 来存储题目的测试数据。
+
+![](https://arina.loli.net/2022/07/12/Dv8t2bcr1G9fyBT.png)
+
+▲ 在 [GitSB](https://git.sb/baoshuo/OI-codes) 上可以使用「Download this directory」选项下载某道题的所有测试数据。
+
+![](https://arina.loli.net/2022/07/12/9gN2tKMqUVIO5iY.png)
+
+▲ 在 [GitMac](https://git.m.ac/baoshuo/OI-codes) 上可以直接预览存储在 LFS 中的文件内容。
+
+---
+
+在克隆仓库前请先安装 Git LFS，并使用如下命令以获得更快的克隆速度：
 
 ```bash
 git lfs clone https://git.sb/baoshuo/OI-codes.git
