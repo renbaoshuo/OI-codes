@@ -1,6 +1,4 @@
 #include <iostream>
-#include <algorithm>
-#include <cstdlib>
 #include <stack>
 
 using std::cin;
@@ -9,171 +7,158 @@ const char endl = '\n';
 
 const int N = 1e5 + 5;
 
-// Link-Cut Tree
 class LinkCutTree {
   private:
-    std::stack<bool> st;
-
     struct node {
-        int p,  // 父亲节点
-            l,  // 左儿子
-            r;  // 右儿子
-        int pre;
-        int val,   // 节点值
-            sum;   // 异或和
-        int key;   // 权值
-        bool rev;  // 翻转标记
+        size_t l, r, f;
+        unsigned v, s;
+        bool rev;
 
         node()
-            : p(0), l(0), r(0), pre(0), val(0), sum(0), key(rand()), rev(false) {}
+            : l(0), r(0), f(0), s(0), v(0), rev(false) {}
+
+        node(unsigned _v, size_t _f)
+            : l(0), r(0), f(_f), s(_v), v(_v), rev(false) {}
+
+        size_t &child(unsigned x) {
+            return !x ? l : r;
+        }
     } tr[N];
 
-    void pushup(int u) {
-        // 计算异或和
-        tr[u].sum = tr[tr[u].l].sum ^ tr[u].val ^ tr[tr[u].r].sum;
-
-        // 标记父亲节点
-        if (tr[u].l) tr[tr[u].l].p = u;
-        if (tr[u].r) tr[tr[u].r].p = u;
+    inline void pushup(size_t u) {
+        tr[u].s = tr[tr[u].l].s ^ tr[u].v ^ tr[tr[u].r].s;
     }
 
-    void pushdown(int u) {
+    inline void pushdown(const size_t &u) {
         if (!tr[u].rev) return;
 
-        tr[u].rev = false;
         std::swap(tr[u].l, tr[u].r);
-        tr[tr[u].l].rev ^= 1;
-        tr[tr[u].r].rev ^= 1;
+        tr[tr[u].l].rev = !tr[tr[u].l].rev;
+        tr[tr[u].r].rev = !tr[tr[u].r].rev;
+        tr[u].rev = false;
     }
 
-    std::pair<int, int> split(int u) {
-        if (st.empty()) {
-            pushdown(u);
-            auto t = std::make_pair(u, tr[u].r);
-            tr[u].r = 0;
-            pushup(u);
+    unsigned relation(const size_t &u) {
+        return u == tr[tr[u].f].l ? 0 : 1;
+    }
 
-            return t;
+    bool isRoot(const size_t &u) {
+        return tr[tr[u].f].l != u && tr[tr[u].f].r != u;
+    }
+
+    void rotate(size_t u) {
+        size_t p = tr[u].f;
+        unsigned x = relation(u);
+
+        if (!isRoot(p)) {
+            tr[tr[p].f].child(relation(p)) = u;
         }
+        tr[u].f = tr[p].f;
 
-        bool d = st.top() ^ tr[u].rev;
-        st.pop();
-
-        pushdown(u);
-
-        if (d) {
-            auto t = split(tr[u].l);
-            tr[u].l = t.second;
-            pushup(u);
-
-            return std::make_pair(t.first, u);
+        if (tr[u].child(x ^ 1)) {
+            tr[tr[u].child(x ^ 1)].f = p;
         }
+        tr[p].child(x) = tr[u].child(x ^ 1);
 
-        auto t = split(tr[u].r);
-        tr[u].r = t.first;
+        tr[u].child(x ^ 1) = p;
+        tr[p].f = u;
+
+        pushup(p);
         pushup(u);
-
-        return std::make_pair(u, t.second);
     }
 
-    // 合并
-    int merge(int x, int y) {
-        if (!x || !y) return x | y;
+    void splay(size_t u) {
+        std::stack<size_t> st;
 
-        if (tr[x].key < tr[y].key) {
-            pushdown(x);
-            tr[x].r = merge(tr[x].r, y);
-            pushup(x);
-            return x;
+        size_t cur = u;
+        st.push(cur);
+        while (!isRoot(cur)) {
+            st.push(tr[cur].f);
+            cur = tr[cur].f;
         }
 
-        pushdown(y);
-        tr[y].l = merge(x, tr[y].l);
-        pushup(y);
-        return y;
-    }
+        while (!st.empty()) {
+            pushdown(st.top());
+            st.pop();
+        }
 
-    // 是否是根节点
-    bool isRoot(int u) {
-        return !tr[u].p || (tr[tr[u].p].l != u && tr[tr[u].p].r != u);
-    }
-
-    // 查找根节点
-    int findRoot(int u) {
-        while (!st.empty()) st.pop();
         while (!isRoot(u)) {
-            // pushdown(u);
-            st.push(tr[tr[u].p].l == u);
-            u = tr[u].p;
+            if (isRoot(tr[u].f)) {
+                rotate(u);
+            } else if (relation(u) == relation(tr[u].f)) {
+                rotate(tr[u].f);
+                rotate(u);
+            } else {
+                rotate(u);
+                rotate(u);
+            }
         }
-        return u;
     }
 
-    int findLeft(int u) {
-        u = findRoot(u);
-        pushdown(u);
+    void access(size_t u) {
+        for (size_t f = 0; u; u = tr[f = u].f) {
+            splay(u);
+            tr[u].r = f;
+            pushup(u);
+        }
+    }
+
+    void makeRoot(const size_t &u) {
+        access(u);
+        splay(u);
+        tr[u].rev = !tr[u].rev;
+    }
+
+    size_t findRoot(size_t u) {
+        access(u);
+        splay(u);
+
         while (tr[u].l) {
             u = tr[u].l;
-            pushdown(u);
         }
+
         return u;
     }
 
-    int access(int u) {
-        int lst = 0;
-
-        while (u) {
-            auto t = split(findRoot(u));
-            tr[findLeft(lst)].pre = 0;
-            lst = merge(t.first, lst);
-            tr[findLeft(t.second)].pre = u;
-            u = tr[findLeft(lst)].pre;
-        }
-
-        return lst;
-    }
-
-    void makeRoot(int u) {
-        tr[access(u)].rev ^= 1;
+    void split(const size_t &x, const size_t &y) {
+        makeRoot(x);
+        access(y);
+        splay(y);
     }
 
   public:
-    int getRoot(int u) {
-        return findLeft(access(u));
+    void set(int p, int v) {
+        tr[p].s = tr[p].v = v;
     }
 
-    void link(int x, int y) {
+    unsigned query(int x, int y) {
+        split(x, y);
+
+        return tr[y].s;
+    }
+
+    void link(const int &x, const int &y) {
         makeRoot(x);
-        tr[x].pre = y;
+
+        if (findRoot(y) != x) {
+            tr[x].f = y;
+        }
     }
 
     void cut(int x, int y) {
-        makeRoot(x);
-        access(y);
-        access(x);
-        tr[y].pre = 0;
+        split(x, y);
+
+        if (tr[y].l == x) {
+            tr[y].l = 0;
+            tr[x].f = 0;
+        }
     }
 
-    int query(int x, int y) {
-        makeRoot(x);
-        access(y);
-
-        auto t = split(findRoot(y));
-        int res = tr[t.first].sum;
-        merge(t.first, t.second);
-
-        return res;
-    }
-
-    void change(int u, int val) {
-        makeRoot(u);
-        auto t = split(findRoot(u));
-        tr[u].val = val;
-        merge(t.first, t.second);
-    }
-
-    void set(int u, int val) {
-        tr[u].sum = tr[u].val = val;
+    void change(int p, int v) {
+        access(p);
+        splay(p);
+        tr[p].v = v;
+        pushup(p);
     }
 } lct;
 
@@ -203,9 +188,7 @@ int main() {
                 break;
             }
             case 1: {
-                if (lct.getRoot(x) != lct.getRoot(y)) {
-                    lct.link(x, y);
-                }
+                lct.link(x, y);
 
                 break;
             }
