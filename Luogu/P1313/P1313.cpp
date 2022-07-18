@@ -1,4 +1,6 @@
 #include <iostream>
+#include <array>
+#include <type_traits>
 
 using std::cin;
 using std::cout;
@@ -7,8 +9,57 @@ const char endl = '\n';
 const int N = 1005;
 const int mod = 1e4 + 7;
 
+template <int x>
+using number = std::integral_constant<int, x>;
+
+template <int n>
+struct factorial : number<static_cast<long long>(n) * factorial<n - 1>::value % mod> {};
+
+template <>
+struct factorial<0> : number<1> {};
+
+template <int... S>
+constexpr std::array<int, sizeof...(S)> get_factorial_table_impl(std::integer_sequence<int, S...>) {
+    return {factorial<S>::value...};
+}
+
+template <int S>
+constexpr auto get_factorial_table() {
+    return get_factorial_table_impl(std::make_integer_sequence<int, S>{});
+}
+
+template <int n>
+struct inverse : number<static_cast<long long>(mod - (mod / n)) * inverse<mod % n>::value % mod> {};
+
+template <>
+struct inverse<1> : number<1> {};
+
+template <>
+struct inverse<0> : number<1> {};
+
+template <int n>
+struct factorial_inverse : number<static_cast<long long>(factorial_inverse<n - 1>::value) * inverse<n>::value % mod> {};
+
+template <>
+struct factorial_inverse<1> : number<1> {};
+
+template <>
+struct factorial_inverse<0> : number<1> {};
+
+template <int... S>
+constexpr std::array<int, sizeof...(S)> get_factorial_inverse_table_impl(std::integer_sequence<int, S...>) {
+    return {factorial_inverse<S>::value...};
+}
+
+template <int S>
+constexpr auto get_factorial_inverse_table() {
+    return get_factorial_inverse_table_impl(std::make_integer_sequence<int, S>{});
+}
+
 int a, b, k, n, m;
-int fac[N], inv[N];
+
+constexpr auto fac = get_factorial_table<N>(),
+               inv = get_factorial_inverse_table<N>();
 
 int binpow(int a, int b) {
     int res = 1;
@@ -28,20 +79,6 @@ inline int C(int n, int m) {
 int main() {
     std::ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
-    fac[0] = 1;
-    for (int i = 1; i <= 1000; i++) {
-        fac[i] = 1ll * fac[i - 1] * i % mod;
-    }
-
-    inv[0] = inv[1] = 1;
-    for (int i = 2; i <= 1000; i++) {
-        inv[i] = static_cast<long long>(mod - (mod / i)) * inv[mod % i] % mod;
-    }
-
-    for (int i = 2; i <= 1000; i++) {
-        inv[i] = static_cast<long long>(inv[i - 1]) * inv[i] % mod;
-    }
 
     cin >> a >> b >> k >> n >> m;
 
