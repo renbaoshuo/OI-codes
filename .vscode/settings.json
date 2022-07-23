@@ -14,6 +14,7 @@
     },
     "git.ignoredRepositories": [
         "./includes/testlib",
-        "./includes/ac-library"
+        "./includes/ac-library",
+        "./includes/ac-library/*"
     ],
 }
