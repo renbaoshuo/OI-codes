@@ -12,4 +12,8 @@
         "typescript": "ts-node $fileName",
         "rust": "rustc $fileName -o $fileNameWithoutExt.exe && ./$fileNameWithoutExt.exe"
     },
+    "git.ignoredRepositories": [
+        "./includes/testlib",
+        "./includes/ac-library"
+    ],
 }
