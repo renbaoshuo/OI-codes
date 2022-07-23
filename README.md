@@ -62,6 +62,13 @@ GIT_LFS_SKIP_SMUDGE=1 git clone https://git.sb/baoshuo/OI-codes.git --recursive
 git lfs pull
 ```
 
+## 子模块
+
+本仓库包含了以下子模块：
+
+- [MikeMirzayanov/testlib](https://github.com/MikeMirzayanov/testlib)
+- [atcoder/ac-library](https://github.com/atcoder/ac-library)
+
 ## 文件目录结构
 
 | 文件夹                                | 测评系统                                                                                                                                              | 账号                                                               | 说明                                |
