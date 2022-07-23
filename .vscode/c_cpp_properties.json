@@ -42,7 +42,8 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/includes/testlib/**",
+                "${workspaceFolder}/includes/ac-library/**"
             ],
             "defines": [
                 "_DEBUG",

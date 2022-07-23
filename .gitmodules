@@ -1,3 +1,6 @@
 [submodule "includes/testlib"]
 	path = includes/testlib
 	url = https://github.com/MikeMirzayanov/testlib.git
+[submodule "includes/ac-library"]
+	path = includes/ac-library
+	url = https://github.com/atcoder/ac-library.git
