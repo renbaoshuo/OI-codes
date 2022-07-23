@@ -47,13 +47,13 @@
 在克隆仓库前请先安装 Git LFS，并使用如下命令以获得更快的克隆速度：
 
 ```bash
-git lfs clone https://git.sb/baoshuo/OI-codes.git
+git lfs clone https://git.sb/baoshuo/OI-codes.git --recursive
 ```
 
 如果克隆仓库时不需要拉取测试数据，可以使用以下命令：
 
 ```bash
-GIT_LFS_SKIP_SMUDGE=1 git clone https://git.sb/baoshuo/OI-codes.git
+GIT_LFS_SKIP_SMUDGE=1 git clone https://git.sb/baoshuo/OI-codes.git --recursive
 ```
 
 后期如果希望再次拉取测试数据，可以使用以下命令：
