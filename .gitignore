@@ -34,8 +34,10 @@
 *.app
 
 # Data
-!*/data/*
-!**/data/*
+!**/data/**/*
+
+# Sample
+!**/sample/**/*
 
 # tempCodeRunnerFile
 temp/**
