@@ -38,6 +38,7 @@
 
 # Sample
 !**/sample/**/*
+!**/samples/**/*
 
 # tempCodeRunnerFile
 temp/**
