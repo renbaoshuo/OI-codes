@@ -1,22 +1,3 @@
-#include <iostream>
-
-#include "testlib.h"
-
-using namespace std;
-
-int main(int argc, char* argv[]) {
-    setName("Interactor A+B");
-    registerInteraction(argc, argv);
-
-    // reads number of queries from test (input) file
-    int a = inf.readInt();
-    int b = inf.readInt();
-    // writes query to the solution, endl makes flush
-    cout << a << " " << b << endl;
-    int ans;
-    cin >> ans;
-    if (a + b == ans)
-        quitf(_ok, "!");
-    else
-        quitf(_wa, "?");
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:0d3cc760b26d5e5b0adabe60421bb05ed9e1e7d18cf383069b2d15e2ec5769e8
+size 500

@@ -1,23 +1,3 @@
-/**
- * @file checker.cpp
- * @author Macesuted (i@macesuted.moe)
- * @date 2021-10-28
- * 
- * @copyright Copyright (c) 2021
- * 
- */
-
-#include <bits/stdc++.h>
-
-#include "testlib.h"
-
-using namespace std;
-
-int main(int argc, char* argv[]) {
-    registerTestlibCmd(argc, argv);
-    int n = inf.readInt();
-    for (int i = 1; i <= n; i++)
-        if (ouf.readInt() != i)
-            quitf(_wa, "Wrong Answer.");
-    quit(_ok, "Accepted!");
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:5597f2c51f71365844ae7e8b26e36705fcb75bec46d678406669c3978e4e8364
+size 434

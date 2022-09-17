@@ -1,28 +1,3 @@
-#include <iostream>
-#include <vector>
-
-int get_num()
-{
-    std::cout << "get_num" << std::endl << std::flush;
-    int ret;
-    std::cin >> ret;
-    return ret;
-}
-
-int guess(int index, int x)
-{
-    std::cout << "guess " << index << " " << x << std::endl << std::flush;
-    int ret;
-    std::cin >> ret;
-    return ret;
-}
-
-void submit(const std::vector<int> &result)
-{
-    std::cout << "submit ";
-    for (std::vector<int>::const_iterator iter = result.begin(); iter != result.end(); iter++)
-    {
-        std::cout << *iter << " ";
-    }
-    std::cout << std::endl << std::flush;
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:e34a20a5a4ca94851c067a99bc0348d2ea49c799b572cd3f2a27474fdd1353cb
+size 581

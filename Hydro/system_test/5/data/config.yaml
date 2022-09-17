@@ -1,4 +1,3 @@
-type: interactive
-time: 100ms
-memory: 64m
-interactor: interactor.cc
+version https://git-lfs.github.com/spec/v1
+oid sha256:cb97ec22604228618b5d5801bceb24ba0108d54f0832d25961cf174038468b00
+size 68

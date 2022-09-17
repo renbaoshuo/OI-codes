@@ -1,16 +1,3 @@
-@echo off
-if "%1"=="" goto loop
-echo TEST
-echo Test%1
-copy stars%1.in stars.in >nul
-time <enter
-stars
-time <enter
-fc stars%1.out stars.out
-pause
-del stars.in
-del stars.out
-goto end
-:loop
-  for %%i in (1 2 3 4 5 6 7 8 9 10) do call %0 %%i
-:end
+version https://git-lfs.github.com/spec/v1
+oid sha256:9dbf7c2f74845b3217981f4bd558e2055d8da1bc30e7fb0a265d807d68ebe4ad
+size 257

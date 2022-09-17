@@ -1,24 +1,3 @@
-type: default
-
-filename: null
-
-checker_type: testlib
-checker: spj.cc
-
-user_extra_files:
-  - coin.h
-
-time: 100ms
-memory: 256m
-
-cases:
-  - input: data1.in
-  - input: data2.in
-  - input: data3.in
-  - input: data4.in
-  - input: data5.in
-  - input: data6.in
-  - input: data7.in
-  - input: data8.in
-  - input: data9.in
-  - input: data10.in
+version https://git-lfs.github.com/spec/v1
+oid sha256:85eb720e133589c80338febae8bff1002243ed19435f4da0741b19bfbc6bdb9f
+size 334
