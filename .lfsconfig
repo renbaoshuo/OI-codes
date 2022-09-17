@@ -1,2 +1,3 @@
 [lfs]
-	url = https://git.sb/baoshuo/OI-codes.git/info/lfs
+	url = https://git.m.ac/baoshuo/OI-codes.git/info/lfs
+	pushurl = https://git.sb/baoshuo/OI-codes.git/info/lfs
