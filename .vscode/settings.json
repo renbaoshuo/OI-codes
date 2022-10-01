@@ -5,7 +5,7 @@
     "code-runner.runInTerminal": true,
     "code-runner.executorMap": {
         "c": "gcc $fileName -o $fileNameWithoutExt.exe -O2 -lm && ./$fileNameWithoutExt.exe",
-        "cpp": "g++ --std=c++14 $fileName -o $fileNameWithoutExt.exe -O2 -lm -I \"$(git rev-parse --show-toplevel)/includes/testlib\" -I \"$(git rev-parse --show-toplevel)/includes/ac-library\" -fsanitize=address,undefined -fno-ms-extensions -Wall && ./$fileNameWithoutExt.exe",
+        "cpp": "g++ --std=c++14 $fileName -o $fileNameWithoutExt.exe -O2 -lm -I \"$(git rev-parse --show-toplevel)/includes/testlib\" -I \"$(git rev-parse --show-toplevel)/includes/ac-library\" -fsanitize=address,undefined -fno-ms-extensions -Wall -Wno-unused-result && ./$fileNameWithoutExt.exe",
         "python": "python -u $fileName",
         "go": "go run $fileName",
         "javascript": "node $fileName",
