@@ -1,24 +1,39 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <cmath>
 
-using namespace std;
+using std::cin;
+using std::cout;
+const char endl = '\n';
 
-int n, m, l, r, k, t, f[100005][25];
+const int N = 1e5 + 5;
+
+int n, m, k, t, f[N][25];
 
 int main() {
-    scanf("%d%d", &n, &m);
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> n >> m;
+
     for (int i = 1; i <= n; i++) {
-        scanf("%d", &f[i][0]);
+        cin >> f[i][0];
     }
-    t = log(n) / log(2) + 1;
-    for (int i = 1; i < t; i++) {
+
+    t = std::__lg(n);
+    for (int i = 1; i <= t; i++) {
         for (int j = 1; j <= n - (1 << i) + 1; j++) {
-            f[j][i] = max(f[j][i - 1], f[j + (1 << i - 1)][i - 1]);
+            f[j][i] = std::max(f[j][i - 1], f[j + (1 << i - 1)][i - 1]);
         }
     }
-    for (int i = 1; i <= m; i++) {
-        scanf("%d%d", &l, &r);
-        k = log(r - l + 1) / log(2);
-        printf("%d\n", max(f[l][k], f[r - (1 << k) + 1][k]));
+
+    for (int i = 1, l, r; i <= m; i++) {
+        cin >> l >> r;
+
+        k = std::__lg(r - l + 1);
+
+        cout << std::max(f[l][k], f[r - (1 << k) + 1][k]) << endl;
     }
+
     return 0;
 }
