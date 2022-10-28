@@ -1,43 +1,71 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <limits>
+#include <queue>
+#include <utility>
+#include <vector>
 
-using namespace std;
+using std::cin;
+using std::cout;
+const char endl = '\n';
 
-int n, m, s, u, v, w, dist[200005];
-vector<pair<int, int>> g[200005];
-bool st[200005];
+const int N = 1e5 + 5;
 
-void dijkstra() {
-    memset(dist, 0x3f, sizeof(dist));
+int n, m, s;
+long long dist[N];
+std::vector<std::pair<int, long long>> g[N];
+bool vis[N];
+
+void spfa() {
+    std::fill_n(dist, N, std::numeric_limits<int>::max());
+
+    std::queue<int> q;
+
+    q.emplace(s);
     dist[s] = 0;
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
-    q.push(make_pair(0, s));
+    vis[s] = true;
+
     while (!q.empty()) {
-        auto t = q.top();
+        int u = q.front();
         q.pop();
-        int tw = t.second;
-        int td = t.first;
-        if (st[tw]) continue;
-        for (auto i : g[tw]) {
-            int j = i.first;
-            if (dist[j] > td + i.second) {
-                dist[j] = td + i.second;
-                q.push(make_pair(dist[j], j));
+
+        vis[u] = false;
+
+        for (auto e : g[u]) {
+            int v = e.first;
+            long long w = e.second;
+
+            if (dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+
+                if (!vis[v]) {
+                    vis[v] = true;
+                    q.emplace(v);
+                }
             }
         }
-        st[tw] = true;
     }
 }
 
 int main() {
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     cin >> n >> m >> s;
-    for (int i = 1; i <= m; i++) {
+
+    for (int i = 1, u, v, w; i <= m; i++) {
         cin >> u >> v >> w;
-        g[u].push_back(make_pair(v, w));
+
+        g[u].emplace_back(v, w);
     }
-    dijkstra();
+
+    spfa();
+
     for (int i = 1; i <= n; i++) {
-        cout << (dist[i] == 0x3f3f3f3f ? INT_MAX : dist[i]) << ' ';
+        cout << dist[i] << ' ';
     }
+
     cout << endl;
+
     return 0;
 }
