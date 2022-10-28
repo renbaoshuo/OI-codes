@@ -1,38 +1,70 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <utility>
+#include <vector>
 
-using namespace std;
+using std::cin;
+using std::cout;
+const char endl = '\n';
 
-int n, m, u, v, w, dist[100005];
-vector<pair<int, int>> g[100005];
+const int N = 1e5 + 5;
+const int INF = 0x3f3f3f3f;
+
+int n, m, dist[N];
+std::vector<std::pair<int, int>> g[N];
+bool vis[N];
 
 void spfa() {
-    memset(dist, 0x3f, sizeof(dist));
+    std::fill_n(dist, N, INF);
+
+    std::queue<int> q;
+
+    q.emplace(1);
     dist[1] = 0;
-    queue<int> q;
-    q.push(1);
+    vis[1] = true;
+
     while (!q.empty()) {
-        int t = q.front();
+        int u = q.front();
         q.pop();
-        for (auto i : g[t]) {
-            if (dist[i.first] > dist[t] + i.second) {
-                dist[i.first] = dist[t] + i.second;
-                q.push(i.first);
+
+        vis[u] = false;
+
+        for (auto e : g[u]) {
+            int v = e.first,
+                w = e.second;
+
+            if (dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+
+                if (!vis[v]) {
+                    vis[v] = true;
+                    q.emplace(v);
+                }
             }
         }
     }
 }
 
 int main() {
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     cin >> n >> m;
-    for (int i = 0; i < m; i++) {
+
+    for (int i = 1, u, v, w; i <= m; i++) {
         cin >> u >> v >> w;
-        g[u].push_back(make_pair(v, w));
+
+        g[u].emplace_back(v, w);
     }
+
     spfa();
-    if (dist[n] == 0x3f3f3f3f) {
+
+    if (dist[n] == INF) {
         cout << "impossible" << endl;
     } else {
         cout << dist[n] << endl;
     }
+
     return 0;
 }
