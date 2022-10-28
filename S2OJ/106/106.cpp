@@ -1,41 +1,68 @@
-#pragma GCC optimize("Ofast")
+#include <iostream>
+#include <algorithm>
+#include <functional>
+#include <queue>
+#include <utility>
+#include <vector>
 
-#include <bits/stdc++.h>
+using std::cin;
+using std::cout;
+const char endl = '\n';
 
-using namespace std;
+const int N = 1e5 + 5;
+const int INF = 0x3f3f3f3f;
 
-int n, m, s, t, u, v, w, dist[2505];
-vector<pair<int, int>> g[2505];
-bool vis[2505];
+int n, m, s, t, dist[N];
+std::vector<std::pair<int, int>> g[N];
+bool vis[N];
 
 void dijkstra() {
-    memset(dist, 0x3f, sizeof(dist));
+    std::fill_n(dist, N, INF);
+
+    std::priority_queue<
+        std::pair<int, int>,
+        std::vector<std::pair<int, int>>,
+        std::greater<std::pair<int, int>>>
+        q;
+
+    q.emplace(0, s);
     dist[s] = 0;
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
-    q.push(make_pair(0, s));
+
     while (!q.empty()) {
-        auto t = q.top();
+        auto u = q.top().second;
         q.pop();
-        if (vis[t.second]) continue;
-        for (auto i : g[t.second]) {
-            if (dist[i.first] > i.second + t.first) {
-                dist[i.first] = i.second + t.first;
-                q.push(make_pair(dist[i.first], i.first));
+
+        if (vis[u]) continue;
+        vis[u] = true;
+
+        for (auto e : g[u]) {
+            int v = e.first,
+                w = e.second;
+
+            if (dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+                q.emplace(dist[v], v);
             }
         }
-        vis[t.second] = true;
     }
 }
 
 int main() {
     std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     cin >> n >> m >> s >> t;
-    for (int i = 0; i < m; i++) {
+
+    for (int i = 1, u, v, w; i <= m; i++) {
         cin >> u >> v >> w;
-        g[u].push_back(make_pair(v, w));
-        g[v].push_back(make_pair(u, w));
+
+        g[u].emplace_back(v, w);
+        g[v].emplace_back(u, w);
     }
+
     dijkstra();
+
     cout << dist[t] << endl;
+
     return 0;
 }
