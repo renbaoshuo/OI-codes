@@ -1,60 +1,87 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <vector>
 
-using namespace std;
+using std::cin;
+using std::cout;
+const char endl = '\n';
 
-int n, m, s, root, a, b, dep[500005], fa[500005][20];
-vector<int> tr[500005];
+const int N = 5e5 + 5;
+const int INF = 0x3f3f3f3f;
 
-void bfs(int root) {
-    memset(dep, 0x3f, sizeof(dep));
+int n, m, s, dep[N], fa[N][25];
+std::vector<int> g[N];
+
+void bfs(int s) {
+    std::fill_n(dep, N, INF);
+
+    std::queue<int> q;
+    q.emplace(s);
     dep[0] = 0;
-    dep[root] = 1;
-    queue<int> q;
-    q.push(root);
+    dep[s] = 1;
+
     while (!q.empty()) {
-        int t = q.front();
+        int u = q.front();
         q.pop();
-        for (int i : tr[t]) {
-            if (dep[i] > dep[t] + 1) {
-                dep[i] = dep[t] + 1;
-                q.push(i);
-                fa[i][0] = t;
+
+        for (int v : g[u]) {
+            if (dep[v] > dep[u] + 1) {
+                dep[v] = dep[u] + 1;
+                q.emplace(v);
+                fa[v][0] = u;
+
                 for (int k = 1; k <= 19; k++) {
-                    fa[i][k] = fa[fa[i][k - 1]][k - 1];
+                    fa[v][k] = fa[fa[v][k - 1]][k - 1];
                 }
             }
         }
     }
 }
 
-int lca(int a, int b) {
-    if (dep[a] < dep[b]) swap(a, b);
+int lca(int x, int y) {
+    if (dep[x] < dep[y]) std::swap(x, y);
+
     for (int k = 19; k >= 0; k--) {
-        if (dep[fa[a][k]] >= dep[b]) {
-            a = fa[a][k];
+        if (dep[fa[x][k]] >= dep[y]) {
+            x = fa[x][k];
         }
     }
-    if (a == b) return a;
+
+    if (x == y) return x;
+
     for (int k = 19; k >= 0; k--) {
-        if (fa[a][k] != fa[b][k]) {
-            a = fa[a][k];
-            b = fa[b][k];
+        if (fa[x][k] != fa[y][k]) {
+            x = fa[x][k];
+            y = fa[y][k];
         }
     }
-    return fa[a][0];
+
+    return fa[x][0];
 }
 
 int main() {
-    cin >> n >> m >> root;
-    for (int i = 1; i < n; i++) {
-        cin >> a >> b;
-        tr[a].push_back(b);
-        tr[b].push_back(a);
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> n >> m >> s;
+
+    for (int i = 1, u, v; i < n; i++) {
+        cin >> u >> v;
+
+        g[u].emplace_back(v);
+        g[v].emplace_back(u);
     }
-    bfs(root);
-    for (int i = 0; i < m; i++) {
+
+    bfs(s);
+
+    while (m--) {
+        int a, b;
+
         cin >> a >> b;
+
         cout << lca(a, b) << endl;
     }
+
     return 0;
 }
