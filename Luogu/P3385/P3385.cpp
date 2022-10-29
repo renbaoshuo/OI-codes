@@ -1,51 +1,79 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <utility>
+#include <vector>
 
-using namespace std;
+using std::cin;
+using std::cout;
+const char endl = '\n';
 
-int t, n, m, u, v, w, cnt, dist[2005];
-bool flag;
+const int N = 2e3 + 5;
+const int INF = 0X3f3f3f3f;
 
-struct node {
-    int u, v, w;
+int t, n, m, dist[N], cnt[N];
+std::vector<std::pair<int, int>> g[N];
+bool vis[N];
 
-    node() {
-        u = v = w = 0;
+bool spfa() {
+    std::fill_n(cnt, N, 0);
+    std::fill_n(vis, N, false);
+    std::fill_n(dist, N, INF);
+
+    std::queue<int> q;
+
+    q.emplace(1);
+    dist[1] = 0;
+    vis[1] = true;
+
+    while (!q.empty()) {
+        int u = q.front();
+        q.pop();
+
+        vis[u] = false;
+
+        for (auto e : g[u]) {
+            int v = e.first,
+                w = e.second;
+
+            if (dist[v] > dist[u] + w) {
+                dist[v] = dist[u] + w;
+
+                if (!vis[v]) {
+                    cnt[v] = cnt[u] + 1;
+                    if (cnt[v] >= n) return false;
+                    vis[v] = true;
+                    q.emplace(v);
+                }
+            }
+        }
     }
 
-    node(int _u, int _v, int _w) {
-        u = _u;
-        v = _v;
-        w = _w;
-    }
-} g[6005];
+    return true;
+}
 
 int main() {
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     cin >> t;
+
     while (t--) {
-        cnt = 0;
-        flag = false;
-        memset(g, 0x00, sizeof(g));
-        memset(dist, 0x3f, sizeof(dist));
         cin >> n >> m;
-        for (int i = 1; i <= m; i++) {
+
+        for (int i = 1, u, v, w; i <= m; i++) {
             cin >> u >> v >> w;
-            g[++cnt] = node(u, v, w);
-            if (w >= 0) g[++cnt] = node(v, u, w);
+
+            g[u].emplace_back(v, w);
+            if (w >= 0) g[v].emplace_back(u, w);
         }
-        dist[1] = 0;
+
+        cout << (!spfa() ? "YES" : "NO") << endl;
+
         for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= cnt; j++) {
-                if (dist[g[j].u] == 0x3f3f3f3f) continue;
-                dist[g[j].v] = min(dist[g[j].v], dist[g[j].u] + g[j].w);
-            }
+            g[i].clear();
         }
-        for (int i = 1; i <= cnt; i++) {
-            if (dist[g[i].u] == 0x3f3f3f3f || dist[g[i].v] == 0x3f3f3f3f) continue;
-            if (dist[g[i].v] > dist[g[i].u] + g[i].w) {
-                flag = true;
-            }
-        }
-        cout << (flag ? "YES" : "NO") << endl;
     }
+
     return 0;
 }
