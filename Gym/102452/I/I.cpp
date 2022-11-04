@@ -1,7 +1,6 @@
 #include <iostream>
 #include <cmath>
 #include <functional>
-#include <queue>
 #include <set>
 #include <utility>
 #include <vector>
@@ -14,12 +13,8 @@ const int N = 2e5 + 5;
 
 int n, m, lst, cnt;
 long long a[N], b[N];
-std::priority_queue<
-    std::pair<long long, int>,
-    std::vector<std::pair<long long, int>>,
-    std::greater<std::pair<long long, int>>>
-    q[N];
-std::vector<int> ids[N];
+std::set<std::pair<long long, int>> q[N];
+std::vector<std::pair<int, std::set<std::pair<long long, int>>::iterator>> ids[N];
 
 int main() {
     std::ios::sync_with_stdio(false);
@@ -43,9 +38,9 @@ int main() {
             for (int i = 1, x; i <= k; i++) {
                 cin >> x;
 
-                ids[cnt].emplace_back(x ^= lst);
+                x ^= lst;
+                ids[cnt].emplace_back(x, q[x].emplace(b[x] + v, cnt).first);
                 a[cnt] += b[x];
-                q[x].emplace(b[x] + v, cnt);
             }
         } else {  // op == 2
             int x, y;
@@ -55,25 +50,23 @@ int main() {
 
             b[x ^= lst] += y ^= lst;
 
-            while (!q[x].empty() && q[x].top().first <= b[x]) {
-                int id = q[x].top().second;
-                q[x].pop();
-
-                if (!a[id]) continue;
+            while (!q[x].empty() && q[x].begin()->first <= b[x]) {
+                int id = q[x].begin()->second;
 
                 long long rest = a[id];
-                for (int p : ids[id]) {
-                    rest -= b[p];
+                for (auto o : ids[id]) {
+                    rest -= b[o.first];
+                    q[o.first].erase(o.second);
                 }
 
                 if (rest <= 0) {
                     ans.emplace(id);
-                    a[id] = 0;
+                    ids[id].clear();
                 } else {
                     int v = std::ceil(static_cast<double>(rest) / ids[id].size());
 
-                    for (int p : ids[id]) {
-                        q[p].emplace(b[p] + v, id);
+                    for (auto &o : ids[id]) {
+                        o.second = q[o.first].emplace(b[o.first] + v, id).first;
                     }
                 }
             }
