@@ -1,91 +1,60 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
-using namespace std;
+using std::cin;
+using std::cout;
+const char endl = '\n';
 
-struct node {
-    int l, r;
-    int d;
-    long long s;
+const int N = 5e5 + 5;
 
-    node() {
-        l = r = 0;
-        d = 0;
-        s = 0;
-    }
+int n, m, c[N];
 
-    node(int _l, int _r) {
-        l = _l;
-        r = _r;
-        s = 0;
-        d = 0;
-    }
-} tr[500005 << 2];
-
-int n, m, op, x, y, k, a[500005];
-
-void pushup(int u) {
-    tr[u].s = tr[u << 1].s + tr[u << 1 | 1].s;
+int lowbit(int x) {
+    return x & -x;
 }
 
-void pushdown(int u) {
-    tr[u << 1].d += tr[u].d;
-    tr[u << 1].s += (tr[u << 1].r - tr[u << 1].l + 1) * tr[u].d;
-    tr[u << 1 | 1].d += tr[u].d;
-    tr[u << 1 | 1].s += (tr[u << 1 | 1].r - tr[u << 1 | 1].l + 1) * tr[u].d;
-    tr[u].d = 0;
+void add(int x, int y) {
+    for (; x <= n; x += lowbit(x)) c[x] += y;
 }
 
-void build(int u, int l, int r) {
-    tr[u] = node(l, r);
-    if (l == r) {
-        tr[u].s = a[l];
-        return;
-    }
-    int mid = l + r >> 1;
-    build(u << 1, l, mid);
-    build(u << 1 | 1, mid + 1, r);
-    pushup(u);
-}
-
-long long query(int u, int l, int r) {
-    if (tr[u].l >= l && tr[u].r <= r) {
-        return tr[u].s;
-    }
-    int mid = tr[u].l + tr[u].r >> 1;
-    long long s = 0;
-    pushdown(u);
-    if (l <= mid) s += query(u << 1, l, r);
-    if (r > mid) s += query(u << 1 | 1, l, r);
-    return s;
-}
-
-void modify(int u, int l, int r, int d) {
-    if (tr[u].l >= l && tr[u].r <= r) {
-        tr[u].d += d;
-        tr[u].s += (tr[u].r - tr[u].l + 1) * d;
-        return;
-    }
-    int mid = tr[u].l + tr[u].r >> 1;
-    pushdown(u);
-    if (l <= mid) modify(u << 1, l, r, d);
-    if (r > mid) modify(u << 1 | 1, l, r, d);
-    pushup(u);
+int sum(int x) {
+    int res = 0;
+    for (; x; x -= lowbit(x)) res += c[x];
+    return res;
 }
 
 int main() {
-    scanf("%d%d", &n, &m);
-    for (int i = 1; i <= n; i++) {
-        scanf("%d", &a[i]);
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> n >> m;
+
+    for (int i = 1, x; i <= n; i++) {
+        cin >> x;
+
+        add(i, x);
+        add(i + 1, -x);
     }
-    build(1, 1, n);
+
     while (m--) {
-        scanf("%d%d", &op, &x);
+        int op;
+
+        cin >> op;
+
         if (op == 1) {
-            scanf("%d%d", &y, &k);
-            modify(1, x, y, k);
-        } else if (op == 2) {
-            printf("%d\n", query(1, x, x));
+            int x, y, k;
+
+            cin >> x >> y >> k;
+
+            add(x, k);
+            add(y + 1, -k);
+        } else {  // op == 2
+            int x;
+
+            cin >> x;
+
+            cout << sum(x) << endl;
         }
     }
+
     return 0;
 }
