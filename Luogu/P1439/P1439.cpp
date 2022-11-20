@@ -1,29 +1,42 @@
 #include <iostream>
+#include <algorithm>
 
 using std::cin;
 using std::cout;
-using std::endl;
+const char endl = '\n';
 
-const int N = 10005;
+const int N = 1e5 + 5;
 
-int n, a[N], b[N], f[N][N];
+int n, cnt, a[N], b[N], c[N], p[N], f[N];
 
 int main() {
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     cin >> n;
+
     for (int i = 1; i <= n; i++) {
         cin >> a[i];
+
+        p[a[i]] = i;
     }
+
     for (int i = 1; i <= n; i++) {
         cin >> b[i];
     }
+
     for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
-            f[i][j] = std::max(f[i - 1][j], f[i][j - 1]);
-            if (a[i] == b[j]) {
-                f[i][j] = std::max(f[i][j], f[i - 1][j - 1] + 1);
-            }
+        if (p[b[i]] > c[cnt]) {
+            c[++cnt] = p[b[i]];
+            f[i] = cnt;
+        } else {
+            int k = std::lower_bound(c + 1, c + cnt + 1, p[b[i]]) - c;
+            c[k] = p[b[i]];
+            f[i] = k;
         }
     }
-    cout << f[n][n] << endl;
+
+    cout << cnt << endl;
+
     return 0;
 }
