@@ -2,7 +2,7 @@
 #include <algorithm>
 #include <cmath>
 #include <complex>
-#include <vector>
+#include <valarray>
 
 using std::cin;
 using std::cout;
@@ -10,27 +10,22 @@ const char endl = '\n';
 
 const double PI = std::acos(-1);
 
-void FFT(std::vector<std::complex<double>>& a) {
+void fast_fourier_transform(std::valarray<std::complex<double>>& a) {
     if (a.size() == 1) return;
 
     int m = a.size() >> 1;
-    std::vector<std::complex<double>> a0, a1;
+
+    std::valarray<std::complex<double>>
+        even = a[std::slice(0, m, 2)],
+        odd = a[std::slice(1, m, 2)];
+
+    fast_fourier_transform(even);
+    fast_fourier_transform(odd);
 
     for (int i = 0; i < m; i++) {
-        a0.emplace_back(a[i << 1]);
-        a1.emplace_back(a[i << 1 | 1]);
-    }
-
-    FFT(a0), FFT(a1);
-
-    std::complex<double>
-        w0{std::cos(PI / m), std::sin(PI / m)},
-        w1{1.0, 0.0};
-
-    for (int i = 0; i < m; i++) {
-        a[i] = a0[i] + w1 * a1[i];
-        a[i + m] = a0[i] - w1 * a1[i];
-        w1 *= w0;
+        auto t = std::polar(1.0, -2 * PI * i / a.size()) * odd[i];
+        a[i] = even[i] + t;
+        a[i + m] = even[i] - t;
     }
 }
 
@@ -43,7 +38,7 @@ int main() {
     cin >> n >> m;
 
     int k = 1 << (std::__lg(n + m) + 1);
-    std::vector<std::complex<double>> f(k), g(k);
+    std::valarray<std::complex<double>> f(k), g(k);
 
     for (int i = 0; i <= n; i++) {
         cin >> f[i];
@@ -53,14 +48,15 @@ int main() {
         cin >> g[i];
     }
 
-    FFT(f), FFT(g);
+    fast_fourier_transform(f);
+    fast_fourier_transform(g);
 
     for (int i = 0; i < k; i++) {
         f[i] *= g[i];
     }
 
-    FFT(f);
-    std::reverse(f.begin() + 1, f.end());
+    fast_fourier_transform(f);
+    std::reverse(std::begin(f) + 1, std::end(f));
 
     for (int i = 0; i <= n + m; i++) {
         cout << static_cast<int>(std::round(f[i].real() / k)) << ' ';
