@@ -1,16 +1,28 @@
 #include <iostream>
 #include <algorithm>
-#include <cmath>
-#include <complex>
 #include <valarray>
 
 using std::cin;
 using std::cout;
 const char endl = '\n';
 
-const double PI = std::acos(-1);
+const int mod = 998244353;
 
-void fast_fourier_transform(std::valarray<std::complex<double>>& a) {
+constexpr long long binpow(long long a, long long b) {
+    a %= mod;
+
+    long long res = 1;
+
+    while (b) {
+        if (b & 1) res = res * a % mod;
+        a = a * a % mod;
+        b >>= 1;
+    }
+
+    return res;
+}
+
+void number_theoretic_transform(std::valarray<long long>& a) {
     if (a.size() == 1) return;
 
     // assert(a.size() == 1 << std::__lg(a.size()));
@@ -29,18 +41,20 @@ void fast_fourier_transform(std::valarray<std::complex<double>>& a) {
     }
 
     for (int len = 2; len <= a.size(); len <<= 1) {
-        std::complex<double> wlen(std::cos(2 * PI / len), std::sin(2 * PI / len));
+        int m = len >> 1;
+
+        long long wlen = binpow(3, (mod - 1) / len);
 
         for (int i = 0; i < a.size(); i += len) {
-            std::complex<double> w(1);
+            long long w = 1;
 
-            for (int j = 0; j < len / 2; j++) {
-                std::complex<double> u = a[i + j],
-                                     v = a[i + j + len / 2] * w;
+            for (int j = 0; j < m; j++) {
+                long long u = a[i + j],
+                          v = a[i + j + m] * w % mod;
 
-                a[i + j] = u + v;
-                a[i + j + len / 2] = u - v;
-                w *= wlen;
+                a[i + j] = (u + v) % mod;
+                a[i + j + m] = ((u - v) % mod + mod) % mod;
+                w = w * wlen % mod;
             }
         }
     }
@@ -54,8 +68,9 @@ int main() {
 
     cin >> n >> m;
 
-    int k = 1 << (std::__lg(n + m) + 1);
-    std::valarray<std::complex<double>> f(k), g(k);
+    int k = 1 << (std::__lg(n + m) + 1),
+        inv = binpow(k, mod - 2);
+    std::valarray<long long> f(k), g(k);
 
     for (int i = 0; i <= n; i++) {
         cin >> f[i];
@@ -65,18 +80,18 @@ int main() {
         cin >> g[i];
     }
 
-    fast_fourier_transform(f);
-    fast_fourier_transform(g);
+    number_theoretic_transform(f);
+    number_theoretic_transform(g);
 
     for (int i = 0; i < k; i++) {
         f[i] *= g[i];
     }
 
-    fast_fourier_transform(f);
+    number_theoretic_transform(f);
     std::reverse(std::begin(f) + 1, std::end(f));
 
     for (int i = 0; i <= n + m; i++) {
-        cout << static_cast<int>(std::round(f[i].real() / k)) << ' ';
+        cout << f[i] * inv % mod << ' ';
     }
 
     cout << endl;
