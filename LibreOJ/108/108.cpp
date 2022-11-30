@@ -13,19 +13,36 @@ const double PI = std::acos(-1);
 void fast_fourier_transform(std::valarray<std::complex<double>>& a) {
     if (a.size() == 1) return;
 
-    int m = a.size() >> 1;
+    // assert(a.size() == 1 << std::__lg(a.size()));
+    int k = std::__lg(a.size());
 
-    std::valarray<std::complex<double>>
-        even = a[std::slice(0, m, 2)],
-        odd = a[std::slice(1, m, 2)];
+    for (int i = 0; i < a.size(); i++) {
+        int t = 0;
 
-    fast_fourier_transform(even);
-    fast_fourier_transform(odd);
+        for (int j = 0; j < k; j++) {
+            if (i & (1 << j)) {
+                t |= 1 << (k - j - 1);
+            }
+        }
 
-    for (int i = 0; i < m; i++) {
-        auto t = std::polar(1.0, -2 * PI * i / a.size()) * odd[i];
-        a[i] = even[i] + t;
-        a[i + m] = even[i] - t;
+        if (i < t) std::swap(a[i], a[t]);
+    }
+
+    for (int len = 2; len <= a.size(); len <<= 1) {
+        std::complex<double> wlen(std::cos(2 * PI / len), std::sin(2 * PI / len));
+
+        for (int i = 0; i < a.size(); i += len) {
+            std::complex<double> w(1);
+
+            for (int j = 0; j < len / 2; j++) {
+                std::complex<double> u = a[i + j],
+                                     v = a[i + j + len / 2] * w;
+
+                a[i + j] = u + v;
+                a[i + j + len / 2] = u - v;
+                w *= wlen;
+            }
+        }
     }
 }
 
