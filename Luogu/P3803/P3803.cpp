@@ -22,7 +22,9 @@ constexpr long long binpow(long long a, long long b) {
     return res;
 }
 
-std::vector<long long> number_theoretic_transform(std::vector<long long> a) {
+void number_theoretic_transform(std::vector<long long> &a) {
+    if (a.size() == 1) return;
+
     // assert(a.size() == (1 << std::__lg(a.size())));
     int k = std::__lg(a.size());
 
@@ -55,8 +57,6 @@ std::vector<long long> number_theoretic_transform(std::vector<long long> a) {
             }
         }
     }
-
-    return a;
 }
 
 class Poly : public std::vector<long long> {
@@ -81,15 +81,15 @@ class Poly : public std::vector<long long> {
         std::vector<long long> f(*this), g(b);
 
         f.resize(k);
-        f = number_theoretic_transform(f);
+        number_theoretic_transform(f);
         g.resize(k);
-        g = number_theoretic_transform(g);
+        number_theoretic_transform(g);
 
         for (int i = 0; i < k; i++) {
             f[i] = f[i] * g[i] % mod;
         }
 
-        f = number_theoretic_transform(f);
+        number_theoretic_transform(f);
         // assert(f.size() > 0)
         std::reverse(f.begin() + 1, f.end());
 
