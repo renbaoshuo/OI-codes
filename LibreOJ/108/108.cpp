@@ -1,28 +1,16 @@
 #include <iostream>
 #include <algorithm>
-#include <valarray>
+#include <cmath>
+#include <complex>
+#include <vector>
 
 using std::cin;
 using std::cout;
 const char endl = '\n';
 
-const int mod = 998244353;
+const double PI = std::acos(-1);
 
-constexpr long long binpow(long long a, long long b) {
-    a %= mod;
-
-    long long res = 1;
-
-    while (b) {
-        if (b & 1) res = res * a % mod;
-        a = a * a % mod;
-        b >>= 1;
-    }
-
-    return res;
-}
-
-void number_theoretic_transform(std::valarray<long long>& a) {
+void fast_fourier_transform(std::vector<std::complex<double>>& a) {
     if (a.size() == 1) return;
 
     // assert(a.size() == 1 << std::__lg(a.size()));
@@ -41,23 +29,33 @@ void number_theoretic_transform(std::valarray<long long>& a) {
     }
 
     for (int len = 2; len <= a.size(); len <<= 1) {
-        int m = len >> 1;
-
-        long long wlen = binpow(3, (mod - 1) / len);
+        std::complex<double> wlen(std::cos(2 * PI / len), std::sin(2 * PI / len));
 
         for (int i = 0; i < a.size(); i += len) {
-            long long w = 1;
+            std::complex<double> w(1);
 
-            for (int j = 0; j < m; j++) {
-                long long u = a[i + j],
-                          v = a[i + j + m] * w % mod;
+            for (int j = 0; j < len / 2; j++) {
+                std::complex<double> u = a[i + j],
+                                     v = a[i + j + len / 2] * w;
 
-                a[i + j] = (u + v) % mod;
-                a[i + j + m] = ((u - v) % mod + mod) % mod;
-                w = w * wlen % mod;
+                a[i + j] = u + v;
+                a[i + j + len / 2] = u - v;
+                w *= wlen;
             }
         }
     }
+}
+
+void dft(std::vector<std::complex<double>>& a) {
+    fast_fourier_transform(a);
+}
+
+void idft(std::vector<std::complex<double>>& a) {
+    fast_fourier_transform(a);
+    std::reverse(a.begin() + 1, a.end());
+    std::transform(a.begin(), a.end(), a.begin(), [&](std::complex<double> x) {
+        return static_cast<int>(std::round(x.real() / a.size()));
+    });
 }
 
 int main() {
@@ -68,9 +66,8 @@ int main() {
 
     cin >> n >> m;
 
-    int k = 1 << (std::__lg(n + m) + 1),
-        inv = binpow(k, mod - 2);
-    std::valarray<long long> f(k), g(k);
+    int k = 1 << (std::__lg(n + m) + 1);
+    std::vector<std::complex<double>> f(k), g(k);
 
     for (int i = 0; i <= n; i++) {
         cin >> f[i];
@@ -80,18 +77,17 @@ int main() {
         cin >> g[i];
     }
 
-    number_theoretic_transform(f);
-    number_theoretic_transform(g);
+    dft(f);
+    dft(g);
 
     for (int i = 0; i < k; i++) {
         f[i] *= g[i];
     }
 
-    number_theoretic_transform(f);
-    std::reverse(std::begin(f) + 1, std::end(f));
+    idft(f);
 
     for (int i = 0; i <= n + m; i++) {
-        cout << f[i] * inv % mod << ' ';
+        cout << static_cast<int>(f[i].real()) << ' ';
     }
 
     cout << endl;
