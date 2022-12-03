@@ -138,6 +138,32 @@ class Poly : public std::vector<long long> {
 
         return b;
     }
+
+    static std::pair<Poly, Poly> div(Poly f, Poly g) {
+        int n = f.size() - 1,
+            m = g.size() - 1;
+        Poly rev_f{f}, rev_g{g};
+
+        std::reverse(rev_f.begin(), rev_f.end());
+        std::reverse(rev_g.begin(), rev_g.end());
+        rev_g.resize(n - m + 1);
+        rev_g = Poly::inv(rev_g);
+        rev_f = rev_g * rev_f;
+
+        Poly q(n - m + 1), r(m);
+
+        for (int i = 0; i <= n - m; i++) {
+            q[i] = rev_f[n - m - i];
+        }
+
+        g = g * q;
+
+        for (int i = 0; i < m; i++) {
+            r[i] = ((f[i] - g[i]) % mod + mod) % mod;
+        }
+
+        return {q, r};
+    }
 } poly;
 
 int main() {
@@ -158,25 +184,9 @@ int main() {
         cin >> g[i];
     }
 
-    Poly rev_f{f}, rev_g{g};
-
-    std::reverse(rev_f.begin(), rev_f.end());
-    std::reverse(rev_g.begin(), rev_g.end());
-    rev_g.resize(n - m + 1);
-    rev_g = Poly::inv(rev_g);
-    rev_f = rev_g * rev_f;
-
-    Poly q(n - m + 1), r(m);
-
-    for (int i = 0; i <= n - m; i++) {
-        q[i] = rev_f[n - m - i];
-    }
-
-    g = g * q;
-
-    for (int i = 0; i < m; i++) {
-        r[i] = ((f[i] - g[i]) % mod + mod) % mod;
-    }
+    auto res = Poly::div(f, g);
+    Poly q = res.first,
+         r = res.second;
 
     for (int i = 0; i <= n - m; i++) {
         cout << q[i] << ' ';
