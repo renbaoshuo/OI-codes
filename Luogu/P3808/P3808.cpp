@@ -1,7 +1,7 @@
 #include <iostream>
+#include <memory>
 #include <queue>
 #include <string>
-#include <unordered_map>
 
 using std::cin;
 using std::cout;
@@ -11,38 +11,26 @@ class AcAutomaton {
   private:
     struct node {
         int cnt;
-        node *child[26], *fail;
+        std::shared_ptr<node> child[26], fail;
 
         node()
             : cnt(0), fail(nullptr) {
-            std::fill_n(child, 26, nullptr);
-        }
-
-        ~node() {
-            for (int i = 0; i < 26; i++) {
-                if (child[i] != nullptr) {
-                    delete child[i];
-                }
-            }
+            std::fill(std::begin(child), std::end(child), nullptr);
         }
     };
 
-    node* root;
+    std::shared_ptr<node> root;
 
   public:
     AcAutomaton()
         : root(new node()) {}
 
-    ~AcAutomaton() {
-        delete root;
-    }
-
     void insert(std::string s) {
-        node* cur = root;
+        std::shared_ptr<node> cur = root;
 
         for (char c : s) {
             if (cur->child[c - 'a'] == nullptr) {
-                cur->child[c - 'a'] = new node();
+                cur->child[c - 'a'] = std::make_shared<node>();
             }
 
             cur = cur->child[c - 'a'];
@@ -52,11 +40,11 @@ class AcAutomaton {
     }
 
     void build() {
-        std::queue<node*> q;
+        std::queue<std::shared_ptr<node>> q;
 
         for (int i = 0; i < 26; i++) {
             if (root->child[i] != nullptr) {
-                q.push(root->child[i]);
+                q.emplace(root->child[i]);
                 root->child[i]->fail = root;
             }
         }
@@ -66,41 +54,27 @@ class AcAutomaton {
             q.pop();
 
             for (int i = 0; i < 26; i++) {
-                if (cur->child[i] == nullptr) continue;
+                if (cur->child[i] != nullptr) {
+                    cur->child[i]->fail = cur->fail->child[i] == nullptr ? root : cur->fail->child[i];
 
-                auto p = cur->fail;
-
-                while (p != nullptr) {
-                    if (p->child[i] != nullptr) {
-                        cur->child[i]->fail = p->child[i];
-
-                        break;
-                    }
-
-                    p = p->fail;
+                    q.emplace(cur->child[i]);
+                } else {
+                    cur->child[i] = cur->fail->child[i] == nullptr ? root : cur->fail->child[i];
                 }
-
-                if (p == nullptr) cur->child[i]->fail = root;
-
-                q.push(cur->child[i]);
             }
         }
     }
 
     int query(std::string t) {
         int res = 0;
-        node* cur = root;
+        std::shared_ptr<node> cur = root;
 
         for (char c : t) {
-            while (cur != root && cur->child[c - 'a'] == nullptr) cur = cur->fail;
             cur = cur->child[c - 'a'] == nullptr ? root : cur->child[c - 'a'];
 
-            node* p = cur;
-
-            while (p != root && p->cnt >= 0) {
-                res += p->cnt;
-                p->cnt = -1;
-                p = p->fail;
+            for (std::shared_ptr<node> i = cur; i != nullptr && i->cnt != -1; i = i->fail) {
+                res += i->cnt;
+                i->cnt = -1;
             }
         }
 
