@@ -19,12 +19,10 @@ class AcAutomaton {
   private:
     struct node {
         int cnt;
-        std::shared_ptr<node> child[26], fail;
+        std::weak_ptr<node> child[26], fail;
 
         node()
-            : cnt(0), fail(nullptr) {
-            std::fill(std::begin(child), std::end(child), nullptr);
-        }
+            : cnt(0) {}
     };
 
     std::shared_ptr<node> root;
@@ -37,16 +35,18 @@ class AcAutomaton {
         : root(std::make_shared<node>()), nodes({root}), nodes_id({{root, 0}}) {}
 
     void insert(std::string s) {
-        std::shared_ptr<node> cur = root;
+        auto cur = root;
 
         for (char c : s) {
-            if (cur->child[c - 'a'] == nullptr) {
-                cur->child[c - 'a'] = std::make_shared<node>();
-                nodes_id[cur->child[c - 'a']] = nodes.size();
-                nodes.emplace_back(cur->child[c - 'a']);
+            if (auto ptr = cur->child[c - 'a'].lock()) {
+                cur = ptr;
+            } else {
+                ptr = std::make_shared<node>();
+                cur->child[c - 'a'] = ptr;
+                nodes_id[ptr] = nodes.size();
+                nodes.emplace_back(ptr);
+                cur = ptr;
             }
-
-            cur = cur->child[c - 'a'];
         }
 
         cur->cnt++;
@@ -56,9 +56,9 @@ class AcAutomaton {
         std::queue<std::shared_ptr<node>> q;
 
         for (int i = 0; i < 26; i++) {
-            if (root->child[i] != nullptr) {
-                q.emplace(root->child[i]);
-                root->child[i]->fail = root;
+            if (auto ptr = root->child[i].lock()) {
+                q.emplace(ptr);
+                ptr->fail = root;
             } else {
                 root->child[i] = root;
             }
@@ -69,12 +69,18 @@ class AcAutomaton {
             q.pop();
 
             for (int i = 0; i < 26; i++) {
-                if (cur->child[i] != nullptr) {
-                    cur->child[i]->fail = cur->fail->child[i] == nullptr ? root : cur->fail->child[i];
+                if (auto ptr = cur->child[i].lock()) {
+                    auto cur_fail_ptr = cur->fail.lock(),
+                         cur_fail_ch_ptr = cur_fail_ptr->child[i].lock();
 
-                    q.emplace(cur->child[i]);
+                    ptr->fail = cur_fail_ch_ptr ? cur_fail_ch_ptr : root;
+
+                    q.emplace(cur->child[i].lock());
                 } else {
-                    cur->child[i] = cur->fail->child[i] == nullptr ? root : cur->fail->child[i];
+                    auto cur_fail_ptr = cur->fail.lock(),
+                         cur_fail_ch_ptr = cur_fail_ptr->child[i].lock();
+
+                    cur->child[i] = cur_fail_ch_ptr ? cur_fail_ch_ptr : root;
                 }
             }
         }
@@ -85,9 +91,11 @@ class AcAutomaton {
         std::shared_ptr<node> cur = root;
 
         for (char c : t) {
-            cur = cur->child[c - 'a'] == nullptr ? root : cur->child[c - 'a'];
+            auto cur_ch_ptr = cur->child[c - 'a'].lock();
 
-            for (auto i = cur; i != nullptr && i->cnt != -1; i = i->fail) {
+            cur = cur_ch_ptr ? cur_ch_ptr : root;
+
+            for (auto i = cur; i != nullptr && i->cnt != -1; i = i->fail.lock()) {
                 res += i->cnt;
                 i->cnt = -1;
             }
@@ -184,7 +192,9 @@ int main() {
             a[i].back() = 1;
 
             for (auto ch : ac.nodes[i]->child) {
-                a[i][ac.nodes_id[ch]] = ((a[i][ac.nodes_id[ch]] - inv_26) % mod + mod) % mod;
+                auto ptr = ch.lock();
+
+                a[i][ac.nodes_id[ptr]] = ((a[i][ac.nodes_id[ptr]] - inv_26) % mod + mod) % mod;
             }
         }
 
