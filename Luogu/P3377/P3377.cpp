@@ -1,4 +1,5 @@
 #include <iostream>
+#include <functional>
 #include <memory>
 #include <stack>
 #include <vector>
@@ -7,19 +8,23 @@ using std::cin;
 using std::cout;
 const char endl = '\n';
 
-class LeftTree : public std::enable_shared_from_this<LeftTree> {
+template <typename T, class Compare = std::less<T>>
+class LeftistTree : public std::enable_shared_from_this<LeftistTree<T, Compare>> {
   public:
-    using pointer_type = std::shared_ptr<LeftTree>;
+    using pointer_type = std::shared_ptr<LeftistTree<T, Compare>>;
+
+  protected:
+    static Compare comp;
 
   private:
     size_t dist;
     pointer_type lchild, rchild;
-    std::weak_ptr<LeftTree> root;
+    std::weak_ptr<LeftistTree<T, Compare>> root;
 
   public:
-    int id, val;
+    T id, val;
 
-    LeftTree(const int& _val = 0, const int& _id = 0)
+    LeftistTree(const T& _val = 0, const T& _id = 0)
         : dist(0),
           lchild(nullptr),
           rchild(nullptr),
@@ -29,7 +34,7 @@ class LeftTree : public std::enable_shared_from_this<LeftTree> {
 
     pointer_type find_root() {
         std::stack<pointer_type> st;
-        pointer_type cur = shared_from_this();
+        pointer_type cur = this->shared_from_this();
 
         st.emplace(cur);
 
@@ -60,7 +65,7 @@ class LeftTree : public std::enable_shared_from_this<LeftTree> {
         if (!x) return y;
         if (!y) return x;
 
-        if (x->val > y->val || x->val == y->val && x->id > y->id) std::swap(x, y);
+        if (comp(x->val, y->val) || x->val == y->val && comp(x->id, y->id)) std::swap(x, y);
 
         x->rchild = merge(x->rchild, y);
 
@@ -84,7 +89,7 @@ int main() {
     cin >> n >> m;
 
     std::vector<bool> exists(n + 1, true);
-    std::vector<LeftTree::pointer_type> tr(n + 1);
+    std::vector<LeftistTree<int, std::greater<>>::pointer_type> tr(n + 1);
 
     for (int i = 1, x; i <= n; i++) {
         cin >> x;
