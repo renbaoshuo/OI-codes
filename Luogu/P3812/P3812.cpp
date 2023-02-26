@@ -1,50 +1,67 @@
 #include <iostream>
+#include <algorithm>
+#include <iterator>
+#include <limits>
+#include <type_traits>
 
 using std::cin;
 using std::cout;
 const char endl = '\n';
 
-const int N = 55;
+const int N = 1e5 + 5;
 
-int n;
-long long x, a[N], ans;
+template <typename T>
+struct LinearBasis
+    : std::enable_if<std::is_unsigned<T>::value, T> {
+    T a[std::numeric_limits<T>::digits];
 
-void insert(long long x) {
-    for (int i = 50; ~i; i--) {
-        if (!(x & (1ll << i))) continue;
+    LinearBasis() {
+        std::fill(std::begin(a), std::end(a), 0);
+    }
 
-        if (a[i]) {
-            x ^= a[i];
-        } else {
-            for (int k = 0; k < i; k++) {
-                if (x & (1ll << k)) x ^= a[k];
+    void insert(unsigned long long x) {
+        for (int i = std::numeric_limits<T>::digits - 1; ~i; i--) {
+            if ((x >> i) & 1) {
+                if (a[i]) {
+                    x ^= a[i];
+                } else {
+                    a[i] = x;
+
+                    return;
+                }
             }
-
-            for (int k = i + 1; k <= 50; k++) {
-                if (a[k] & (1ll << i)) a[k] ^= x;
-            }
-
-            a[i] = x;
-            return;
         }
     }
-}
+
+    T query() {
+        T res(0);
+
+        for (int i = std::numeric_limits<T>::digits - 1; ~i; i--) {
+            if ((res ^ a[i]) > res) res ^= a[i];
+        }
+
+        return res;
+    }
+};
 
 int main() {
     std::ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
+    int n;
+    LinearBasis<unsigned long long> lb;
+
     cin >> n;
 
     for (int i = 1; i <= n; i++) {
+        unsigned long long x;
+
         cin >> x;
 
-        insert(x);
+        lb.insert(x);
     }
 
-    for (int i = 0; i <= 50; i++) ans ^= a[i];
-
-    cout << ans << endl;
+    cout << lb.query() << endl;
 
     return 0;
 }
