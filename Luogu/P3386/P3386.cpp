@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <iterator>
 #include <queue>
 
 using std::cin;
@@ -10,19 +11,19 @@ const int N = 505,
           M = 5e4 + 5;
 const int INF = 0x3f3f3f3f;
 
-int n, m, e, s, t, flow, ans;
+int n, m, e, s, t;
 int idx, head[N << 1], ver[M << 2], edge[M << 2], next[M << 2];
 int d[N << 1], cur[N << 1];
 
 void add(int u, int v, int w) {
-    next[idx] = head[u];
     ver[idx] = v;
     edge[idx] = w;
+    next[idx] = head[u];
     head[u] = idx++;
 }
 
 bool bfs() {
-    std::fill_n(d, N << 1, 0);
+    std::fill(std::begin(d), std::end(d), 0);
 
     std::queue<int> q;
 
@@ -38,7 +39,7 @@ bool bfs() {
             int v = ver[i],
                 w = edge[i];
 
-            if (w && !d[v]) {
+            if (!d[v] && w) {
                 d[v] = d[u] + 1;
                 cur[v] = head[v];
                 if (v == t) return true;
@@ -54,20 +55,21 @@ int dinic(int u, int limit) {
     if (u == t) return limit;
 
     int flow = 0;
+
     for (int i = cur[u]; ~i && flow < limit; i = next[i]) {
         cur[u] = i;
 
         int v = ver[i],
             w = edge[i];
 
-        if (w && d[v] == d[u] + 1) {
+        if (d[v] == d[u] + 1 && w) {
             int k = dinic(v, std::min(limit - flow, w));
 
             if (!k) d[v] = 0;
 
+            flow += k;
             edge[i] -= k;
             edge[i ^ 1] += k;
-            flow += k;
         }
     }
 
@@ -78,7 +80,7 @@ int main() {
     std::ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    std::fill_n(head, N << 1, -1);
+    std::fill(std::begin(head), std::end(head), -1);
 
     cin >> n >> m >> e;
 
@@ -97,15 +99,17 @@ int main() {
     for (int i = 1, u, v; i <= e; i++) {
         cin >> u >> v;
 
-        add(u, n + v, 1);
-        add(n + v, u, 0);
+        add(u, v + n, 1);
+        add(v + n, u, 0);
     }
+
+    int res = 0;
 
     while (bfs()) {
-        while (flow = dinic(s, INF)) ans += flow;
+        while (int flow = dinic(s, INF)) res += flow;
     }
 
-    cout << ans << endl;
+    cout << res << endl;
 
     return 0;
 }
