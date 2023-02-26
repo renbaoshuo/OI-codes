@@ -1,46 +1,57 @@
 #include <iostream>
+#include <algorithm>
 #include <string>
+#include <vector>
 
 using std::cin;
 using std::cout;
 const char endl = '\n';
 
-const int N = 1.1e7 + 5;
+std::vector<int> manacher(std::string _s) {
+    // s = "abba" -> "^#a#b#b#a#$"
+    int n = _s.size();
+    std::string s(n * 2 + 3, '#');
 
-int p[N << 1], mid, r, ans;
-std::string s1, s2;
+    for (int i = 0; i < n; i++) {
+        s[i * 2 + 2] = _s[i];
+    }
+
+    s[0] = '^';
+    s[n * 2 + 2] = '$';
+
+    std::vector<int> p(s.size(), 1);
+
+    for (int i = 1, mid = 0, r = 0; i <= n * 2 + 1; i++) {
+        p[i] = i < r ? std::min(p[mid * 2 - i], r - i) : 1;
+
+        while (s[i - p[i]] == s[i + p[i]]) p[i]++;
+
+        if (i + p[i] - 1 > r) {
+            r = i + p[i] - 1;
+            mid = i;
+        }
+    }
+
+    // for (int i = 0; i < n; i++) {
+    //     p[i] = p[i * 2 + 2] / 2;
+    // }
+
+    // p.resize(n);
+
+    return p;
+}
 
 int main() {
     std::ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    cin >> s1;
+    std::string s;
 
-    // Init
+    cin >> s;
 
-    s2.push_back('^');
-    for (const char &c : s1) {
-        s2.push_back('#');
-        s2.push_back(c);
-    }
-    s2 += "#$";
+    auto p = manacher(s);
 
-    for (int i = 1; i < s2.size(); i++) {
-        p[i] = i < r ? std::min(p[mid * 2 - i], r - i) : 1;
-
-        while (s2[i - p[i]] == s2[i + p[i]]) p[i]++;
-
-        if (i + p[i] > r) {
-            r = i + p[i];
-            mid = i;
-        }
-    }
-
-    for (int i = 0; i < s2.size(); i++) {
-        ans = std::max(ans, p[i]);
-    }
-
-    cout << ans - 1 << endl;
+    cout << *std::max_element(p.begin(), p.end()) - 1 << endl;
 
     return 0;
 }
