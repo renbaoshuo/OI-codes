@@ -1,28 +1,39 @@
 #include <iostream>
-#include <string>
 
 using std::cin;
 using std::cout;
 const char endl = '\n';
 
-int nxt[1000005];
-std::string s, p;
+const int N = 1e6 + 5;
+
+int next[N];
+std::string s1, s2;
 
 int main() {
-    cin >> s >> p;
-    nxt[0] = -1;
-    for (int i = 1, j = -1; i < p.size(); i++) {
-        while (j >= 0 && p[j + 1] != p[i]) j = nxt[j];
-        if (p[j + 1] == p[i]) j++;
-        nxt[i] = j;
+    std::ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    cin >> s1 >> s2;
+
+    next[0] = -1;
+
+    for (int i = 1, j = -1; i < s2.size(); i++) {
+        while (~j && s2[j + 1] != s2[i]) j = next[j];
+
+        if (s2[j + 1] == s2[i]) j++;
+
+        next[i] = j;
     }
-    for (int i = 0, j = -1; i < s.size(); i++) {
-        while (j != -1 && s[i] != p[j + 1]) j = nxt[j];
-        if (s[i] == p[j + 1]) j++;
-        if (j == p.size() - 1) {
+
+    for (int i = 0, j = -1; i < s1.size(); i++) {
+        while (~j && s1[i] != s2[j + 1]) j = next[j];
+
+        if (s1[i] == s2[j + 1]) j++;
+
+        if (j + 1 == s2.size()) {
             cout << i - j + 1 << endl;
-            j = nxt[j];
         }
     }
+
     return 0;
 }
