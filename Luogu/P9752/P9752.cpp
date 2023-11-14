@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 #include <array>
 #include <set>
 
@@ -11,7 +12,7 @@ const int N = 10,
 
 int n, ans;
 std::array<int, M> a[N];
-std::set<std::array<int, M>> set_pre;
+std::set<std::array<int, M>> set;
 
 int main() {
     std::ios::sync_with_stdio(false);
@@ -56,20 +57,16 @@ int main() {
         }
 
         if (i == 1) {
-            ans = set_now.size();
-            set_pre = set_now;
+            set = set_now;
         } else {
-            std::set<std::array<int, M>> set;
+            std::set<std::array<int, M>> set_tmp;
 
-            for (auto o : set_pre) {
-                if (set_now.count(o)) {
-                    set.emplace(o);
-                }
-            }
+            std::set_intersection(set.begin(), set.end(), set_now.begin(), set_now.end(), std::inserter(set_tmp, set_tmp.begin()));
 
-            ans = set.size();
-            set_pre = set;
+            set = set_tmp;
         }
+
+        ans = set.size();
     }
 
     cout << ans << endl;
